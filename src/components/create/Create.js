@@ -1,13 +1,15 @@
 import React from 'react';
+import SearchSongs from '../searchSongs/SearchSongs.js';
+import EditTape from '../editTape/EditTape.js';
 
 export default function Create() {
 
   return (
     <>
-      <h1>This is the Create Page</h1>
-      <h2>Search section goes here</h2>
-      <h2>Edit section goes here</h2>
-      <h2>Memo section goes here?</h2>
+      <h2>This is the Create Page</h2>
+      <SearchSongs />
+      <EditTape />
+      <h3>Memo section goes here?</h3>
     </>
   );
 }
