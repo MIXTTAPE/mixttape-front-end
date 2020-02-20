@@ -12,6 +12,7 @@ export default function Mixt() {
       <h4>Create goes here</h4>
       <h4>TapeList goes here</h4>
       <h4>Detail goes here</h4>
+      <h4>About Us goes here</h4>
       <h2>Player goes here</h2>
     </>
   );
