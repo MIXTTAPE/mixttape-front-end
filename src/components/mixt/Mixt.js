@@ -3,6 +3,7 @@ import Header from '../header/Header.js';
 import Splash from '../splash/Splash.js';
 import Create from '../create/Create.js';
 import TapeList from '../tapeList/TapeList.js';
+import TapeDetail from '../tapeDetail/TapeDetail.js';
 
 export default function Mixt() {
 
@@ -15,7 +16,7 @@ export default function Mixt() {
       <Splash />
       <Create />
       <TapeList />
-      <h2>Detail goes here</h2>
+      <TapeDetail />
       <h2>About Us goes here</h2>
       <h2>Player goes here</h2>
     </>
