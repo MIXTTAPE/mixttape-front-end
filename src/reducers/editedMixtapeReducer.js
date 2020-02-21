@@ -1,4 +1,4 @@
-import { ADD_SONG, DELETE_SONG } from '../actions/searchActions';
+import { ADD_SONG, DELETE_SONG } from '../actions/editedMixtapeActions';
 
 const initialState = {
   mixtape: []
