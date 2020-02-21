@@ -1,10 +1,11 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
 import MixtapeSong from '../mixtapeSong/MixtapeSong.js';
-import { getLastEditedMixtape } from '../../selectors/mixtapeSelectors.js';
+import { getLastEditedMixtape } from '../../selectors/editedMixtapeSelectors.js';
 
 export default function EditTape() {
-  const mixtape = useSelector(getLastEditedMixtape);
+  // const mixtape = useSelector(getLastEditedMixtape);
+  const mixtape = [];
 
 
   //each song comes from search result section
