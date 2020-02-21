@@ -1,6 +1,6 @@
 import { ADD_SONG, DELETE_SONG, SAVE_MIXTAPE, addSong, deleteSong, saveMixtape, setAsEdited, SET_AS_EDITED } from './editedMixtapeActions';
 
-describe('editedMixtape Actions', () => {
+describe('editedMixtapeActions', () => {
 
   it('can add a song to a mixtape', () => {
     const action = addSong('AA8723');
