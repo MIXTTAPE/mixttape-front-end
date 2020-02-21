@@ -6,7 +6,7 @@ export const addSong = (payload) => ({
 
 
 export const DELETE_SONG = 'DELETE_SONG';
-export const deleteSond = (payload) => ({
+export const deleteSong = (payload) => ({
   type: DELETE_SONG,
   payload
 });
