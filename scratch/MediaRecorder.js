@@ -50,6 +50,24 @@ class MediaRecorder extends Component {
             audioUrl: null,
         })
     }
+    createFileFromBlob = () => {
+        let file = new File([this.state.audioBlob], 'test.wav', { type: 'audio/wav' })
+        return file
+    }
+    postRecording = () => {
+        let recording = this.createFileFromBlob()
+        let formData = new FormData()
+        formData.append('id', audioUrl)
+        formData.append('recording', recording)
+        fetch('https://mixttape-backend.herokuapp.com/api/v1/voice-recordings', {
+            method: 'POST',
+            body: formData
+        }).then(message => {
+            this.setState({ saved: true })
+            console.log(message)
+        })
+    }
+
 
     render() {
         <>
