@@ -1,7 +1,7 @@
 import { addSong, deleteSong, setAsEdited } from '../actions/editedMixtapeActions';
 import { editedMixtapeReducer } from './editedMixtapeReducer.js';
 
-describe('editedMixtaperReducer', () => {
+describe('editedMixtapeReducer', () => {
 
   it('can handle a SET_AS_EDITED action', () => {
     const state = {};
