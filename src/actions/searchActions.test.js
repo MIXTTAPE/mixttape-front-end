@@ -1,4 +1,4 @@
-import { ADD_SONG, addSong } from './searchActions';
+import { ADD_SONG, DELETE_SONG, addSong, deleteSong } from './searchActions';
 
 describe('Search Actions', () => {
 
@@ -9,4 +9,13 @@ describe('Search Actions', () => {
       payload: 'AA8723'
     });
   });
+
+  it('can delete a song from a mixtape', () => {
+    const action = deleteSong('AA8723');
+    expect(action).toEqual({
+      type: DELETE_SONG,
+      payload: 'AA8723'
+    });
+  });
+
 });
