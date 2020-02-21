@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { ENGINE_METHOD_ALL } from 'constants';
 
 class MediaRecorder extends Component {
     state = {
@@ -8,6 +9,12 @@ class MediaRecorder extends Component {
         audioBlob: null,
         audioUrl: null,
         saved: false
+    }
+    componentDidMount() {
+        this.prepareRecording()
+    }
+    componentWillUnmount() {
+        this.emergencyStop()
     }
     prepareRecording = () => {
         navigator.mediaDevices.getUserMedia({ audio: true })
@@ -42,5 +49,27 @@ class MediaRecorder extends Component {
             audioBlob: [],
             audioUrl: null,
         })
+    }
+
+    render() {
+        <>
+            <div>
+                {(!this.state.active && !this.state.audioUrl) &&
+                <button onClick={this.startRecording}>Start Recording</button>
+                }
+                {(this.state.active && !this.state.audioUrl) &&
+                <button onClick={this.stopRecording}>Stop Recording</button>
+                }
+                {(this.state.audioUrl && !this.state.saved) && 
+                    <>
+                      <audio src={this.state.audioUrl} controls />
+                      <button onClick={() => this.postRecording()}>Save Recording</button>
+                    </>
+                }
+                {(this.state.audioUrl && this.state.saved) &&
+                <h3>Recording saved!</h3>
+                }
+           </div>
+        </>
     }
 }
