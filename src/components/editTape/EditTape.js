@@ -8,7 +8,7 @@ export default function EditTape() {
 
   //each song comes from search result section
   //Has a nativeId, native source, and title
-  if(mixTape.length !== 0){
+  if(mixtape.length !== 0){
     const mixtapeSongs = mixtape.map(song => (
       <li key={song.nativeId}>
         <MixtapeSong data={song} />
