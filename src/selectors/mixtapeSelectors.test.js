@@ -1,4 +1,4 @@
-import { getuserMixtapes, getLastEditedMixtape } from './mixtapeSelectors';
+import { getUserMixtapes, getLastEditedMixtape, getActiveMixtape } from './mixtapeSelectors';
 
 describe('Mixtape Selectors', () => {
 
@@ -58,7 +58,7 @@ describe('Mixtape Selectors', () => {
   });
 
   it('can get the active users mixtapes', () => {
-    const userMixtapes = getuserMixtapes(state);
+    const userMixtapes = getUserMixtapes(state);
     expect(userMixtapes).toEqual([
       {
         mixtapeName: 'My Mixtape',
@@ -93,10 +93,11 @@ describe('Mixtape Selectors', () => {
     });
   });
 
-  it('can get the users last edited mixtape', () => {
-    const usersLastEditedMixtape = getLastEditedMixtape(state);
-    expect(usersLastEditedMixtape).toEqual({
+  it('can get the users active mixtape', () => {
+    const activeMixtape = getActiveMixtape(state);
+    expect(activeMixtape).toEqual({
       loading: true,
+      id: '1111111',
       mixtapeName: 'My Mixtape',
       songs: [
         {
@@ -106,7 +107,9 @@ describe('Mixtape Selectors', () => {
           buyLink: '',
           thumbnail: ''
         }
-      ]
+      ],
+      currentSongIndex: 0,
+      createdBy: 'josephtatum'
     });
   });
 
