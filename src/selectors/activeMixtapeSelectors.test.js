@@ -1,9 +1,9 @@
-import { getUserMixtapes, getLastEditedMixtape, getActiveMixtape, getActiveSong } from './mixtapeSelectors';
+import { getActiveMixtape, getActiveSong } from './activeMixtapeSelectors';
 
-describe('Mixtape Selectors', () => {
+describe('activeMixtape Selectors', () => {
 
   let state;
-  beforeEach(()=> {
+  beforeEach(() => {
     state = {
       user: {
         loading: true,
@@ -55,42 +55,6 @@ describe('Mixtape Selectors', () => {
         ]
       }
     };
-  });
-
-  it('can get the active users mixtapes', () => {
-    const userMixtapes = getUserMixtapes(state);
-    expect(userMixtapes).toEqual([
-      {
-        mixtapeName: 'My Mixtape',
-        createdBy: 'josephtatum',
-        songs: [
-          {
-            nativeId: 'AF607105',
-            nativeSource: 'youtube',
-            title: 'Charlotte Gainsbourg - AF607105',
-            buyLink: '',
-            thumbnail: ''
-          }
-        ]
-      }
-    ]);
-  });
-
-  it('can get the users last edited mixtape', () => {
-    const usersLastEditedMixtape = getLastEditedMixtape(state);
-    expect(usersLastEditedMixtape).toEqual({
-      loading: true,
-      mixtapeName: 'My Mixtape',
-      songs: [
-        {
-          nativeId: 'AF607105',
-          nativeSource: 'youtube',
-          title: 'Charlotte Gainsbourg - AF607105',
-          buyLink: '',
-          thumbnail: ''
-        }
-      ]
-    });
   });
 
   it('can get the users active mixtape', () => {
