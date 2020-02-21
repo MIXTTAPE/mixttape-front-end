@@ -28,6 +28,23 @@ describe('Song Reducer', () => {
         }
       ]
     });
+
+    
+  });
+
+  it('can returns state if no action type is provided or no match exists', () => {
+    const payload = {
+      nativeId: 'AF607105',
+      nativeSource: 'youtube',
+      title: 'Charlotte Gainsbourg - AF607105'
+    };
+
+    const newState = songReducer(state, payload);
+
+    expect(newState).toEqual({
+      mixtape: []
+    });
+
   });
 
 });
