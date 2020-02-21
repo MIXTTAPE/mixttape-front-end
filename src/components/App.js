@@ -1,7 +1,8 @@
 import React from 'react';
-import Mixt from './mixt/Mixt';
+import MediaRecorder from '../../scratch/MediaRecorder'
+
 export default function App() {
   return (
-    <Mixt />
+    <MediaRecorder />
   );
 }
