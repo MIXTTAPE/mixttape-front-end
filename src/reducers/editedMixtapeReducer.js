@@ -5,12 +5,11 @@ const initialState = {};
 export const editedMixtapeReducer = (state = initialState, action) => {
   switch(action.type) {
     case SET_AS_EDITED:
-      console.log(action.payload);
       return action.payload;
     case ADD_SONG:
-      return { ...state, action };
+      return { ...state, songs: [...state.songs, action.payload] };
     case DELETE_SONG:
-      return { ...state, mixtape: state.mixtape.filter(item => item.nativeId !== action.payload.nativeId) };
+      return { ...state, songs: state.songs.filter(item => item.nativeId !== action.payload.nativeId) };
     default:
       return state;
   }

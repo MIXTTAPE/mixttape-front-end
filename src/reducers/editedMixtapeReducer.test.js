@@ -3,12 +3,8 @@ import { editedMixtapeReducer } from './editedMixtapeReducer.js';
 
 describe('Song Reducer', () => {
 
-  let state;
-  beforeEach(() => {
-    state = {};
-  });
-
   it('can handle a SET_AS_EDITED action', () => {
+    const state = {};
     const playlist = {
       mixtapeName: 'My Mixtape',
       songs: []
@@ -20,46 +16,58 @@ describe('Song Reducer', () => {
     });
   });
 
-  // it('can handle an ADD_SONG action', () => {
-  //   const payload = {
-  //     nativeId: 'A09FJJJ',
-  //     nativeSource: 'youtube',
-  //     title: 'Ian Andrewson - Kewl Song'
-  //   };
+  it('can handle an ADD_SONG action', () => {
+    const state = {
+      mixtapeName: 'My Mixtape',
+      songs: []
+    };
+    const payload = {
+      nativeId: 'A09FJJJ',
+      nativeSource: 'youtube',
+      title: 'Ian Andrewson - Kewl Song',
+      buyLink: '',
+      thumbnail: ''
+    };
+    const newState = editedMixtapeReducer(state, addSong(payload));
+    expect(newState).toEqual({
+      mixtapeName: 'My Mixtape',
+      songs: [{
+        nativeId: 'A09FJJJ',
+        nativeSource: 'youtube',
+        title: 'Ian Andrewson - Kewl Song',
+        buyLink: '',
+        thumbnail: ''
+      }]   
+    });
+  });
 
-  //   const newState = editedMixtapeReducer(state, addSong(payload));
+  it('can handle a DELETE_SONG action', () => {
+    const state = {
+      mixtapeName: 'My Mixtape',
+      songs: [{
+        nativeId: 'A09FJJJ',
+        nativeSource: 'youtube',
+        title: 'Ian Andrewson - Kewl Song',
+        buyLink: '',
+        thumbnail: ''
+      }]
+    };
+    const payload = {
+      nativeId: 'A09FJJJ',
+      nativeSource: 'youtube',
+      title: 'Ian Andrewson - Kewl Song',
+    };
 
-  //   expect(newState).toEqual({
-  //     mixtape: [
-  //       {
-  //         nativeId: 'AF607105',
-  //         nativeSource: 'youtube',
-  //         title: 'Charlotte Gainsbourg - AF607105'
-  //       },
-  //       {
-  //         nativeId: 'A09FJJJ',
-  //         nativeSource: 'youtube',
-  //         title: 'Ian Andrewson - Kewl Song'
-  //       }
-  //     ]
-  //   });
-  // });
+    const newState = editedMixtapeReducer(state, deleteSong(payload));
 
-  // it('can handle a DELETE_SONG action', () => {
-  //   const payload = {
-  //     nativeId: 'AF607105',
-  //     nativeSource: 'youtube',
-  //     title: 'Charlotte Gainsbourg - AF607105'
-  //   };
-
-  //   const newState = editedMixtapeReducer(state, deleteSong(payload));
-
-  //   expect(newState).toEqual({
-  //     mixtape: []
-  //   });
-  // });
+    expect(newState).toEqual({
+      mixtapeName: 'My Mixtape',
+      songs: []
+    });
+  });
 
   it('can returns state if no action type is provided or no match exists', () => {
+    const state = {};
     const payload = {
       title: 'I dunno',
       payload: {
