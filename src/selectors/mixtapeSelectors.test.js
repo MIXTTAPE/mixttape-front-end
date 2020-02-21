@@ -1,4 +1,4 @@
-import { getUserMixtapes, getLastEditedMixtape, getActiveMixtape } from './mixtapeSelectors';
+import { getUserMixtapes, getLastEditedMixtape, getActiveMixtape, getActiveSong } from './mixtapeSelectors';
 
 describe('Mixtape Selectors', () => {
 
@@ -110,6 +110,17 @@ describe('Mixtape Selectors', () => {
       ],
       currentSongIndex: 0,
       createdBy: 'josephtatum'
+    });
+  });
+
+  it('can get the currently playing song', () => {
+    const currentlyPlaying = getActiveSong(state);
+    expect(currentlyPlaying).toEqual({
+      nativeId: 'AF607105',
+      nativeSource: 'youtube',
+      title: 'Charlotte Gainsbourg - AF607105',
+      buyLink: '',
+      thumbnail: ''
     });
   });
 
