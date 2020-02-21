@@ -5,6 +5,7 @@ import { fakeSearchResults as fakeYoutubeResults } from '../../../scratch/fake-s
 export default function SearchSongs() {
   //default state will be deleted once fetches are implemented
   const [results, setResults] = useState([fakeYoutubeResults, {}]);
+  const [searchQuery, setSearchQuery] = useState('');
 
   //Some fetch to hit all of the search APIs
   //Need to do in a promise.all
@@ -23,10 +24,25 @@ export default function SearchSongs() {
     } else return;
   }).filter(item => !!item);
 
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    //FUNCTION TO HIT ALL APIs WILL GO HERE
+    //pass SearchQuery as Parameter
+    console.log(event.target);
+  };
+
+  const handleChange = ({ target }) => {
+    setSearchQuery(target.value);
+  };
+
   return (
     <>
       <h3>This is the Song Search Section</h3>
       <h4>It has a search form</h4>
+      <form onSubmit={handleSearchSubmit}>
+        <input type='text' value={searchQuery} placeholder='Search for music' onChange={handleChange} />
+        <button>Search</button>
+      </form>
       <ul>
         {resultSections}
       </ul>
