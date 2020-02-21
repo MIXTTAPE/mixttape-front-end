@@ -4,9 +4,9 @@ const initialState = {
   mixtape: []
 };
 
-export default function(state = initialState, action) {
+export const songReducer = (state = initialState, action) => {
   switch(action.type) {
     case ADD_SONG:
       return { ...state, mixtape: [...state.mixtape, action.payload] };
   }
-}
+};
