@@ -1,6 +1,6 @@
-import { ADD_SONG, DELETE_SONG, addSong, deleteSong } from './searchActions';
+import { ADD_SONG, DELETE_SONG, addSong, deleteSong } from './editedMixtapeActions';
 
-describe('Search Actions', () => {
+describe('editedMixtape Actions', () => {
 
   it('can add a song to a mixtape', () => {
     const action = addSong('AA8723');
