@@ -17,3 +17,9 @@ export const saveMixtape = (payload) => ({
   type: SAVE_MIXTAPE,
   payload
 });
+
+export const SET_AS_EDITED = 'SET_AS_EDITED';
+export const setAsEdited = (payload) => ({
+  type: SET_AS_EDITED,
+  payload
+});

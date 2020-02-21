@@ -1,4 +1,4 @@
-import { ADD_SONG, DELETE_SONG, SAVE_MIXTAPE, addSong, deleteSong, saveMixtape } from './editedMixtapeActions';
+import { ADD_SONG, DELETE_SONG, SAVE_MIXTAPE, addSong, deleteSong, saveMixtape, setAsEdited, SET_AS_EDITED } from './editedMixtapeActions';
 
 describe('editedMixtape Actions', () => {
 
@@ -48,6 +48,27 @@ describe('editedMixtape Actions', () => {
           }
         ]
       }
+    });
+  });
+
+  it('can set a mixtape as the last edited mixtape', () => {
+    const payload = {
+      mixtapeName: 'My Mixtape',
+      createdBy: 'josephtatum',
+      songs: [
+        {
+          nativeId: 'AF607105',
+          nativeSource: 'youtube',
+          title: 'Charlotte Gainsbourg - AF607105',
+          buyLink: '',
+          thumbnail: ''
+        }
+      ]
+    };
+    const action = setAsEdited(payload);
+    expect(action).toEqual({
+      type: SET_AS_EDITED,
+      payload
     });
   });
 
