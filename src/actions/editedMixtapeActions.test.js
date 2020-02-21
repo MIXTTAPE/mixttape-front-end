@@ -1,4 +1,4 @@
-import { ADD_SONG, DELETE_SONG, addSong, deleteSong } from './editedMixtapeActions';
+import { ADD_SONG, DELETE_SONG, SAVE_MIXTAPE, addSong, deleteSong, saveMixtape } from './editedMixtapeActions';
 
 describe('editedMixtape Actions', () => {
 
@@ -15,6 +15,39 @@ describe('editedMixtape Actions', () => {
     expect(action).toEqual({
       type: DELETE_SONG,
       payload: 'AA8723'
+    });
+  });
+
+  it('can save a mixtape', () => {
+    const payload = {
+      mixtapeName: 'My Mixtape',
+      createdBy: 'josephtatum',
+      songs: [
+        {
+          nativeId: 'AF607105',
+          nativeSource: 'youtube',
+          title: 'Charlotte Gainsbourg - AF607105',
+          buyLink: '',
+          thumbnail: ''
+        }
+      ]
+    };
+    const action = saveMixtape(payload);
+    expect(action).toEqual({
+      type: SAVE_MIXTAPE,
+      payload: {
+        mixtapeName: 'My Mixtape',
+        createdBy: 'josephtatum',
+        songs: [
+          {
+            nativeId: 'AF607105',
+            nativeSource: 'youtube',
+            title: 'Charlotte Gainsbourg - AF607105',
+            buyLink: '',
+            thumbnail: ''
+          }
+        ]
+      }
     });
   });
 

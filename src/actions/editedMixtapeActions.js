@@ -10,3 +10,10 @@ export const deleteSong = (payload) => ({
   type: DELETE_SONG,
   payload
 });
+
+
+export const SAVE_MIXTAPE = 'SAVE_MIXTAPE';
+export const saveMixtape = (payload) => ({
+  type: SAVE_MIXTAPE,
+  payload
+});
