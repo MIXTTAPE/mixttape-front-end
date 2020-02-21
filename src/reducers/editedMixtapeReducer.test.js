@@ -1,5 +1,5 @@
 import { addSong, deleteSong } from '../actions/searchActions';
-import { songReducer } from './searchReducer';
+import { editedMixtapeReducer } from './editedMixtapeReducer.js';
 
 describe('Song Reducer', () => {
 
@@ -23,7 +23,7 @@ describe('Song Reducer', () => {
       title: 'Ian Andrewson - Kewl Song'
     };
 
-    const newState = songReducer(state, addSong(payload));
+    const newState = editedMixtapeReducer(state, addSong(payload));
 
     expect(newState).toEqual({
       mixtape: [
@@ -48,7 +48,7 @@ describe('Song Reducer', () => {
       title: 'Charlotte Gainsbourg - AF607105'
     };
 
-    const newState = songReducer(state, deleteSong(payload));
+    const newState = editedMixtapeReducer(state, deleteSong(payload));
 
     expect(newState).toEqual({
       mixtape: []
@@ -62,7 +62,7 @@ describe('Song Reducer', () => {
       title: 'Charlotte Gainsbourg - AF607105'
     };
 
-    const newState = songReducer(state, payload);
+    const newState = editedMixtapeReducer(state, payload);
 
     expect(newState).toEqual({
       mixtape: [{
