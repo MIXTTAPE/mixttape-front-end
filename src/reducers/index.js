@@ -1,6 +1,10 @@
 import { combineReducers } from 'redux';
-import { editedMixtapeReducer } from './editedMixtapeReducer.js';
+import { userReducer } from './userReducer';
+import { activeMixtapeReducer } from './activeMixtapeReducer';
+import { editedMixtapeReducer } from './editedMixtapeReducer';
 
 export default combineReducers({
-  editedMixtapeReducer
+  userReducer,
+  activeMixtapeReducer,
+  editedMixtapeReducer,
 });
