@@ -1,15 +1,17 @@
-import { ADD_SONG, DELETE_SONG } from '../actions/editedMixtapeActions';
+import { ADD_SONG, DELETE_SONG, SET_AS_EDITED, SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 
-const initialState = {
-  mixtape: []
-};
+const initialState = {};
 
 export const editedMixtapeReducer = (state = initialState, action) => {
   switch(action.type) {
     case ADD_SONG:
-      return { ...state, mixtape: [...state.mixtape, action.payload] };
+      return { ...state, songs: [...state.songs, action.payload] };
     case DELETE_SONG:
-      return { ...state, mixtape: state.mixtape.filter(item => item.nativeId !== action.payload.nativeId) };
+      return { ...state, songs: state.songs.filter(item => item.nativeId !== action.payload.nativeId) };
+    case SET_AS_EDITED:
+      return action.payload;
+    case SAVE_MIXTAPE:
+      return action.payload;
     default:
       return state;
   }
