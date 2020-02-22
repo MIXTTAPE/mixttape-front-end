@@ -18,6 +18,18 @@ export const saveMixtape = (payload) => ({
   payload
 });
 
+// export const saveMixtape = (index, postAnimalFn, barnId) => dispatch => {
+//   return new Promise(function(resolve) {
+//     setTimeout(function () {
+//       resolve({}});
+//     });
+//   })
+//     .then(mixtape => dispatch({
+//       type: SAVE_MIXTAPE,
+//       payload: mixtape
+//     }));
+// };
+
 export const SET_AS_EDITED = 'SET_AS_EDITED';
 export const setAsEdited = (payload) => ({
   type: SET_AS_EDITED,
