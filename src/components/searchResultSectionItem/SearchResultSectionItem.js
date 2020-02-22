@@ -1,5 +1,5 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { string, number } from 'prop-types';
 
 export default function SearchResultSectionItem({ data }) {
 
@@ -16,6 +16,6 @@ SearchResultSectionItem.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string.isRequired,
     nativeSource: PropTypes.string.isRequired,
-    nativeId: PropTypes.string.isRequired
+    nativeId: PropTypes.oneOfType([string, number])
   }).isRequired
 };
