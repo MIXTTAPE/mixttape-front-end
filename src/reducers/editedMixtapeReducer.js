@@ -11,10 +11,7 @@ export const editedMixtapeReducer = (state = initialState, action) => {
     case SET_AS_EDITED:
       return action.payload;
     case SAVE_MIXTAPE:
-      /*I AM NOT WORKING YET!!!! */
-      /* send mixtape to the database */
-      /* add mixtape to state */
-      return {};
+      return action.payload;
     default:
       return state;
   }
