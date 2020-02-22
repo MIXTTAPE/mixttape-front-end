@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import SearchResultSectionItem from '../searchResultSectionItem/SearchResultSectionItem.js';
 import PropTypes from 'prop-types';
 
-export default function SearchResultSection({ results }) {
+export default function YoutubeSearchResultSection({ results }) {
   const [simplifiedResults, setSimplifiedResults] = useState([]); 
 
-  // console.log('raw results: ', results);
+  console.log('raw results: ', results);
   
   //check source of search results to munge songs correctly
   //add field to easily specify source
@@ -54,6 +54,6 @@ export default function SearchResultSection({ results }) {
   );
 }
 
-SearchResultSection.propTypes = {
+YoutubeSearchResultSection.propTypes = {
   results: PropTypes.object.isRequired
 };
