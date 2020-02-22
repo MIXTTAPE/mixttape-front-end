@@ -5,17 +5,22 @@ import PropTypes from 'prop-types';
 export default function SearchResultSection({ results }) {
   const [simplifiedResults, setSimplifiedResults] = useState([]); 
 
-  console.log('raw results: ', results);
+  // console.log('raw results: ', results);
   
   //check source of search results to munge songs correctly
   //add field to easily specify source
+
+  
   let songArray;
   if(results.kind === 'youtube#searchListResponse') {
     songArray = results.items;
     results.nativeSource = 'youtube';
+  } else if(results.kind === 'soundcloud') {
+    songArray = results.items;
+    results.nativeSource = 'soundcloud';
   }
 
-  console.log('raw songs: ', songArray);
+  // console.log('raw songs: ', songArray);
 
   //save an array of simplified results to state
   //NOTE: IF IT TURNS OUT DIFFERENT APIS RETURN DIFFERENTLY FORMATTED RESULTS,
@@ -28,7 +33,7 @@ export default function SearchResultSection({ results }) {
     })));
   }, []);
 
-  console.log('simplified results: ', simplifiedResults);
+  // console.log('simplified results: ', simplifiedResults);
 
   //Create an item for each simplified result
   const resultItems = simplifiedResults.map((item, i) => (

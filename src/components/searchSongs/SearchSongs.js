@@ -1,10 +1,11 @@
 import React, { useState } from 'react';
 import SearchResultSection from '../searchResultSection/SearchResultSection.js';
 import { fakeSearchResults as fakeYoutubeResults } from '../../../scratch/fake-search-results.js';
+import masterApiCall from '../../services/masterApiCall.js';
 
 export default function SearchSongs() {
   //default state will be deleted once fetches are implemented
-  const [results, setResults] = useState([fakeYoutubeResults, {}]);
+  const [results, setResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
   //Some fetch to hit all of the search APIs
@@ -14,6 +15,8 @@ export default function SearchSongs() {
   //for each source of search results, create a component with props.
   //prop is the raw search result from a source.
   //If a source didn't return any results, filter it out.
+  // console.log('results that will be rendered: ', results);
+
   const resultSections = results.map((section, i) => {
     if(Object.entries(section).length !== 0) {
       return (
@@ -26,9 +29,11 @@ export default function SearchSongs() {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    //FUNCTION TO HIT ALL APIs WILL GO HERE
-    //pass SearchQuery as Parameter
-    console.log(event.target);
+    masterApiCall(searchQuery)
+      .then(res => {
+        console.log(res);
+        setResults(res);
+      });
   };
 
   const handleChange = ({ target }) => {
