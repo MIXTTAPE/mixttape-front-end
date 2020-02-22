@@ -12,7 +12,10 @@ export default function SoundcloudSearchResultSection({ results }) {
     setSimplifiedResults(songArray.map(result => ({
       nativeId: result.id,
       nativeSource: results.nativeSource,
-      title: result.title
+      title: result.title,
+      buyLink: result.purchase_url,
+      thumbnailUrl: result.artwork_url,
+      isMemo: false
     })));
   }, []);
 

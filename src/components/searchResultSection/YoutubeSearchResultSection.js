@@ -5,20 +5,17 @@ import PropTypes from 'prop-types';
 export default function YoutubeSearchResultSection({ results }) {
   const [simplifiedResults, setSimplifiedResults] = useState([]); 
 
-  let songArray;
-  if(results.kind === 'youtube#searchListResponse') {
-    songArray = results.items;
-    results.nativeSource = 'youtube';
-  } else if(results.kind === 'soundcloud') {
-    songArray = results.items;
-    results.nativeSource = 'soundcloud';
-  }
+  const songArray = results.items;
+  console.log('raw youtube result data: ', results);
 
   useEffect(() => {
     setSimplifiedResults(songArray.map(result => ({
       nativeId: result.id.videoId,
-      nativeSource: results.nativeSource,
-      title: result.snippet.title
+      nativeSource: 'youtube',
+      title: result.snippet.title,
+      buyLink: null,
+      thumbnailUrl: result.snippet.thumbnails.medium.url,
+      isMemo: false
     })));
   }, []);
 
