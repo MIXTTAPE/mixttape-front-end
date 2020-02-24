@@ -6,7 +6,7 @@ export default function Splash() {
   return (
     <div className="full-screen-container">
       <div className="splash-container">
-        <div className="image-container">
+        <div className="image-container margin-right-medium">
           <img src={Illustration} />
         </div>
         <div className="">
