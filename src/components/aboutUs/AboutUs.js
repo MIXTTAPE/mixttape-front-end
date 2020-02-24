@@ -1,5 +1,6 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
+import Splash from '../splash/Splash';
 export default function AboutUs() {
 
   return (
@@ -11,6 +12,7 @@ export default function AboutUs() {
         <li>Travis Molter</li>
         <li>Ian Andrewson</li>
       </ul>
+      <Link to="/">Go Back </Link>
     </>
   );
 }
