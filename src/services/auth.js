@@ -1,4 +1,6 @@
 const request = (path, method, body) => {
+  console.log(body);
+  console.log(method);
   return fetch(`${process.env.API_URL}${path}`, {
     method,
     headers: {
