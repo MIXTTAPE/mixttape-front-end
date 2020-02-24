@@ -1,6 +1,6 @@
 import React from 'react';
 import Nav from '../nav/Nav.js';
-import Styles from '../../styles/header.css';
+import '../../styles/header.css';
 
 export default function Header() {
 
