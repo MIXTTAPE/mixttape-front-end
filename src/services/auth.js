@@ -1,6 +1,4 @@
 const request = (path, method, body) => {
-  console.log(body);
-  console.log(method);
   return fetch(`${process.env.API_URL}${path}`, {
     method,
     headers: {
@@ -18,4 +16,8 @@ const request = (path, method, body) => {
 
 export const signUp = (username, password) => {
   request('/auth/signup', 'POST', { username, password });
+};
+
+export const login = (username, password) => {
+  request('/auth/login', 'POST', { username, password });
 };
