@@ -18,5 +18,22 @@
         display: inline-block;
       }
     }
+
+    .player-controls {
+
+      .play-pause-button {
+        border: 0;
+        background: none;
+        padding: 0;
+        height: 50px;
+        width: 50px;
+
+        svg {
+          height: 50px;
+          width: 50px;
+          fill: #fafafa;
+        }
+      }
+    }
   }
 }

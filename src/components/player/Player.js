@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/player.css';
+import { FaPlayCircle } from 'react-icons/fa';
 
 export default function Player() {
 
@@ -11,7 +12,7 @@ export default function Player() {
           <p className="track-title">Track Title</p>
         </div>
         <div className="player-controls">
-          <button>play/stop</button>
+          <button className="play-pause-button"><FaPlayCircle /></button>
           <button>⏭</button>
         </div>
         <div className="volume-controls">
