@@ -52,11 +52,7 @@ describe('editedMixtapeReducer', () => {
         thumbnail: ''
       }]
     };
-    const payload = {
-      nativeId: 'A09FJJJ',
-      nativeSource: 'youtube',
-      title: 'Ian Andrewson - Kewl Song',
-    };
+    const payload = 'A09FJJJ';
 
     const newState = editedMixtapeReducer(state, deleteSong(payload));
 

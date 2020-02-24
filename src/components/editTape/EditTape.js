@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
 import MixtapeSong from '../mixtapeSong/MixtapeSong.js';
 import { getLastEditedMixtape } from '../../selectors/editedMixtapeSelectors.js';
 
 export default function EditTape() {
   const mixtape = useSelector(getLastEditedMixtape);
-  console.log(mixtape.songs);
 
+  
 
   //each song comes from search result section
   //Has a nativeId, native source, and title
@@ -19,6 +19,15 @@ export default function EditTape() {
       </li>
     ));
   }
+
+  // let mixtapeSongs;
+  // useEffect(() => {
+  //   mixtapeSongs = mixtape.songs.map(song => (
+  //     <li key={song.nativeId}>
+  //       <MixtapeSong data={song} />
+  //     </li>
+  //   ));
+  // }, [mixtape]);
 
   return (
     <>

@@ -9,7 +9,7 @@ export const editedMixtapeReducer = (state = initialState, action) => {
     case ADD_SONG:
       return { ...state, songs: [...state.songs, action.payload] };
     case DELETE_SONG:
-      return { ...state, songs: state.songs.filter(item => item.nativeId !== action.payload.nativeId) };
+      return { ...state, songs: state.songs.filter(item => item.nativeId !== action.payload) };
     case SET_AS_EDITED:
       return action.payload;
     case SAVE_MIXTAPE:
