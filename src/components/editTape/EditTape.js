@@ -4,16 +4,16 @@ import MixtapeSong from '../mixtapeSong/MixtapeSong.js';
 import { getLastEditedMixtape } from '../../selectors/editedMixtapeSelectors.js';
 
 export default function EditTape() {
-  // const mixtape = useSelector(getLastEditedMixtape);
-  const mixtape = [];
+  const mixtape = useSelector(getLastEditedMixtape);
+  console.log(mixtape.songs);
 
 
   //each song comes from search result section
   //Has a nativeId, native source, and title
   
   let mixtapeSongs;
-  if(mixtape.length !== 0){
-    mixtapeSongs = mixtape.map(song => (
+  if(mixtape.songs.length !== 0){
+    mixtapeSongs = mixtape.songs.map(song => (
       <li key={song.nativeId}>
         <MixtapeSong data={song} />
       </li>
