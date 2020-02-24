@@ -31,8 +31,7 @@ export default function SearchSongs() {
 
   return (
     <>
-      <h3>This is the Song Search Section</h3>
-      <h4>It has a search form</h4>
+      <h2>Search for Music</h2>
       <form onSubmit={handleSearchSubmit}>
         <input type='text' value={searchQuery} placeholder='Search for music' onChange={handleChange} />
         <button>Search</button>
