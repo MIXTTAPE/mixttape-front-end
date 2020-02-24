@@ -28,5 +28,13 @@
   .results-section {
     list-style-type: none;
     padding: 0;
+
+    .search-results {
+      font-size: 14px;
+
+      .result-list-item {
+        
+      }
+    }
   }
 }

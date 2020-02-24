@@ -11,11 +11,13 @@ export default function SearchResultSectionItem({ data }) {
   };
 
   return (
-    <span>
-      {data.title}
-      <button onClick={handleAdd}>+</button>
-      <button>Demo</button>
-    </span>
+    <>
+      <span className="margin-right-small">
+        {data.title}
+      </span>
+      <button className="button-add" onClick={handleAdd}>+</button>
+      {/* <button>Demo</button> */}
+    </>
   );
 }
 
