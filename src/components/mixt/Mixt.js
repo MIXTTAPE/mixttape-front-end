@@ -12,10 +12,7 @@ export default function Mixt() {
 
   return (
     <>
-      <Header />
-      {/* <h3>Router goes here</h3>
-      <h3>Switch goes here</h3> */}
-      <Splash />
+      <Header />   
       <Create />
       <TapeList />
       <TapeDetail />
