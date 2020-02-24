@@ -18,6 +18,7 @@ export default function SearchSongs() {
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
+    setResults([]);
     masterApiCall(searchQuery)
       .then(res => {
         setResults(res);
