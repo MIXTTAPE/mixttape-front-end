@@ -33,8 +33,8 @@ export default function SearchSongs() {
     <>
       <h2>Search for Music</h2>
       <form onSubmit={handleSearchSubmit}>
-        <input type='text' value={searchQuery} placeholder='Search for music' onChange={handleChange} />
-        <button>Search</button>
+        <input className="margin-right-small box-shadow" type='text' value={searchQuery} placeholder='Search for music' onChange={handleChange} />
+        <button className="button-primary box-shadow">Search</button>
       </form>
       <ul className="results-section">
         {resultSection}

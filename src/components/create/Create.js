@@ -6,7 +6,7 @@ export default function Create() {
 
   return (
     <div className="create-section">
-      <div className="search-songs-section">
+      <div className="search-songs-section box-shadow">
         <p>Add a Voice Memo</p>
         <SearchSongs />
       </div>

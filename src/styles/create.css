@@ -1,6 +1,30 @@
 .create-section {
   display: flex;
-  
+  justify-content: center;
+
+  .search-songs-section {
+    margin: 15px;
+    padding: 15px;
+    background-color: $black;
+    color: $white;
+    width: 600px;
+    height: 485px;
+    border-radius: 5px;
+
+    form {
+
+      input {
+        border: 0;
+        background: white;
+        border-radius: 25px;
+        height: 40px;
+        width: 200px;
+        font-size: 18px;
+        padding: 5px 0px 5px 15px;
+      }
+    }
+  }
+
   .results-section {
     list-style-type: none;
     padding: 0;
