@@ -10,7 +10,7 @@ export default function SoundcloudSearchResultSection({ results }) {
 
   useEffect(() => {
     setSimplifiedResults(songArray.map(result => ({
-      nativeId: result.id,
+      nativeId: result.id.toString(),
       nativeSource: results.nativeSource,
       title: result.title,
       buyLink: result.purchase_url,
