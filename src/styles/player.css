@@ -2,7 +2,8 @@
   background-color: #282828;
   color: #fafafa;
   height: 125px;
-  position: sticky;
+  position: fixed;
+  width: 100vw;
   bottom: 0;
 
   .player-container {
