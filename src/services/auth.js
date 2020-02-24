@@ -21,3 +21,7 @@ export const signUp = (username, password) => {
 export const login = (username, password) => {
   request('/auth/login', 'POST', { username, password });
 };
+
+export const verify = () => {
+  request('/auth/verify', 'GET');
+};

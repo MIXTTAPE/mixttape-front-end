@@ -1,4 +1,4 @@
-import { setUser, SET_USER } from './userActions';
+import { setUser, SET_USER, setUserLoading, SET_USER_LOADING, userLoadingDone, USER_LOADING_DONE } from './userActions';
 
 describe('userActions', () => {
   
@@ -11,6 +11,20 @@ describe('userActions', () => {
     expect(action).toEqual({
       type: SET_USER,
       payload
+    });
+  });
+
+  it('can set user loading', () => {
+    const action = setUserLoading();
+    expect(action).toEqual({
+      type: SET_USER_LOADING
+    });
+  });
+
+  it('can reset user loading', () => {
+    const action = userLoadingDone();
+    expect(action).toEqual({
+      type: USER_LOADING_DONE
     });
   });
 });
