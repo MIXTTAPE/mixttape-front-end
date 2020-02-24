@@ -26,11 +26,9 @@ export default function YoutubeSearchResultSection({ results }) {
 
   return (
     <>
-      <ul>
-        <h4>This is an example of a search result section for youtube</h4>
+      <h3>Youtube Results</h3>
+      <ul className="search-results">
         {resultItems}
-        <p>Each search result should be demoable</p>
-        <p>Should be able to add to the Edit section</p>
       </ul>
     </>
   );

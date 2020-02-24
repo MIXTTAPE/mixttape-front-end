@@ -1,0 +1,8 @@
+.create-section {
+  display: flex;
+  
+  .results-section {
+    list-style-type: none;
+    padding: 0;
+  }
+}
