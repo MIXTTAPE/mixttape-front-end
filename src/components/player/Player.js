@@ -1,6 +1,6 @@
 import React from 'react';
 import '../../styles/player.css';
-import { FaPlayCircle } from 'react-icons/fa';
+import { FaPlayCircle, FaForward, FaVolumeUp } from 'react-icons/fa';
 
 export default function Player() {
 
@@ -13,10 +13,11 @@ export default function Player() {
         </div>
         <div className="player-controls">
           <button className="play-pause-button"><FaPlayCircle /></button>
-          <button>⏭</button>
+          <button className="next-track-button"><FaForward /></button>
         </div>
         <div className="volume-controls">
-          <input type="range" id="volume" name="volume"
+          <FaVolumeUp />
+          <input className="volume-slider" type="range" id="volume" name="volume"
             min="0" max="11" />
         </div>
       </div>
