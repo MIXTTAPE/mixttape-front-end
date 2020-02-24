@@ -1,0 +1,22 @@
+.player-component {
+  background-color: #282828;
+  color: #fafafa;
+  height: 125px;
+  position: sticky;
+  bottom: 0;
+
+  .player-container {
+    display: flex;
+    max-width: 1400px;
+    justify-content: space-between;
+    align-items: center;
+    height: 100%;
+
+    .currently-playing {
+
+      .track-title {
+        display: inline-block;
+      }
+    }
+  }
+}
