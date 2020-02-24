@@ -6,7 +6,6 @@ export default function YoutubeSearchResultSection({ results }) {
   const [simplifiedResults, setSimplifiedResults] = useState([]); 
 
   const songArray = results.items;
-  console.log('raw youtube result data: ', results);
 
   useEffect(() => {
     setSimplifiedResults(songArray.map(result => ({
