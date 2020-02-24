@@ -1,12 +1,19 @@
 import React from 'react';
-import PropTypes from 'prop-types';
+import PropTypes, { string, number } from 'prop-types';
+import { useDispatch } from 'react-redux';
+import { addSong } from '../../actions/editedMixtapeActions';
 
 export default function SearchResultSectionItem({ data }) {
+  const dispatch = useDispatch();
+
+  const handleAdd = () => {
+    dispatch(addSong(data));
+  };
 
   return (
     <span>
       {data.title}
-      <button>+</button>
+      <button onClick={handleAdd}>+</button>
       <button>Demo</button>
     </span>
   );
@@ -16,6 +23,6 @@ SearchResultSectionItem.propTypes = {
   data: PropTypes.shape({
     title: PropTypes.string.isRequired,
     nativeSource: PropTypes.string.isRequired,
-    nativeId: PropTypes.string.isRequired
+    nativeId: PropTypes.oneOfType([string, number])
   }).isRequired
 };

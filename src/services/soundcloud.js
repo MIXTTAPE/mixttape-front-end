@@ -4,7 +4,7 @@ export default function soundcloudApi(query) {
     .then(([ok, json]) => {
       if(!ok) throw json;
       return {
-        items: json,
+        items: json.slice(0, 4),
         kind: 'soundcloud'
       };
     });

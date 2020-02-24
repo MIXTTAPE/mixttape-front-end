@@ -1,6 +1,8 @@
 import { ADD_SONG, DELETE_SONG, SET_AS_EDITED, SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 
-const initialState = {};
+const initialState = {
+  songs: []
+};
 
 export const editedMixtapeReducer = (state = initialState, action) => {
   switch(action.type) {

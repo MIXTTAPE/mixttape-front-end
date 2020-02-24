@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import SearchResultSection from '../searchResultSection/SearchResultSection.js';
-import { fakeSearchResults as fakeYoutubeResults } from '../../../scratch/fake-search-results.js';
+import YoutubeSearchResultSection from '../searchResultSection/YoutubeSearchResultSection.js';
+import SoundcloudSearchResultSection from '../searchResultSection/SoundcloudSearchResultSection.js';
 import masterApiCall from '../../services/masterApiCall.js';
 
 export default function SearchSongs() {
@@ -8,30 +8,18 @@ export default function SearchSongs() {
   const [results, setResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
-  //Some fetch to hit all of the search APIs
-  //Need to do in a promise.all
-  //Result will be an array of results from each source
-
-  //for each source of search results, create a component with props.
-  //prop is the raw search result from a source.
-  //If a source didn't return any results, filter it out.
-  // console.log('results that will be rendered: ', results);
-
-  const resultSections = results.map((section, i) => {
-    if(Object.entries(section).length !== 0) {
-      return (
-        <li key={i}>
-          <SearchResultSection results={section} />
-        </li>
-      );
-    } else return;
-  }).filter(item => !!item);
+  let resultSections;
+  if(results.length !== 0){
+    resultSections = [
+      <li key={1}><SoundcloudSearchResultSection results={results[0]}/></li>,
+      <li key={2}><YoutubeSearchResultSection results={results[1]}/></li>
+    ];
+  }
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
     masterApiCall(searchQuery)
       .then(res => {
-        console.log(res);
         setResults(res);
       });
   };
