@@ -1,5 +1,4 @@
 import React from 'react';
-import '../../styles/player.css';
 import { FaPlayCircle, FaForward, FaVolumeUp } from 'react-icons/fa';
 
 export default function Player() {
@@ -8,15 +7,15 @@ export default function Player() {
     <footer className="player-component">
       <div className="player-container">
         <div className="currently-playing">
-          <img src="thu" />
+          <img className="margin-right-small" src="thu" />
           <p className="track-title">Track Title</p>
         </div>
         <div className="player-controls">
-          <button className="play-pause-button"><FaPlayCircle /></button>
+          <button className="play-pause-button margin-right-small"><FaPlayCircle /></button>
           <button className="next-track-button"><FaForward /></button>
         </div>
         <div className="volume-controls">
-          <FaVolumeUp />
+          <FaVolumeUp className="margin-right-small" />
           <input className="volume-slider" type="range" id="volume" name="volume"
             min="0" max="11" />
         </div>

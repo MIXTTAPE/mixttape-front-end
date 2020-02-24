@@ -5,7 +5,7 @@ import Create from '../create/Create.js';
 import TapeList from '../tapeList/TapeList.js';
 import TapeDetail from '../tapeDetail/TapeDetail.js';
 import Player from '../player/Player.js';
-import '../../styles/global.css';
+import '../../styles/styles.css';
 
 export default function Mixt() {
 
