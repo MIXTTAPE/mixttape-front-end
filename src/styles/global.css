@@ -10,3 +10,9 @@ body {
 h1 {
   font-family: 'Comfortaa', 'Helvetica', 'Arial', 'sans-serif';
 }
+
+a {
+  color: #fafafa;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+}
