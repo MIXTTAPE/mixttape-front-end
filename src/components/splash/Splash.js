@@ -4,9 +4,10 @@ export default function Splash() {
   
   return (
     <>
-      <h2>This is the Splash Page</h2>
-      <p>Some info about the app will go here</p>
-      <h3>Login and Signup components will go here</h3>
+      <h1>MIXIT</h1>
+      <h2>A mixtape maker for the modern era.</h2>
+      <button className="button-primary">Login</button>
+      <button className="button-secondary">Sign Up</button>
     </>
   );
 }

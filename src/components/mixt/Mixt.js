@@ -12,8 +12,8 @@ export default function Mixt() {
   return (
     <Router>
       <Header />   
-      <Route path="/app/create" component={Create} />
       <Route path="/app/my-mixtapes" component={TapeList} />
+      <Route path="/app/create" component={Create} />
       <Route path="/app/mixtape/:id" component={TapeDetail} />
       <Player />
     </Router>
