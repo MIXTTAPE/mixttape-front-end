@@ -32,7 +32,7 @@ module.exports = {
         use: {
           loader: 'babel-loader',
           options: {
-            cacheDirectory: false
+            cacheDirectory: true
           }
         }
       },
@@ -67,10 +67,8 @@ module.exports = {
       {
         test: /\.(jpeg|jpg|png|svg)$/,
         use: {
-          loader: 'file-loader',
-          options: {
-            name: '[name].[ext]',
-          },
+          loader: 'url-loader',
+          options: { limit: 1000 },
         },
       }
     ]
