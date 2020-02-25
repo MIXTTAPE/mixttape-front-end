@@ -1,4 +1,4 @@
-import { SET_USER_LOADING, SET_USER } from '../actions/userActions';
+import { SET_USER_LOADING, SET_USER, USER_LOADING_DONE, userLoadingDone } from '../actions/userActions';
 import { saveMixtape } from '../actions/editedMixtapeActions';
 import { userReducer } from './userReducer';
 
@@ -10,6 +10,17 @@ describe('userReducer', () => {
     const newState = userReducer(initialState, action);
 
     expect(newState).toEqual({ loading: true, user: {} });
+  });
+
+  it('can handle the USER_LOADING_DONE case', () => {
+    const initialState = { loading: true, user: {} };
+    const action = { type: USER_LOADING_DONE };
+    const newState = userReducer(initialState, action);
+
+    expect(newState).toEqual({
+      loading: false,
+      user: {}
+    });
   });
 
   it('can handle a SET_USER case', () => {

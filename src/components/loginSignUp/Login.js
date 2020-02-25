@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setUserLogin } from '../../actions/userActions';
+import { setUserLogin, userLoadingDone } from '../../actions/userActions';
 
 export default function Login() {
   const dispatch = useDispatch();
@@ -18,6 +18,7 @@ export default function Login() {
   const handleLoginSumbit = (event) => {
     event.preventDefault();
     dispatch(setUserLogin(username, password));
+    // dispatch(userLoadingDone());
   };
 
   return (

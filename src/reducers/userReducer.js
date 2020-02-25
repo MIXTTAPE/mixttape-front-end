@@ -1,4 +1,4 @@
-import { SET_USER, SET_USER_LOADING } from '../actions/userActions';
+import { SET_USER, SET_USER_LOADING, USER_LOADING_DONE } from '../actions/userActions';
 import { SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 
 const initialState = {
@@ -10,6 +10,8 @@ export const userReducer = (state = initialState, action) => {
   switch(action.type) {
     case SET_USER_LOADING:
       return { ...state, loading: true };
+    case USER_LOADING_DONE:
+      return { ...state, loading: false };
     case SET_USER:
       return { ...state, user: action.payload };
     case SAVE_MIXTAPE:
