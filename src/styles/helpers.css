@@ -1,0 +1,23 @@
+.margin-right-x-small {
+  margin-right: 5px;
+}
+
+.margin-right-small {
+  margin-right: 10px;
+}
+
+.margin-right-medium {
+  margin-right: 20px;
+}
+
+.button-sm {
+  width: 75px;
+  height: 25px;
+  padding: 5px;
+  font-size: 12px;
+  border: none;
+}
+
+.box-shadow {
+  box-shadow: 0 1px 4px 0 rgba(32, 33, 36, .28);
+}

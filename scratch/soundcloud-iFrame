@@ -1,1 +1,14 @@
 <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/387002198&color=%23ff5500&auto_play=false&hide_related=false&show_comments=true&show_user=true&show_reposts=false&show_teaser=true&visual=true"></iframe>
+
+
+returned actual results:
+https://api-v2.soundcloud.com/search?q=noise&variant_ids=&facet=model&user_id=897723-896784-658175-549699&client_id=EA5eCsRE9Jvx0kAchb5nYj9Bc7WCkgaq&limit=20&offset=0&linked_partitioning=1&app_version=1582117219&app_locale=en
+
+Same as above but without a user id; works
+https://api-v2.soundcloud.com/search?q=noise&variant_ids=&facet=model&client_id=EA5eCsRE9Jvx0kAchb5nYj9Bc7WCkgaq&limit=20&offset=0&linked_partitioning=1&app_version=1582117219&app_locale=en
+
+Different search, specific to tracks, no userId
+https://api-v2.soundcloud.com/search/tracks?q=hate&variant_ids=&facet=genre&client_id=EA5eCsRE9Jvx0kAchb5nYj9Bc7WCkgaq&limit=20&offset=0&linked_partitioning=1&app_version=1582117219&app_locale=en
+
+
+https://api-v2.soundcloud.com/search/queries?q=noise&client_id=EA5eCsRE9Jvx0kAchb5nYj9Bc7WCkgaq&limit=10&offset=0&linked_partitioning=1&app_version=1582117219&app_locale=en
