@@ -1,5 +1,5 @@
 import React from 'react';
-import MediaRecorder from '../../scratch/MediaRecorder'
+import MediaRecorder from '../../scratch/MediaRecorder';
 
 export default function App() {
   return (
