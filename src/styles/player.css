@@ -76,14 +76,16 @@
         width: 20px;
       }
 
-      input[type=range]:focus {
-        outline: none;
-      }
-
       input[type="range" i] {
         -webkit-appearance: none;
+        width: 100%;
         margin: 0;
         border: none;
+        height: 2px;
+      }
+
+      input[type=range]:focus {
+        outline: none;
       }
 
       input[type=range]::-webkit-slider-runnable-track {

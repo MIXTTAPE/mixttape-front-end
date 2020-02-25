@@ -36,8 +36,8 @@ export default function Player() {
 
   return (
     <>
-      <div style={{ display: 'none' }}>
         <ReactPlayerComponent url={currentUrl} playPause={playing} _onEnded={nextSong}/>
+      <div style={{ display: 'none' }}>
       </div>
       <footer className="player-component">
         <div className="player-container">
