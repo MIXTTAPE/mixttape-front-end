@@ -1,23 +1,48 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { ReactPlayerComponent } from './ReactPlayer';
+import { fakeMixtape } from '../../../scratch/fake-mixtape';
 import { FaPlayCircle, FaForward, FaVolumeUp } from 'react-icons/fa';
 
 export default function Player() {
 
   const [playing, setPlaying] = useState(true);
-  
+  const [currentSong, setCurrentSong] = useState('Nothing Playing');
+  const [currentSongIndex, setCurrentSongIndex] = useState(0);
+  const [mixtape, setMixtape] = useState(fakeMixtape);
+  const [currentUrl, setCurrentUrl] = useState('');
+
+  const buildUrl = (song) => {
+    if(song.nativeSource === 'youtube') {
+      setCurrentUrl(`https://www.youtube.com/watch?v=${song.nativeId}`);
+    }
+    if(song.nativeSource === 'soundcloud') {
+      setCurrentUrl(`https://api.soundcloud.com/tracks/${song.nativeId}`);
+    }
+  };
+
+  useEffect(() => {
+    buildUrl(mixtape.songs[currentSongIndex]);
+    setCurrentSong(mixtape.songs[currentSongIndex]);
+  }, [currentSongIndex]);
+
   const playPause = () => {
     setPlaying(playing === true ? false : true);
   };
 
+  const _onEnded = () => {
+    setCurrentSongIndex(currentSongIndex + 1);
+
+  };
+
+
   return (
     <>
-      <ReactPlayerComponent url={'https://soundcloud.com/big-thief/pretty-things'} playPause={playing}/>
+      <ReactPlayerComponent url={currentUrl} playPause={playing} _onEnded={_onEnded}/>
       <footer className="player-component">
         <div className="player-container">
           <div className="currently-playing">
             <img className="margin-right-small" src="thu" />
-            <p className="track-title">Track Title</p>
+            <p className="track-title">{currentSong.title}</p>
           </div>
           <div className="player-controls">
             <button onClick={() => playPause()} className="play-pause-button margin-right-small"><FaPlayCircle /></button>

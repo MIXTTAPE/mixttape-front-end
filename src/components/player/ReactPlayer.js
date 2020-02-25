@@ -2,10 +2,11 @@ import React from 'react';
 import ReactPlayer from 'react-player';
 import PropTypes from 'prop-types';
 
-export const ReactPlayerComponent = ({ url, playPause }) => {
-  console.log(playPause);
+export const ReactPlayerComponent = ({ url, playPause, _onEnded }) => {
+
+
   return (
-    <ReactPlayer url={url} playing={playPause} />
+    <ReactPlayer url={url} playing={playPause} onEnded={_onEnded} controls />
   );
 };
 
