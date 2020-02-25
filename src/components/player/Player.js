@@ -13,6 +13,7 @@ export default function Player() {
   const [currentVolume, setCurrentVolume] = useState(1);
 
   useEffect(() => {
+    //PUT HERE: use the setMixtape hook to set the activeMixtape to mixtape
     buildUrl(mixtape.songs[currentSongIndex]);
     setCurrentSong(mixtape.songs[currentSongIndex]);
   }, [currentSongIndex]);
@@ -35,7 +36,6 @@ export default function Player() {
   };
 
   const volumeControl = ({ target }) => {
-    console.log(target.value);
     setCurrentVolume(target.value);
   };
 
