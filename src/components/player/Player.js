@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ReactPlayerComponent } from './ReactPlayer';
 import { FaPlayCircle, FaForward, FaVolumeUp } from 'react-icons/fa';
 
 export default function Player() {
 
+  const [playing, setPlaying] = useState(true);
+  
+  const playPause = () => {
+    setPlaying(playing === true ? false : true);
+  };
+
   return (
     <>
-      <ReactPlayerComponent />
+      <ReactPlayerComponent url={'https://soundcloud.com/big-thief/pretty-things'} playPause={playing}/>
       <footer className="player-component">
         <div className="player-container">
           <div className="currently-playing">
@@ -14,7 +20,7 @@ export default function Player() {
             <p className="track-title">Track Title</p>
           </div>
           <div className="player-controls">
-            <button className="play-pause-button margin-right-small"><FaPlayCircle /></button>
+            <button onClick={() => playPause()} className="play-pause-button margin-right-small"><FaPlayCircle /></button>
             <button className="next-track-button"><FaForward /></button>
           </div>
           <div className="volume-controls">
