@@ -15,13 +15,13 @@ const request = (path, method, body) => {
 };
 
 export const signUp = (username, password) => {
-  request('/auth/signup', 'POST', { username, password });
+  return request('/auth/signup', 'POST', { username, password });
 };
 
 export const login = (username, password) => {
-  request('/auth/login', 'POST', { username, password });
+  return request('/auth/login', 'POST', { username, password });
 };
 
 export const verify = () => {
-  request('/auth/verify', 'GET');
+  return request('/auth/verify', 'GET');
 };

@@ -12,7 +12,7 @@ export const userLoadingDone = () => ({
 
 export const SET_USER = 'SET_USER';
 
-export const setUserSignUp = ({ username, password }) => dispatch => {
+export const setUserSignUp = (username, password) => dispatch => {
   dispatch(setUserLoading());
   return signUp(username, password)
     .then(user => dispatch({

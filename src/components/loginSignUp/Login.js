@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
-import Link from 'react-router-dom';
-import { login } from '../../services/auth';
+import { useDispatch } from 'react-redux';
+import { setUserLogin } from '../../actions/userActions';
 
 export default function Login() {
+  const dispatch = useDispatch();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   
@@ -16,7 +17,7 @@ export default function Login() {
 
   const handleLoginSumbit = (event) => {
     event.preventDefault();
-    login(username, password);
+    dispatch(setUserLogin(username, password));
   };
 
   return (
