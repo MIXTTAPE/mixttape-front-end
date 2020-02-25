@@ -30,7 +30,6 @@ export default function EditTape() {
   return (
     <>
       <h2>Mixtape Title</h2>
-      {/* <p>It is an unordered list of songs saved from search</p> */}
       <ul className="mixtape-songs">
         {mixtapeSongs ? mixtapeSongs : 'Oh no! An empty playlist! You should probably add some songs.'}
       </ul>

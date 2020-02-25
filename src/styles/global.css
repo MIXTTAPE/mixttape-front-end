@@ -63,8 +63,17 @@ a {
   background: none;
   border: 0;
   color: $pink;
+  height: 13px;
 }
 
-.button-add:hover {
+.button-delete {
+  background: none;
+  border: 0;
+  color: $black;
+  height: 13px;
+}
+
+.button-add:hover,
+.button-delete:hover{
   cursor: pointer;
 }

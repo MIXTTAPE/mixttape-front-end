@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { FaMinusCircle } from 'react-icons/fa';
 import { useDispatch } from 'react-redux';
 import { deleteSong } from '../../actions/editedMixtapeActions';
 
@@ -16,7 +17,7 @@ export default function mixtapeSong({ data }) {
       <span>
         {data.title}
       </span>
-      <button value={data.nativeId} onClick={handleDelete}>Delete</button>
+      <button value={data.nativeId} onClick={handleDelete} className="button-delete"><FaMinusCircle /></button>
     </>
   );
 }
