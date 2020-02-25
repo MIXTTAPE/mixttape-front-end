@@ -37,7 +37,7 @@ export default function SearchSongs() {
         <button className="button-primary box-shadow">Search</button>
       </form>
       <ul className="results-section">
-        {resultSection}
+        {resultSection ? resultSection : 'Hmmm, you haven\'t searched for anything yet.'}
       </ul>
     </>
   );
