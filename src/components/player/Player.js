@@ -28,7 +28,7 @@ export default function Player() {
   };
 
   const playPause = () => {
-    setPlaying(playing === true ? false : true);
+    setPlaying(!playing);
   };
 
   const nextSong = () => {
