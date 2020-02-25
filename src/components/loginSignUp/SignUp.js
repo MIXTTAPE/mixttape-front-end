@@ -1,11 +1,14 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setUserSignUp, userLoadingDone } from '../../actions/userActions';
+import { useHistory } from 'react-router-dom';
 
 export default function SignUp({ onClick }) {
   const dispatch = useDispatch();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const history = useHistory();
   
   const handleUsernameChange = ({ target }) => {
     setUsername(target.value);
@@ -19,6 +22,7 @@ export default function SignUp({ onClick }) {
     event.preventDefault();
     dispatch(setUserSignUp(username, password));
     dispatch(userLoadingDone());
+    history.push('/app');
   };
 
   return (
