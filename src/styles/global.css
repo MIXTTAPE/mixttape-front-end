@@ -4,6 +4,7 @@
 $pink: #FF6A6A;
 $white: #FAFAFA;
 $black: #282828;
+$light-gray: #AAAAAA;
 $transition: all 0.2s ease-in-out;
 
 body {
@@ -22,7 +23,7 @@ h3 {
 }
 
 a {
-  color: $white;
+  color: $black;
   text-decoration: none;
   transition: $transition;
 }
@@ -50,6 +51,7 @@ a {
 .button-secondary {
   border: solid 3px $pink;
   color: $pink;
+  background: none;
 }
 
 .button-secondary:hover {

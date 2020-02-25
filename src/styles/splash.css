@@ -18,3 +18,13 @@
     width: 500px;
   }
 }
+
+.switch-form {
+  color: $light-gray;
+  font-size: 14px;
+}
+
+.switch-form:hover {
+  cursor: pointer;
+  color: $pink
+}

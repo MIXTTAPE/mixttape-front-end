@@ -1,10 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import Login from '../loginSignUp/Login.js';
 import SignUp from '../loginSignUp/SignUp.js';
 import Illustration from '../../img/splash-illustration.svg';
 
 export default function Splash() {
   
+  const [copyContent, setCopyContent] = useState('login');
+
+  const handleClick = (comp) => {
+    console.log(copyContent);
+    if(comp === 'login') setCopyContent('login');
+    if(comp === 'signup') setCopyContent('signup');
+  };
+
+  const renderedComponent = () => {
+    if(copyContent === 'login') return <Login onClick={handleClick}/>;
+    if(copyContent === 'signup') return <SignUp onClick={handleClick}/>;
+  };
 
   return (
     <div className="full-screen-container">
@@ -13,12 +25,9 @@ export default function Splash() {
           <img src={Illustration} />
         </div>
         <div className="copy-container">
-          <h1>MIXIT</h1>
+          <h1>MIXT</h1>
           <h2>A mixtape maker for the modern era.</h2>
-          <Login />
-          <SignUp />
-          <button className="button-primary margin-right-small">Login</button>
-          <button className="button-secondary">Sign Up</button>
+          {renderedComponent()}
         </div>
       </div>
     </div>
