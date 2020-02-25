@@ -32,6 +32,11 @@ export default function Player() {
   };
 
   const nextSong = () => {
+    if(currentSongIndex === mixtape.songs.length - 1) {
+      setCurrentSongIndex(0);
+      setPlaying(false);
+      return;
+    }
     setCurrentSongIndex(currentSongIndex + 1);
   };
 
