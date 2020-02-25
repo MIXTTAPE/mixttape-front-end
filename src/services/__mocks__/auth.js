@@ -6,6 +6,6 @@ export function signUp() {
 
 export function login() {
   return Promise.resolve(
-    { username: 'mockUserLogin' }
+    { username: 'mockUserLogin', mixtapes: [] }
   );
 }

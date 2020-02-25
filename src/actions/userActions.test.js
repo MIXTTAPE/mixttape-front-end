@@ -1,4 +1,4 @@
-import { SET_USER, setUserLoading, SET_USER_LOADING, userLoadingDone, USER_LOADING_DONE, setUserSignup } from './userActions';
+import { SET_USER, setUserLoading, SET_USER_LOADING, userLoadingDone, USER_LOADING_DONE, setUserSignUp, setUserLogin } from './userActions';
 
 jest.mock('../services/auth.js');
 
@@ -29,20 +29,38 @@ describe('userActions', () => {
       type: USER_LOADING_DONE
     });
   });
-});
 
-it('creates an action to set the user', () => {
-  const dispatch = jest.fn();
-  const action = setUserSignup('mockUserSignUp', 'blah');
+  it('creates an action to set the user via sign up', () => {
+    const dispatch = jest.fn();
+    const action = setUserSignUp('mockUserSignUp', 'blah');
 
-  return action(dispatch)
-    .then(() => {
-      expect(dispatch).toHaveBeenCalledWith({
-        type: SET_USER_LOADING
+    return action(dispatch)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledWith({
+          type: SET_USER_LOADING
+        });
+        expect(dispatch).toHaveBeenCalledWith({
+          type: SET_USER,
+          payload: { username: 'mockUserSignUp' }
+        });
       });
-      expect(dispatch).toHaveBeenCalledWith({
-        type: SET_USER,
-        payload: { username: 'mockUserSignUp' }
+  });
+  
+  it('creates an action to set the user via login', () => {
+    const dispatch = jest.fn();
+    const action = setUserLogin('mockUserLogin', 'blah');
+
+    return action(dispatch)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledWith({
+          type: SET_USER_LOADING
+        });
+        expect(dispatch).toHaveBeenCalledWith({
+          type: SET_USER,
+          payload: {
+            username: 'mockUserLogin',
+            mixtapes: []
+          } });
       });
-    });
+  });
 });
