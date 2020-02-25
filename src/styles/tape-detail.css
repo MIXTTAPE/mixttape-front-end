@@ -1,18 +1,24 @@
-.mixtape-detail-container {
+.mixtape-flex-container {
   display: flex;
   justify-content: center;
 
-  .mixtape-detail {
-    background: $light-gray;
+  .mixtape-detail-container {
+    background: $pink;
     padding: 25px;
     border-radius: 10px;
+    display: flex;
+
+    .mixtape-detail {
 
     h2 {
       margin-top: 0;
     }
+  }
 
     .list-of-songs {
       padding-left: 0;
+      margin: 0 30px;
+      counter-reset: track;
 
       .song {
         display: flex;
@@ -23,6 +29,12 @@
           width: 100px;
           margin-right: 10px;
         }
+      }
+
+      .song::before {
+        counter-increment: track;                   /* Increment the value of section counter by 1 */
+        content: counter(track) ". ";
+        margin-right: 5px;
       }
     }
   }

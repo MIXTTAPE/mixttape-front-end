@@ -1,5 +1,6 @@
 import React from 'react';
 import { fakeMixtape as activeMixtape } from '../../../scratch/fake-mixtape';
+import { FaPlayCircle } from 'react-icons/fa';
 
 export default function TapeDetail() {
   const songs = activeMixtape.songs.map((song) => {
@@ -10,10 +11,14 @@ export default function TapeDetail() {
   });
 
   return (
-    <div className="mixtape-detail-container">
-      <div className="mixtape-detail">
-        <h2>{activeMixtape.mixtapeName}</h2>
-        <h3>Total Tracks: {activeMixtape.songs.length}</h3>
+    <div className="mixtape-flex-container">
+      <div className="mixtape-detail-container box-shadow">
+        <div className="mixtape-detail">
+          <h2>{activeMixtape.mixtapeName}</h2>
+          <h3>Total Tracks: {activeMixtape.songs.length}</h3>
+          <p>created by: {activeMixtape.createdBy}</p>
+          <FaPlayCircle />
+        </div>
         <ul className="list-of-songs">
           {songs}
         </ul>
