@@ -1,6 +1,8 @@
 import { SET_AS_ACTIVE, SET_SONG_INDEX } from '../actions/activeMixtapeActions';
 
-const initialState = {};
+const initialState = {
+  playing: false
+};
 
 export const activeMixtapeReducer = (state = initialState, action) => {
   switch(action.type) {
@@ -8,6 +10,8 @@ export const activeMixtapeReducer = (state = initialState, action) => {
       return action.payload;
     case SET_SONG_INDEX:
       return { ...state, currentSongIndex: action.payload };
+    case SET_PLAYING:
+      return { ...state, playing: !state.playing };
     default:
       return state;
   }
