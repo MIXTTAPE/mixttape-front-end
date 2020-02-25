@@ -10,7 +10,7 @@ export default function Create() {
         <p>Add a Voice Memo</p>
         <SearchSongs />
       </div>
-      <div className="edit-playlist-section">
+      <div className="edit-mixtape-section">
         <EditTape />
       </div>
     </div>

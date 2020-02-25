@@ -11,11 +11,13 @@ export default function mixtapeSong({ data }) {
   };
 
   return (
-    <span>
+    <>
       <img src={data.thumbnailUrl} className="result-thumb margin-right-small" />
-      {data.title}
+      <span>
+        {data.title}
+      </span>
       <button value={data.nativeId} onClick={handleDelete}>Delete</button>
-    </span>
+    </>
   );
 }
 

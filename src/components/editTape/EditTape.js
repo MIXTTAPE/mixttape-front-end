@@ -12,7 +12,7 @@ export default function EditTape() {
   let mixtapeSongs;
   if(mixtape.songs.length !== 0){
     mixtapeSongs = mixtape.songs.map(song => (
-      <li key={song.nativeId}>
+      <li key={song.nativeId} className="song-item">
         <MixtapeSong data={song} />
       </li>
     ));
@@ -31,7 +31,7 @@ export default function EditTape() {
     <>
       <h2>Mixtape Title</h2>
       {/* <p>It is an unordered list of songs saved from search</p> */}
-      <ul className="">
+      <ul className="mixtape-songs">
         {mixtapeSongs ? mixtapeSongs : 'Oh no! An empty playlist! You should probably add some songs.'}
       </ul>
       {/* <p>each song should be reorderable within the list</p>

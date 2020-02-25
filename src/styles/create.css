@@ -37,15 +37,26 @@
         margin-bottom: 5px;
         display: flex;
         align-items: center;
-
-        .result-thumb {
-          width:25px
-        }
       }
     }
   }
 
-  .edit-playlist-section {
+  .edit-mixtape-section {
     width: 450px;
+
+    .mixtape-songs {
+      padding: 0;
+      list-style-type: none;
+
+      .song-item {
+        margin-bottom: 15px;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .result-thumb {
+    width:25px
   }
 }
