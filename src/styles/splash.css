@@ -18,3 +18,34 @@
     width: 500px;
   }
 }
+
+.copy-container {
+  width: 500px;
+}
+
+.switch-form {
+  color: $light-gray;
+  font-size: 14px;
+}
+
+.switch-form:hover {
+  cursor: pointer;
+  color: $pink
+}
+
+.authentication-form {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 25px;
+  
+  input {
+    border: 0;
+    background: white;
+    border-radius: 25px;
+    height: 25px;
+    width: 150px;
+    margin-right: 10px;
+    font-size: 14px;
+    padding: 5px 0px 5px 15px;
+  }
+}
