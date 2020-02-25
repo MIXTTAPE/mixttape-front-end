@@ -9,3 +9,9 @@ export function login() {
     { username: 'mockUserLogin', mixtapes: [] }
   );
 }
+
+export function auth() {
+  return Promise.resolve(
+    { username: 'mockedUserVerified' }
+  );
+}

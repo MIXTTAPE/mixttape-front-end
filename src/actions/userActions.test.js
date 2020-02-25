@@ -1,4 +1,5 @@
 import { SET_USER, setUserLoading, SET_USER_LOADING, userLoadingDone, USER_LOADING_DONE, setUserSignUp, setUserLogin } from './userActions';
+import { verify } from '../services/auth';
 
 jest.mock('../services/auth.js');
 
@@ -49,6 +50,21 @@ describe('userActions', () => {
             username: 'mockUserLogin',
             mixtapes: []
           } });
+      });
+  });
+
+  it('creates an action to verify the user', () => {
+    const dispatch = jest.fn();
+    const action = verify();
+
+    return action(dispatch)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledWith({
+          type: SET_USER_LOADING
+        });
+        expect(dispatch).toHaveBeenCalledWith({
+          type: VERIFY
+        });
       });
   });
 });
