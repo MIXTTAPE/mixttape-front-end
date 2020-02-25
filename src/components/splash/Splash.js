@@ -8,7 +8,6 @@ export default function Splash() {
   const [copyContent, setCopyContent] = useState('login');
 
   const handleClick = (comp) => {
-    console.log(copyContent);
     if(comp === 'login') setCopyContent('login');
     if(comp === 'signup') setCopyContent('signup');
   };

@@ -23,12 +23,12 @@ export default function SignUp({ onClick }) {
 
   return (
     <>
-      <form onSubmit={handleSignupSumbit}>
-        <input type='text' placeholder='username' value={username} onChange={handleUsernameChange} />
-        <input type='password' placeholder='password' value={password} onChange={handlePasswordChange} />
-        <button className="button-primary">Sign up!</button>
+      <form className="authentication-form" onSubmit={handleSignupSumbit}>
+        <input className="box-shadow" type='text' placeholder='username' value={username} onChange={handleUsernameChange} />
+        <input className="box-shadow" type='password' placeholder='password' value={password} onChange={handlePasswordChange} />
+        <button className="button-primary">Sign Up</button>
       </form>
-      <a className="switch-form" onClick={() => onClick('login')}>Oh right! You already have an account.</a>
+      <a className="switch-form" onClick={() => onClick('login')}>Need to Login?</a>
     </>
   );
 }
