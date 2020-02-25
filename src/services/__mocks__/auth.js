@@ -10,7 +10,7 @@ export function login() {
   );
 }
 
-export function auth() {
+export function verify() {
   return Promise.resolve(
     { username: 'mockedUserVerified' }
   );

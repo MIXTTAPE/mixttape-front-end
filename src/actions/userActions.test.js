@@ -1,5 +1,4 @@
-import { SET_USER, setUserLoading, SET_USER_LOADING, userLoadingDone, USER_LOADING_DONE, setUserSignUp, setUserLogin } from './userActions';
-import { verify } from '../services/auth';
+import { SET_USER, setUserLoading, SET_USER_LOADING, userLoadingDone, USER_LOADING_DONE, setUserSignUp, setUserLogin, verifyUser, VERIFY_USER } from './userActions';
 
 jest.mock('../services/auth.js');
 
@@ -55,7 +54,7 @@ describe('userActions', () => {
 
   it('creates an action to verify the user', () => {
     const dispatch = jest.fn();
-    const action = verify();
+    const action = verifyUser();
 
     return action(dispatch)
       .then(() => {
@@ -63,7 +62,8 @@ describe('userActions', () => {
           type: SET_USER_LOADING
         });
         expect(dispatch).toHaveBeenCalledWith({
-          type: VERIFY
+          type: VERIFY_USER,
+          payload: { username: 'mockedUserVerified' }
         });
       });
   });

@@ -1,4 +1,4 @@
-import { signUp, login } from '../services/auth';
+import { signUp, login, verify } from '../services/auth';
 
 export const SET_USER_LOADING = 'SET_USER_LOADING';
 export const setUserLoading = () => ({
@@ -26,6 +26,16 @@ export const setUserLogin = ({ username, password }) => dispatch => {
   return login(username, password)
     .then(user => dispatch({
       type: SET_USER,
+      payload: user
+    }));
+};
+
+export const VERIFY_USER = 'VERIFY_USER';
+export const verifyUser = () => dispatch => {
+  dispatch(setUserLoading());
+  return verify()
+    .then(user => dispatch({
+      type: VERIFY_USER,
       payload: user
     }));
 };
