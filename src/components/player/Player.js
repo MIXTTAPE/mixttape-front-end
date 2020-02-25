@@ -47,8 +47,8 @@ export default function Player() {
 
   return (
     <>
-      <ReactPlayerComponent url={currentUrl} playPause={playing} nextSong={nextSong} volume={currentVolume}/>
       <div style={{ display: 'none' }}>
+        <ReactPlayerComponent url={currentUrl} playPause={playing} nextSong={nextSong} volume={currentVolume}/>
       </div>
       <footer className="player-component">
         <div className="player-container">

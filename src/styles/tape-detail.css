@@ -1,0 +1,29 @@
+.mixtape-detail-container {
+  display: flex;
+  justify-content: center;
+
+  .mixtape-detail {
+    background: $light-gray;
+    padding: 25px;
+    border-radius: 10px;
+
+    h2 {
+      margin-top: 0;
+    }
+
+    .list-of-songs {
+      padding-left: 0;
+
+      .song {
+        display: flex;
+        align-items: center;
+        margin-bottom: 15px;
+
+        img {
+          width: 100px;
+          margin-right: 10px;
+        }
+      }
+    }
+  }
+}
