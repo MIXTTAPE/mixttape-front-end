@@ -64,12 +64,12 @@ export default class MediaRecorder extends Component {
       formData.append('id', this.state.audioUrl);
       formData.append('recording', this.state.audioBlob);
       formData.append('title', this.state.title);
-      return fetch('http://localhost:7891/api/v1/voice-recordings', {
+      return fetch('https://cors-anywhere.herokuapp.com/https://mixttape-backend.herokuapp.com//api/v1/voice-recordings', {
         method: 'POST',
         body: formData
-      }).then(message => {
+      }).then(res => {
         this.setState({ saved: true });
-        console.log(message);
+        console.log(res);
       });
     }
 
@@ -95,7 +95,7 @@ export default class MediaRecorder extends Component {
             {(this.state.audioUrl && this.state.saved) &&
                       <>
                         <h3>Recording saved!</h3>
-                        <button onClick={() => this.setState({ active: false, audioUrl: null, saved: false })} >Record Another</button>
+                        <button onClick={() => this.setState({ active: false, audioUrl: null, saved: false, audioChunks:[], audioBlob: null })} >Record Another</button>
                       </>
             }
           </div>
