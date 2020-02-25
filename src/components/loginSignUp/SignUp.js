@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { signUp } from '../../services/auth';
 import { useDispatch } from 'react-redux';
-import { setUserSignUp } from '../../actions/userActions';
+import { setUserSignUp, userLoadingDone } from '../../actions/userActions';
 
 export default function SignUp() {
   const dispatch = useDispatch();
@@ -19,6 +18,7 @@ export default function SignUp() {
   const handleSignupSumbit = (event) => {
     event.preventDefault();
     dispatch(setUserSignUp(username, password));
+    dispatch(userLoadingDone());
   };
 
   return (

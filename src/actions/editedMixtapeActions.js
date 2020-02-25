@@ -1,3 +1,5 @@
+import { postTape } from '../services/mixtapeApi';
+
 export const ADD_SONG = 'ADD_SONG';
 export const addSong = (payload) => ({
   type: ADD_SONG,
@@ -11,24 +13,25 @@ export const deleteSong = (payload) => ({
   payload
 });
 
+export const SET_MIXTAPE_LOADING = 'SET_MIXTAPE_LOADING';
+export const setMixtapeLoading = () => {
+  return { type: SET_MIXTAPE_LOADING };
+};
+
+export const MIXTAPE_LOADING_DONE = 'MIXTAPE_LOADING_DONE';
+export const mixtapeLoadingDone = () => {
+  return { type: MIXTAPE_LOADING_DONE };
+};
 
 export const SAVE_MIXTAPE = 'SAVE_MIXTAPE';
-export const saveMixtape = (payload) => ({
-  type: SAVE_MIXTAPE,
-  payload
-});
-
-// export const saveMixtape = (index, postAnimalFn, barnId) => dispatch => {
-//   return new Promise(function(resolve) {
-//     setTimeout(function () {
-//       resolve({}});
-//     });
-//   })
-//     .then(mixtape => dispatch({
-//       type: SAVE_MIXTAPE,
-//       payload: mixtape
-//     }));
-// };
+export const saveMixtape = (mixtape) => dispatch => {
+  dispatch(setMixtapeLoading());
+  return postTape(mixtape)
+    .then(savedTape => dispatch({
+      type: SAVE_MIXTAPE,
+      payload: savedTape
+    }));
+};
 
 export const SET_AS_EDITED = 'SET_AS_EDITED';
 export const setAsEdited = (payload) => ({

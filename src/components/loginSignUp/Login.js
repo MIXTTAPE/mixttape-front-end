@@ -18,7 +18,7 @@ export default function Login() {
   const handleLoginSumbit = (event) => {
     event.preventDefault();
     dispatch(setUserLogin(username, password));
-    // dispatch(userLoadingDone());
+    dispatch(userLoadingDone());
   };
 
   return (

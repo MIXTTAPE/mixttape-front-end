@@ -1,6 +1,22 @@
-import { ADD_SONG, DELETE_SONG, SAVE_MIXTAPE, addSong, deleteSong, saveMixtape, setAsEdited, SET_AS_EDITED } from './editedMixtapeActions';
+import { ADD_SONG, DELETE_SONG, SAVE_MIXTAPE, addSong, deleteSong, saveMixtape, setAsEdited, SET_AS_EDITED, setMixtapeLoading, SET_MIXTAPE_LOADING, mixtapeLoadingDone, MIXTAPE_LOADING_DONE } from './editedMixtapeActions';
+
+jest.mock('../services/mixtapeApi.js');
 
 describe('editedMixtapeActions', () => {
+
+  it('can create an action to set mixtape loading state', () => {
+    const action = setMixtapeLoading();
+    expect(action).toEqual({
+      type: SET_MIXTAPE_LOADING
+    });
+  });
+
+  it('can create an action to reset mixtape loading state', () => {
+    const action = mixtapeLoadingDone();
+    expect(action).toEqual({
+      type: MIXTAPE_LOADING_DONE
+    });
+  });
 
   it('can add a song to a mixtape', () => {
     const action = addSong('AA8723');
@@ -18,7 +34,8 @@ describe('editedMixtapeActions', () => {
     });
   });
 
-  it('can save a mixtape', () => {
+  it('can save the mixtape being edited', () => {
+    const dispatch = jest.fn();
     const payload = {
       mixtapeName: 'My Mixtape',
       createdBy: 'josephtatum',
@@ -33,23 +50,51 @@ describe('editedMixtapeActions', () => {
       ]
     };
     const action = saveMixtape(payload);
-    expect(action).toEqual({
-      type: SAVE_MIXTAPE,
-      payload: {
-        mixtapeName: 'My Mixtape',
-        createdBy: 'josephtatum',
-        songs: [
-          {
-            nativeId: 'AF607105',
-            nativeSource: 'youtube',
-            title: 'Charlotte Gainsbourg - AF607105',
-            buyLink: '',
-            thumbnail: ''
-          }
-        ]
-      }
-    });
+
+    return action(dispatch)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledWith({
+          type: SET_MIXTAPE_LOADING
+        });
+        expect(dispatch).toHaveBeenCalledWith({
+          type: SAVE_MIXTAPE,
+          payload
+        });
+      });
   });
+
+  // it('can save a mixtape', () => {
+  //   const payload = {
+  //     mixtapeName: 'My Mixtape',
+  //     createdBy: 'josephtatum',
+  //     songs: [
+  //       {
+  //         nativeId: 'AF607105',
+  //         nativeSource: 'youtube',
+  //         title: 'Charlotte Gainsbourg - AF607105',
+  //         buyLink: '',
+  //         thumbnail: ''
+  //       }
+  //     ]
+  //   };
+  //   const action = saveMixtape(payload);
+  //   expect(action).toEqual({
+  //     type: SAVE_MIXTAPE,
+  //     payload: {
+  //       mixtapeName: 'My Mixtape',
+  //       createdBy: 'josephtatum',
+  //       songs: [
+  //         {
+  //           nativeId: 'AF607105',
+  //           nativeSource: 'youtube',
+  //           title: 'Charlotte Gainsbourg - AF607105',
+  //           buyLink: '',
+  //           thumbnail: ''
+  //         }
+  //       ]
+  //     }
+  //   });
+  // });
 
   it('can set a mixtape as the last edited mixtape', () => {
     const payload = {
