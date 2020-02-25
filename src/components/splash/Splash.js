@@ -7,13 +7,12 @@ export default function Splash() {
   
 
   return (
-
     <div className="full-screen-container">
       <div className="splash-container">
         <div className="image-container margin-right-medium">
           <img src={Illustration} />
         </div>
-        <div className="">
+        <div className="copy-container">
           <h1>MIXIT</h1>
           <h2>A mixtape maker for the modern era.</h2>
           <Login />
