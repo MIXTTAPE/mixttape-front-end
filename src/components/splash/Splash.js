@@ -1,9 +1,13 @@
 import React from 'react';
+import Login from '../loginSignUp/Login.js';
+import SignUp from '../loginSignUp/SignUp.js';
 import Illustration from '../../img/splash-illustration.svg';
 
 export default function Splash() {
   
+
   return (
+
     <div className="full-screen-container">
       <div className="splash-container">
         <div className="image-container margin-right-medium">
@@ -12,6 +16,8 @@ export default function Splash() {
         <div className="">
           <h1>MIXIT</h1>
           <h2>A mixtape maker for the modern era.</h2>
+          <Login />
+          <SignUp />
           <button className="button-primary margin-right-small">Login</button>
           <button className="button-secondary">Sign Up</button>
         </div>

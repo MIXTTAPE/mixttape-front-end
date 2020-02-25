@@ -1,21 +1,34 @@
-import { setUser } from '../actions/userActions';
+import { SET_USER_LOADING, SET_USER } from '../actions/userActions';
 import { saveMixtape } from '../actions/editedMixtapeActions';
 import { userReducer } from './userReducer';
 
 describe('userReducer', () => {
 
+  it('can handle the SET_USER_LOADING case', () => {
+    const initialState = { loading: false, user: {} };
+    const action = { type: SET_USER_LOADING };
+    const newState = userReducer(initialState, action);
+
+    expect(newState).toEqual({ loading: true, user: {} });
+  });
+
   it('can handle a SET_USER case', () => {
-    const state = {};
+    const initialState = { loading: true, user: {} };
     const user = {
       username: 'josephtatum',
       passwordHash: '31415926540',
       mixtapes: []
     };
-    const newState = userReducer(state, setUser(user));
+    const action = { type: SET_USER, payload: user };
+    
+    const newState = userReducer(initialState, action);
     expect(newState).toEqual({
-      username: 'josephtatum',
-      passwordHash: '31415926540',
-      mixtapes: []
+      loading: true,
+      user:{
+        username: 'josephtatum',
+        passwordHash: '31415926540',
+        mixtapes: []
+      }
     });
   });
 
@@ -74,5 +87,4 @@ describe('userReducer', () => {
       }]
     });
   });
-
 });
