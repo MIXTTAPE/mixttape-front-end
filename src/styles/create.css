@@ -10,6 +10,7 @@
     width: 600px;
     height: 485px;
     border-radius: 5px;
+    overflow: scroll;
 
     form {
 
@@ -32,8 +33,8 @@
     .search-results {
       font-size: 14px;
 
-      .result-list-item {
-        
+      .results-list-item {
+        margin-bottom: 5px;
       }
     }
   }

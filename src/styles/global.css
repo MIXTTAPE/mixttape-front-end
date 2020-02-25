@@ -17,6 +17,10 @@ h1 {
   font-family: 'Comfortaa', 'Helvetica', 'Arial', 'sans-serif';
 }
 
+h3 {
+  font-size: 18px;
+}
+
 a {
   color: $white;
   text-decoration: none;
@@ -56,5 +60,11 @@ a {
 }
 
 .button-add {
-  
+  background: none;
+  border: 0;
+  color: $pink;
+}
+
+.button-add:hover {
+  cursor: pointer;
 }

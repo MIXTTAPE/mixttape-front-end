@@ -19,7 +19,7 @@ export default function YoutubeSearchResultSection({ results }) {
   }, []);
 
   const resultItems = simplifiedResults.map((item, i) => (
-    <li key={i}>
+    <li key={i} className="results-list-item">
       <SearchResultSectionItem data={item} />
     </li>
   ));

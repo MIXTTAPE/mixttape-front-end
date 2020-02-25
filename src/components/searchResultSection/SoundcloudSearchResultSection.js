@@ -20,7 +20,7 @@ export default function SoundcloudSearchResultSection({ results }) {
   }, []);
 
   const resultItems = simplifiedResults.map((item, i) => (
-    <li key={i} className="result-list-item">
+    <li key={i} className="results-list-item">
       <SearchResultSectionItem data={item} />
     </li>
   ));
