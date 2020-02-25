@@ -63,39 +63,6 @@ describe('editedMixtapeActions', () => {
       });
   });
 
-  // it('can save a mixtape', () => {
-  //   const payload = {
-  //     mixtapeName: 'My Mixtape',
-  //     createdBy: 'josephtatum',
-  //     songs: [
-  //       {
-  //         nativeId: 'AF607105',
-  //         nativeSource: 'youtube',
-  //         title: 'Charlotte Gainsbourg - AF607105',
-  //         buyLink: '',
-  //         thumbnail: ''
-  //       }
-  //     ]
-  //   };
-  //   const action = saveMixtape(payload);
-  //   expect(action).toEqual({
-  //     type: SAVE_MIXTAPE,
-  //     payload: {
-  //       mixtapeName: 'My Mixtape',
-  //       createdBy: 'josephtatum',
-  //       songs: [
-  //         {
-  //           nativeId: 'AF607105',
-  //           nativeSource: 'youtube',
-  //           title: 'Charlotte Gainsbourg - AF607105',
-  //           buyLink: '',
-  //           thumbnail: ''
-  //         }
-  //       ]
-  //     }
-  //   });
-  // });
-
   it('can set a mixtape as the last edited mixtape', () => {
     const payload = {
       mixtapeName: 'My Mixtape',
