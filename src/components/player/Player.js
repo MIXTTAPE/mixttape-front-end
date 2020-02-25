@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { ReactPlayerComponent } from './ReactPlayer';
 import { fakeMixtape } from '../../../scratch/fake-mixtape';
-import { FaPlayCircle, FaForward, FaVolumeUp } from 'react-icons/fa';
+import { FaPlayCircle, FaPauseCircle, FaForward, FaVolumeUp } from 'react-icons/fa';
 
 export default function Player() {
 
-  const [playing, setPlaying] = useState(true);
+  const [playing, setPlaying] = useState(false);
   const [currentSong, setCurrentSong] = useState('Nothing Playing');
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [mixtape, setMixtape] = useState(fakeMixtape);
@@ -36,15 +36,17 @@ export default function Player() {
 
   return (
     <>
-      <ReactPlayerComponent url={currentUrl} playPause={playing} _onEnded={nextSong}/>
+      <div style={{ display: 'none' }}>
+        <ReactPlayerComponent url={currentUrl} playPause={playing} _onEnded={nextSong}/>
+      </div>
       <footer className="player-component">
         <div className="player-container">
           <div className="currently-playing">
-            <img className="margin-right-small" src="thu" />
+            <img className="margin-right-small current-song-thumb" src={currentSong.thumbnailUrl} />
             <p className="track-title">{currentSong.title}</p>
           </div>
           <div className="player-controls">
-            <button onClick={() => playPause()} className="play-pause-button margin-right-small"><FaPlayCircle /></button>
+            <button onClick={() => playPause()} className="play-pause-button margin-right-small">{playing ? <FaPauseCircle /> : <FaPlayCircle />}</button>
             <button onClick={() => nextSong()} className="next-track-button"><FaForward /></button>
           </div>
           <div className="volume-controls">
