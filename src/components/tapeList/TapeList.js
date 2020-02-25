@@ -6,7 +6,7 @@ export default function TapeList() {
     return mixtape.songs.map((song, j) => {
       return (
         <li key={j} >
-          <p>{song.thumbnailUrl}</p>
+          <img src={song.thumbnailUrl} placeholder='Song'></img>
         </li>
       );
     });
