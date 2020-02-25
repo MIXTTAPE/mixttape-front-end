@@ -1,34 +1,43 @@
 import React, { useState } from 'react';
-import SearchResultSection from '../searchResultSection/SearchResultSection.js';
-import { fakeSearchResults as fakeYoutubeResults } from '../../../scratch/fake-search-results.js';
+import YoutubeSearchResultSection from '../searchResultSection/YoutubeSearchResultSection.js';
+import SoundcloudSearchResultSection from '../searchResultSection/SoundcloudSearchResultSection.js';
+import masterApiCall from '../../services/masterApiCall.js';
 
 export default function SearchSongs() {
   //default state will be deleted once fetches are implemented
-  const [results, setResults] = useState([fakeYoutubeResults, {}]);
+  const [results, setResults] = useState([]);
+  const [searchQuery, setSearchQuery] = useState('');
 
-  //Some fetch to hit all of the search APIs
-  //Need to do in a promise.all
-  //Result will be an array of results from each source
+  let resultSection;
+  if(results.length !== 0){
+    resultSection = [
+      <li key={1}><SoundcloudSearchResultSection results={results[0]}/></li>,
+      <li key={2}><YoutubeSearchResultSection results={results[1]}/></li>
+    ];
+  }
 
-  //for each source of search results, create a component with props.
-  //prop is the raw search result from a source.
-  //If a source didn't return any results, filter it out.
-  const resultSections = results.map((section, i) => {
-    if(Object.entries(section).length !== 0) {
-      return (
-        <li key={i}>
-          <SearchResultSection results={section} />
-        </li>
-      );
-    } else return;
-  }).filter(item => !!item);
+  const handleSearchSubmit = (event) => {
+    event.preventDefault();
+    setResults([]);
+    masterApiCall(searchQuery)
+      .then(res => {
+        setResults(res);
+      });
+  };
+
+  const handleChange = ({ target }) => {
+    setSearchQuery(target.value);
+  };
 
   return (
     <>
-      <h3>This is the Song Search Section</h3>
-      <h4>It has a search form</h4>
-      <ul>
-        {resultSections}
+      <h2>Search for Music</h2>
+      <form onSubmit={handleSearchSubmit}>
+        <input className="margin-right-small box-shadow" type='text' value={searchQuery} placeholder='Search for music' onChange={handleChange} />
+        <button className="button-primary box-shadow">Search</button>
+      </form>
+      <ul className="results-section">
+        {resultSection ? resultSection : 'Hmmm, you haven\'t searched for anything yet.'}
       </ul>
     </>
   );

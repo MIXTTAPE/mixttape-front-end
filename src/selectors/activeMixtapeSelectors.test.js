@@ -1,9 +1,9 @@
-import { getuserMixtapes, getLastEditedMixtape } from './mixtapeSelectors';
+import { getActiveMixtape, getActiveSong } from './activeMixtapeSelectors';
 
-describe('Mixtape Selectors', () => {
+describe('activeMixtape Selectors', () => {
 
   let state;
-  beforeEach(()=> {
+  beforeEach(() => {
     state = {
       user: {
         loading: true,
@@ -57,29 +57,11 @@ describe('Mixtape Selectors', () => {
     };
   });
 
-  it('can get the active users mixtapes', () => {
-    const userMixtapes = getuserMixtapes(state);
-    expect(userMixtapes).toEqual([
-      {
-        mixtapeName: 'My Mixtape',
-        createdBy: 'josephtatum',
-        songs: [
-          {
-            nativeId: 'AF607105',
-            nativeSource: 'youtube',
-            title: 'Charlotte Gainsbourg - AF607105',
-            buyLink: '',
-            thumbnail: ''
-          }
-        ]
-      }
-    ]);
-  });
-
-  it('can get the users last edited mixtape', () => {
-    const usersLastEditedMixtape = getLastEditedMixtape(state);
-    expect(usersLastEditedMixtape).toEqual({
+  it('can get the users active mixtape', () => {
+    const activeMixtape = getActiveMixtape(state);
+    expect(activeMixtape).toEqual({
       loading: true,
+      id: '1111111',
       mixtapeName: 'My Mixtape',
       songs: [
         {
@@ -89,24 +71,20 @@ describe('Mixtape Selectors', () => {
           buyLink: '',
           thumbnail: ''
         }
-      ]
+      ],
+      currentSongIndex: 0,
+      createdBy: 'josephtatum'
     });
   });
 
-  it('can get the users last edited mixtape', () => {
-    const usersLastEditedMixtape = getLastEditedMixtape(state);
-    expect(usersLastEditedMixtape).toEqual({
-      loading: true,
-      mixtapeName: 'My Mixtape',
-      songs: [
-        {
-          nativeId: 'AF607105',
-          nativeSource: 'youtube',
-          title: 'Charlotte Gainsbourg - AF607105',
-          buyLink: '',
-          thumbnail: ''
-        }
-      ]
+  it('can get the currently playing song', () => {
+    const currentlyPlaying = getActiveSong(state);
+    expect(currentlyPlaying).toEqual({
+      nativeId: 'AF607105',
+      nativeSource: 'youtube',
+      title: 'Charlotte Gainsbourg - AF607105',
+      buyLink: '',
+      thumbnail: ''
     });
   });
 
