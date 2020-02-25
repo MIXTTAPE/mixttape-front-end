@@ -1,0 +1,70 @@
+.create-section {
+  display: flex;
+  justify-content: center;
+
+  .search-songs-section {
+    margin: 15px;
+    padding: 15px;
+    background-color: $black;
+    color: $white;
+    width: 450px;
+    height: 485px;
+    border-radius: 5px;
+    overflow: scroll;
+
+    form {
+
+      input {
+        border: 0;
+        background: white;
+        border-radius: 25px;
+        height: 40px;
+        width: 200px;
+        font-size: 18px;
+        padding: 5px 0px 5px 15px;
+      }
+    }
+  }
+
+  .results-section {
+    list-style-type: none;
+    padding: 0;
+
+    .search-results {
+      font-size: 14px;
+
+      .results-list-item {
+        margin-bottom: 5px;
+        display: flex;
+        align-items: center;
+      }
+    }
+  }
+
+  .edit-mixtape-section {
+    width: 450px;
+
+    .mixtape-songs {
+      padding: 0;
+      counter-reset: track;
+
+      .song-item {
+        margin-bottom: 10px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #ddd;
+        padding-bottom: 10px;
+      }
+
+      .song-item::before {
+        counter-increment: track;                   /* Increment the value of section counter by 1 */
+        content: counter(track) ". ";
+        margin-right: 5px;
+      }
+    }
+  }
+
+  .result-thumb {
+    width:25px
+  }
+}

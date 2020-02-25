@@ -20,18 +20,16 @@ export default function SoundcloudSearchResultSection({ results }) {
   }, []);
 
   const resultItems = simplifiedResults.map((item, i) => (
-    <li key={i}>
+    <li key={i} className="results-list-item">
       <SearchResultSectionItem data={item} />
     </li>
   ));
 
   return (
     <>
-      <ul>
-        <h4>This is the result for soundcloud</h4>
+      <h3>SoundCloud Results</h3>
+      <ul className="search-results">
         {resultItems}
-        <p>Each search result should be demoable</p>
-        <p>Should be able to add to the Edit section</p>
       </ul>
     </>
   );

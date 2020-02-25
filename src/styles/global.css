@@ -3,7 +3,7 @@
 
 $pink: #FF6A6A;
 $white: #FAFAFA;
-$black: #3C3C3C;
+$black: #282828;
 $transition: all 0.2s ease-in-out;
 
 body {
@@ -15,6 +15,10 @@ body {
 
 h1 {
   font-family: 'Comfortaa', 'Helvetica', 'Arial', 'sans-serif';
+}
+
+h3 {
+  font-size: 18px;
 }
 
 a {
@@ -52,5 +56,24 @@ a {
   transform: scale(1.05);
   background-color: $pink;
   color: $white;
+  cursor: pointer;
+}
+
+.button-add {
+  background: none;
+  border: 0;
+  color: $pink;
+  height: 13px;
+}
+
+.button-delete {
+  background: none;
+  border: 0;
+  color: $black;
+  height: 13px;
+}
+
+.button-add:hover,
+.button-delete:hover{
   cursor: pointer;
 }
