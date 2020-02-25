@@ -11,6 +11,11 @@ export default function Player() {
   const [mixtape, setMixtape] = useState(fakeMixtape);
   const [currentUrl, setCurrentUrl] = useState('');
 
+  useEffect(() => {
+    buildUrl(mixtape.songs[currentSongIndex]);
+    setCurrentSong(mixtape.songs[currentSongIndex]);
+  }, [currentSongIndex]);
+
   const buildUrl = (song) => {
     if(song.nativeSource === 'youtube') {
       setCurrentUrl(`https://www.youtube.com/watch?v=${song.nativeId}`);
@@ -20,24 +25,18 @@ export default function Player() {
     }
   };
 
-  useEffect(() => {
-    buildUrl(mixtape.songs[currentSongIndex]);
-    setCurrentSong(mixtape.songs[currentSongIndex]);
-  }, [currentSongIndex]);
-
   const playPause = () => {
     setPlaying(playing === true ? false : true);
   };
 
-  const _onEnded = () => {
+  const nextSong = () => {
     setCurrentSongIndex(currentSongIndex + 1);
-
   };
 
 
   return (
     <>
-      <ReactPlayerComponent url={currentUrl} playPause={playing} _onEnded={_onEnded}/>
+      <ReactPlayerComponent url={currentUrl} playPause={playing} _onEnded={nextSong}/>
       <footer className="player-component">
         <div className="player-container">
           <div className="currently-playing">
@@ -46,7 +45,7 @@ export default function Player() {
           </div>
           <div className="player-controls">
             <button onClick={() => playPause()} className="play-pause-button margin-right-small"><FaPlayCircle /></button>
-            <button className="next-track-button"><FaForward /></button>
+            <button onClick={() => nextSong()} className="next-track-button"><FaForward /></button>
           </div>
           <div className="volume-controls">
             <FaVolumeUp className="margin-right-small" />
