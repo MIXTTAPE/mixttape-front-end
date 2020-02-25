@@ -14,7 +14,7 @@ export default function SearchResultSectionItem({ data }) {
   return (
     <>
       <span className="margin-right-small">
-        {data.title}
+        {data.title.length > 50 ? `${data.title.substr(0, 50)}...` : data.title}
       </span>
       <button className="button-add" onClick={handleAdd}><FaPlusCircle /></button>
       {/* <button>Demo</button> */}
