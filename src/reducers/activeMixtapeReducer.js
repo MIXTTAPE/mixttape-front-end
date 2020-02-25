@@ -1,4 +1,4 @@
-import { SET_AS_ACTIVE, SET_SONG_INDEX } from '../actions/activeMixtapeActions';
+import { SET_AS_ACTIVE, SET_SONG_INDEX, SET_PLAYING } from '../actions/activeMixtapeActions';
 
 const initialState = {
   playing: false

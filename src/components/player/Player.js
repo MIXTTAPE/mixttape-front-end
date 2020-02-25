@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ReactPlayerComponent } from './ReactPlayer';
 import { fakeMixtape } from '../../../scratch/fake-mixtape';
+import { getPlaying } from '../../selectors/activeMixtapeSelectors';
 import { FaPlayCircle, FaPauseCircle, FaForward, FaVolumeUp } from 'react-icons/fa';
 
 export default function Player() {
