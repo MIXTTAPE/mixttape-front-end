@@ -1,20 +1,29 @@
-import { setUser } from '../actions/userActions';
+import { setUserLogin, SET_USER_LOADING } from '../actions/userActions';
 import { saveMixtape } from '../actions/editedMixtapeActions';
 import { userReducer } from './userReducer';
 
+jest.mock('../services/auth.js');
+
 describe('userReducer', () => {
+
+  it('can handle the SET_USER_LOADING case', () => {
+    const initialState = { loading: false, user: {} };
+    const action = { type: SET_USER_LOADING };
+    const newState = userReducer(initialState, action);
+
+    expect(newState).toEqual({ loading: true, user: {} });
+  });
 
   it('can handle a SET_USER case', () => {
     const state = {};
     const user = {
-      username: 'josephtatum',
-      passwordHash: '31415926540',
+      username: 'mockUserLogin',
       mixtapes: []
     };
-    const newState = userReducer(state, setUser(user));
+    
+    const newState = userReducer(state, setUserLogin(user));
     expect(newState).toEqual({
-      username: 'josephtatum',
-      passwordHash: '31415926540',
+      username: 'mockUserLogin',
       mixtapes: []
     });
   });
