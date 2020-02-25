@@ -5,7 +5,6 @@ import { useDispatch } from 'react-redux';
 import { addSong } from '../../actions/editedMixtapeActions';
 
 export default function SearchResultSectionItem({ data }) {
-  console.log(data);
   const dispatch = useDispatch();
 
   const handleAdd = () => {
@@ -15,7 +14,7 @@ export default function SearchResultSectionItem({ data }) {
   return (
     <>
       <img src={data.thumbnailUrl} className="result-thumb margin-right-small"/>
-      <span className="margin-right-small">
+      <span>
         {data.title.length > 50 ? `${data.title.substr(0, 50)}...` : data.title}
       </span>
       <button className="button-add" onClick={handleAdd}><FaPlusCircle /></button>

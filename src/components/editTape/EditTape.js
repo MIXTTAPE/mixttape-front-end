@@ -31,8 +31,8 @@ export default function EditTape() {
     <>
       <h2>Mixtape Title</h2>
       {/* <p>It is an unordered list of songs saved from search</p> */}
-      <ul>
-        {mixtapeSongs}
+      <ul className="">
+        {mixtapeSongs ? mixtapeSongs : 'Oh no! An empty playlist! You should probably add some songs.'}
       </ul>
       {/* <p>each song should be reorderable within the list</p>
       <p>each song can be deleted</p> */}
