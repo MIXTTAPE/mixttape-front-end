@@ -10,6 +10,7 @@ export default function Player() {
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [mixtape, setMixtape] = useState(fakeMixtape);
   const [currentUrl, setCurrentUrl] = useState('');
+  const [currentVolume, setCurrentVolume] = useState(1);
 
   useEffect(() => {
     buildUrl(mixtape.songs[currentSongIndex]);
@@ -33,10 +34,15 @@ export default function Player() {
     setCurrentSongIndex(currentSongIndex + 1);
   };
 
+  const volumeControl = ({ target }) => {
+    console.log(target.value);
+    setCurrentVolume(target.value);
+  };
+
 
   return (
     <>
-        <ReactPlayerComponent url={currentUrl} playPause={playing} _onEnded={nextSong}/>
+      <ReactPlayerComponent url={currentUrl} playPause={playing} nextSong={nextSong} volume={currentVolume}/>
       <div style={{ display: 'none' }}>
       </div>
       <footer className="player-component">
@@ -51,8 +57,8 @@ export default function Player() {
           </div>
           <div className="volume-controls">
             <FaVolumeUp className="margin-right-small" />
-            <input className="volume-slider" type="range" id="volume" name="volume"
-              min="0" max="11" />
+            <input onChange={(event) => volumeControl(event)} className="volume-slider" type="range" id="volume" name="volume"
+              min="0" max="1" step='0.01' />
           </div>
         </div>
         {/* <p>it needs a display for artist and title</p>
