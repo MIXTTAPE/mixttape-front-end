@@ -18,10 +18,11 @@
         border: 0;
         background: white;
         border-radius: 25px;
-        height: 40px;
-        width: 200px;
-        font-size: 18px;
-        padding: 5px 0px 5px 15px;
+        height: 25px;
+        width: 150px;
+        margin-right: 10px;
+        font-size: 14px;
+        padding: 3px 0px 3px 15px;
       }
     }
   }
