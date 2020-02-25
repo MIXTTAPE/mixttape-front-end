@@ -18,6 +18,10 @@ h1 {
   font-family: 'Comfortaa', 'Helvetica', 'Arial', 'sans-serif';
 }
 
+h2 {
+  font-weight: 100;
+}
+
 h3 {
   font-size: 18px;
 }
