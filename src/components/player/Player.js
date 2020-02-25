@@ -2,11 +2,24 @@ import React from 'react';
 import { WhatsPlaying } from './iFrame';
 import { FaPlayCircle, FaForward, FaVolumeUp } from 'react-icons/fa';
 
+import { fakeMixtape } from '../../../scratch/fake-mixtape';
+
 export default function Player() {
-  
+
+  const changeTrack = (sourceId, nativeId) => {
+    let link = '';
+    if(sourceId === 'youtube') {
+      link = `https://www.youtube.com/embed/${nativeId}?&autoplay=1`;
+    }
+    if(sourceId === 'soundcloud') {
+      link = `https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/${nativeId}&color=%23ff5500&auto_play=true`;
+    }
+    return link;
+  };
+
   return (
     <>
-      <WhatsPlaying source={'youtube'} nativeId={'ZLSEWecm_jM'}/>
+      <WhatsPlaying changeTrack={changeTrack} source={'youtube'} nativeId={'ZLSEWecm_jM'}/>
       <footer className="player-component">
         <div className="player-container">
           <div className="currently-playing">
