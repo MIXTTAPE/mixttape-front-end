@@ -1,7 +1,35 @@
-import { addSong, deleteSong, setAsEdited, saveMixtape } from '../actions/editedMixtapeActions';
+import { addSong, deleteSong, setAsEdited, SET_MIXTAPE_LOADING, MIXTAPE_LOADING_DONE } from '../actions/editedMixtapeActions';
 import { editedMixtapeReducer } from './editedMixtapeReducer.js';
 
 describe('editedMixtapeReducer', () => {
+
+  it('can handle the SET_MIXTAPE_LOADING case', () => {
+    const initialState = {
+      loading: false,
+      songs: []
+    };
+    const action = { type: SET_MIXTAPE_LOADING };
+    const newState = editedMixtapeReducer(initialState, action);
+
+    expect(newState).toEqual({
+      loading: true,
+      songs: []
+    });
+  });
+
+  it('can handle the MIXTAPE_LOADING_DONE case', () => {
+    const initialState = {
+      loading: true,
+      songs: []
+    };
+    const action = { type: MIXTAPE_LOADING_DONE };
+    const newState = editedMixtapeReducer(initialState, action);
+
+    expect(newState).toEqual({
+      loading: false,
+      songs: []
+    });
+  });
 
   it('can handle a SET_AS_EDITED action', () => {
     const state = {};
@@ -56,19 +84,6 @@ describe('editedMixtapeReducer', () => {
 
     const newState = editedMixtapeReducer(state, deleteSong(payload));
 
-    expect(newState).toEqual({
-      mixtapeName: 'My Mixtape',
-      songs: []
-    });
-  });
-
-  it('can handle a SAVE_MIXTAPE action', () => {
-    const state = {};
-    const playlist = {
-      mixtapeName: 'My Mixtape',
-      songs: []
-    };
-    const newState = editedMixtapeReducer(state, saveMixtape(playlist));
     expect(newState).toEqual({
       mixtapeName: 'My Mixtape',
       songs: []

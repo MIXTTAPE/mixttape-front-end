@@ -3,18 +3,6 @@ import { SET_USER, setUserLoading, SET_USER_LOADING, userLoadingDone, USER_LOADI
 jest.mock('../services/auth.js');
 
 describe('userActions', () => {
-  
-  // it('can set the user', () => {
-  //   const payload = {
-  //     username: 'josephtatum',
-  //     passwordHash: '31415926540'
-  //   };
-  //   const action = setUser(payload);
-  //   expect(action).toEqual({
-  //     type: SET_USER,
-  //     payload
-  //   });
-  // });
 
   it('can set user loading', () => {
     const action = setUserLoading();
