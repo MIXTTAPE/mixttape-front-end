@@ -1,6 +1,6 @@
 import React from 'react';
-import Login from '../loginSignUp/Login';
-import SignUp from '../loginSignUp/Signup';
+import Login from '../loginSignUp/Login.js';
+import SignUp from '../loginSignUp/SignUp.js';
 import Illustration from '../../img/splash-illustration.svg';
 
 export default function Splash() {
