@@ -32,6 +32,10 @@ a {
   transition: $transition;
 }
 
+p {
+  line-height: 1.5;
+}
+
 .button-primary,
 .button-secondary {
   border: 0;
