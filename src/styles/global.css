@@ -82,3 +82,20 @@ a {
 .button-delete:hover{
   cursor: pointer;
 }
+
+.button-voice {
+    border: 2px solid $white;
+    padding: 5px 20px;
+    border-radius: 100px;
+    background: none;
+    color: $white;
+    font-size: 14px;
+    transition: $transition;
+}
+
+.button-voice:hover {
+  transform: scale(1.05);
+  background: $white;
+  color: $black;
+  cursor: pointer;
+}
