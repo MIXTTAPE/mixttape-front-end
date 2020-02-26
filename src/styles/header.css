@@ -2,7 +2,8 @@ header {
   background-color: #282828;
   color: #fafafa;
   height: 100px;
-
+  margin-bottom: 25px;
+  
   .header-container {
     max-width: 1400px;
     display: flex;

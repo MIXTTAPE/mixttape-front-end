@@ -1,4 +1,6 @@
-import { setAsActive, SET_AS_ACTIVE, setSongIndex, SET_SONG_INDEX } from './activeMixtapeActions';
+import { setAsActive, SET_AS_ACTIVE, setSongIndex, SET_SONG_INDEX, SET_PLAYING, setPlaying, SET_ACTIVE_LOADING, ACTIVE_LOADING_DONE } from './activeMixtapeActions';
+
+jest.mock('../services/mixtapeApi.js');
 
 describe('activeMixtapeActions', () => {
 
@@ -20,11 +22,25 @@ describe('activeMixtapeActions', () => {
   });
 
   it('can set a playlist as active', () => {
+    const dispatch = jest.fn();
     const action = setAsActive(payload);
-    expect(action).toEqual({
-      type: SET_AS_ACTIVE,
-      payload
-    });
+
+    return action(dispatch)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledWith({
+          type: SET_ACTIVE_LOADING
+        });
+        expect(dispatch).toHaveBeenCalledWith({
+          type: SET_AS_ACTIVE,
+          payload: {
+            mixtapeName: 'mock tape',
+            songs: ['test mixtape']
+          }
+        });
+        expect(dispatch).toHaveBeenCalledWith({
+          type: ACTIVE_LOADING_DONE
+        });
+      });
   });
 
   it('can set a song index', () => {
@@ -34,6 +50,12 @@ describe('activeMixtapeActions', () => {
       payload
     });
   });
-  
 
+  it('can play/pause the current song', () => {
+    const action = setPlaying();
+    expect(action).toEqual({
+      type: SET_PLAYING
+    });
+  });
+  
 });

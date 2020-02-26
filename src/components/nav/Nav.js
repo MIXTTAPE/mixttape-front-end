@@ -1,13 +1,13 @@
 import React from 'react';
-
+import { Link } from 'react-router-dom';
 export default function Nav() {
 
   return (
     <nav>
       <ul>
-        <li><a href="#">Link 1</a></li>
-        <li><a href="#">Link 2</a></li>
-        <li><a href="#">Link 3</a></li>
+        <li><Link to={'/app/create'}>Create</Link></li>
+        <li><Link to={'/app/mixtapes'}>My Mixtapes</Link></li>
+        <li><a href="#">Logout</a></li>
       </ul>
     </nav>
   );

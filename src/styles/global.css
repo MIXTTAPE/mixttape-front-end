@@ -3,7 +3,8 @@
 
 $pink: #FF6A6A;
 $white: #FAFAFA;
-$black: #3C3C3C;
+$black: #282828;
+$light-gray: #AAAAAA;
 $transition: all 0.2s ease-in-out;
 
 body {
@@ -17,6 +18,14 @@ h1 {
   font-family: 'Comfortaa', 'Helvetica', 'Arial', 'sans-serif';
 }
 
+h2 {
+  font-weight: 100;
+}
+
+h3 {
+  font-size: 18px;
+}
+
 a {
   color: $black;
   text-decoration: none;
@@ -26,7 +35,7 @@ a {
 .button-primary,
 .button-secondary {
   border: 0;
-  padding: 10px 40px;
+  padding: 5px 40px;
   border-radius: 100px;
   font-size: 18px;
   transition: $transition;
@@ -35,7 +44,6 @@ a {
 .button-primary {
   background-color: $pink;
   color: $white;
-  border: solid 3px $pink;
 }
 
 .button-primary:hover {
@@ -46,11 +54,31 @@ a {
 .button-secondary {
   border: solid 3px $pink;
   color: $pink;
+  background: none;
 }
 
 .button-secondary:hover {
   transform: scale(1.05);
   background-color: $pink;
   color: $white;
+  cursor: pointer;
+}
+
+.button-add {
+  background: none;
+  border: 0;
+  color: $pink;
+  height: 13px;
+}
+
+.button-delete {
+  background: none;
+  border: 0;
+  color: $black;
+  height: 13px;
+}
+
+.button-add:hover,
+.button-delete:hover{
   cursor: pointer;
 }

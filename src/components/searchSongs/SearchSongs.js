@@ -8,9 +8,9 @@ export default function SearchSongs() {
   const [results, setResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
-  let resultSections;
+  let resultSection;
   if(results.length !== 0){
-    resultSections = [
+    resultSection = [
       <li key={1}><SoundcloudSearchResultSection results={results[0]}/></li>,
       <li key={2}><YoutubeSearchResultSection results={results[1]}/></li>
     ];
@@ -31,14 +31,13 @@ export default function SearchSongs() {
 
   return (
     <>
-      <h3>This is the Song Search Section</h3>
-      <h4>It has a search form</h4>
+      <h2>Search for Music</h2>
       <form onSubmit={handleSearchSubmit}>
-        <input type='text' value={searchQuery} placeholder='Search for music' onChange={handleChange} />
-        <button>Search</button>
+        <input className="margin-right-small box-shadow" type='text' value={searchQuery} placeholder='Search for music' onChange={handleChange} />
+        <button className="button-primary box-shadow">Search</button>
       </form>
-      <ul>
-        {resultSections}
+      <ul className="results-section">
+        {resultSection ? resultSection : 'Hmmm, you haven\'t searched for anything yet.'}
       </ul>
     </>
   );
