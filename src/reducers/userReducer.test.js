@@ -139,20 +139,4 @@ describe('userReducer', () => {
       ]
     });
   });
-
-  it('can handle the VERIFY_USER action', () => {
-    const initialState = {
-      loading: true,
-      user: {}
-    };
-    const action = { type: VERIFY_USER, payload: { username: 'mockUserVerified' } };
-    const newState = userReducer(initialState, action);
-
-    expect(newState).toEqual({
-      loading: true,
-      user: {
-        username: 'mockUserVerified'
-      }
-    });
-  });
 });
