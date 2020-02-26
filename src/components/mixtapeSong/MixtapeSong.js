@@ -7,7 +7,6 @@ import { deleteSong } from '../../actions/editedMixtapeActions';
 export default function mixtapeSong({ data }) {
   const dispatch = useDispatch();
   const handleDelete = ({ currentTarget }) => {
-    console.log(currentTarget.value);
     dispatch(deleteSong(currentTarget.value));
   };
 
@@ -27,6 +26,6 @@ mixtapeSong.propTypes = {
     title: PropTypes.string.isRequired,
     nativeSource: PropTypes.string.isRequired,
     nativeId: PropTypes.string.isRequired,
-    thumbnailUrl: PropTypes.string.isRequired
+    thumbnailUrl: PropTypes.string
   }).isRequired
 };
