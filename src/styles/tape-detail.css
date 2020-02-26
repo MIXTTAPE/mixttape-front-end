@@ -9,7 +9,10 @@
     display: flex;
 
     .mixtape-detail {
-
+      position: sticky;
+      top: 25px;
+      max-height: 300px;
+      
     h2 {
       margin-top: 0;
     }
