@@ -35,7 +35,7 @@ export const verifyUser = () => dispatch => {
   dispatch(setUserLoading());
   return verify()
     .then(user => dispatch({
-      type: VERIFY_USER,
+      type: SET_USER,
       payload: user
     }));
 };

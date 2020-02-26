@@ -62,7 +62,7 @@ describe('userActions', () => {
           type: SET_USER_LOADING
         });
         expect(dispatch).toHaveBeenCalledWith({
-          type: VERIFY_USER,
+          type: SET_USER,
           payload: { username: 'mockedUserVerified' }
         });
       });
