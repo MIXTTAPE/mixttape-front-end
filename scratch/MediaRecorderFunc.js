@@ -1,82 +1,82 @@
 import React, { useState, useEffect } from 'react';
 
-const MediaRecorder = () => {
+const MediaRecorderFunc = () => {
   const [active, setActive] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState(null);
-  const [audioChunks, setAudioChunks] = useState([]);
   const [audioBlob, setAudioBlob] = useState(null);
   const [audioUrl, setAudioUrl] = useState(null);
   const [saved, setSaved] = useState(false);
   const [title, setTitle] = useState('');
 
-  const prepareRecording = () => {
-    navigator.mediaDevices.getUserMedia({ audio: true })
-      .then(stream => {
-        let mediaRecorder = new window.MediaRecorder(stream);
-        mediaRecorder.ondataavailable = e => {
-          setAudioChunks(prevState => ({
-            audioChunks:[...prevState.audioChunks, e.data]
-          }));
-        };
-        mediaRecorder.onstop = () => {
-          let audioBlob = new Blob(audioChunks, { type: 'audio/mpeg-3' });
-          let audioUrl = URL.createObjectURL(audioBlob);
-          setAudioBlob({ audioBlob: audioBlob });
-          setAudioUrl({ audioUrl: audioUrl });
-        };
-        setMediaRecorder({ mediaRecorder: mediaRecorder });
-      });
-  };
   useEffect(() => {
     prepareRecording();
-  }, []);
-    
-  const emergencyStop = () => {
-    if(active === true) {
-      mediaRecorder.stop();
-    }
-    setActive({ active: false });
-    setMediaRecorder({ mediaRecorder: null });
-    setAudioBlob({ audioBlob: [] });
-    setAudioUrl({ audioUrl:null });
-  };
-    
-  useEffect(() => {
     return () => {
       emergencyStop();
     };
   }, []);
-    
+      
+  const prepareRecording = () => {
+    navigator.mediaDevices.getUserMedia({ audio: true })
+      .then(stream => {
+        const chunks = [];
+        let mediaRecorder = new window.MediaRecorder(stream);
+        mediaRecorder.ondataavailable = e => {
+          chunks.push(e.data);
+        };
+        mediaRecorder.onstop = () => {
+          const blob = new Blob(chunks, { type: 'audio/mpeg-3' });
+          let audioUrl = URL.createObjectURL(blob);
+          setAudioBlob(blob);
+          setAudioUrl(audioUrl);
+        };
+        setMediaRecorder(mediaRecorder);
+      });
+  };
+
+  const emergencyStop = () => {
+    if(active === true) {
+      mediaRecorder.stop();
+    }
+    setActive(false);
+    setMediaRecorder(null);
+    setAudioBlob([]);
+    setAudioUrl(null);
+  };
+
   const startRecording = () => {
     console.log(mediaRecorder);
     mediaRecorder.start();
-    setActive({ active: true });
- 
+    setActive(true);
+    setTimeout(() => {
+      if(active) {
+        stopRecording();
+      }
+    }, 30000);
   };
-    
+
   const stopRecording = () => {
     mediaRecorder.stop();
-    setActive({ active: false });
+    setActive(false);
   };
-    
-    
+
   const postRecording = () => {
     let formData = new FormData();
     formData.append('id', audioUrl);
     formData.append('recording', audioBlob);
-    formData.appednd('title', title);
+    formData.append('title', title);
     return fetch('http://localhost:7891/api/v1/voice-recordings', {
       method: 'POST',
       body: formData
     }).then(message => {
-      setSaved({ saved: true });
+      setSaved(true);
       console.log(message);
     });
   };
+  
   const handleSave = () => {
-    setActive({ active: false });
-    setAudioUrl({ audioUrl: null });
-    setSaved({ saved: false });
+    setActive(false);
+    setAudioUrl(null);
+    setSaved(false);
   };
     
   return (
@@ -91,7 +91,7 @@ const MediaRecorder = () => {
         }
         {(audioUrl && !saved) && 
                     <>
-                      <input type='text' value={title} onChange={() => setTitle({ title: event.target.value })} />
+                      <input type='text' value={title} onChange={() => setTitle(event.target.value)} />
                       <audio src={audioUrl} controls />
                       <button onClick={postRecording}>Save Recording</button>
                     </>
@@ -107,4 +107,4 @@ const MediaRecorder = () => {
   );
 };
 
-export default MediaRecorder;
+export default MediaRecorderFunc;
