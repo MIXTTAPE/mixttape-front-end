@@ -21,7 +21,7 @@ export default function SignUp({ onClick }) {
     event.preventDefault();
     dispatch(setUserSignUp(username, password));
     dispatch(userLoadingDone());
-    history.replace('/app');
+    history.replace('/app/create');
   };
 
   return (

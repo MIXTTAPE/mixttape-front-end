@@ -21,7 +21,7 @@ export default function Login({ onClick }) {
     event.preventDefault();
     dispatch(setUserLogin(username, password));
     dispatch(userLoadingDone());
-    history.replace('/app');
+    history.replace('/app/mixtapes');
   };
 
   return (

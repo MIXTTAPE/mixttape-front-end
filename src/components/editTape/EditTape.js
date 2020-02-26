@@ -2,13 +2,16 @@ import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MixtapeSong from '../mixtapeSong/MixtapeSong.js';
 import { getLastEditedMixtape } from '../../selectors/editedMixtapeSelectors.js';
-import { saveMixtape } from '../../actions/editedMixtapeActions.js';
-import { getUser } from '../../selectors/userSelectors.js';
+import { saveMixtape, mixtapeLoadingDone } from '../../actions/editedMixtapeActions.js';
+import { getUser, getUserMixtapes } from '../../selectors/userSelectors.js';
+import { useHistory } from 'react-router-dom';
 
 export default function EditTape() {
   const user = useSelector(getUser);
   const mixtape = useSelector(getLastEditedMixtape);
   const dispatch = useDispatch();
+  const history = useHistory();
+  const mixtapes = useSelector(getUserMixtapes);
 
   //each song comes from search result section
   //Has a nativeId, native source, and title
@@ -35,6 +38,8 @@ export default function EditTape() {
     mixtape.createdBy = user.username;
     mixtape.userId = user._id;
     dispatch(saveMixtape(mixtape));
+    dispatch(mixtapeLoadingDone());
+    history.replace(`/app/mixtape/${mixtapes[mixtapes.length - 1]._id}`);
   };
 
   const handleNameChange = ({ target }) => {
