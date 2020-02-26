@@ -1,4 +1,4 @@
-import { SET_USER, SET_USER_LOADING, USER_LOADING_DONE } from '../actions/userActions';
+import { SET_USER, SET_USER_LOADING, USER_LOADING_DONE, SET_USER_MIXTAPES } from '../actions/userActions';
 import { SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 
 const initialState = {
@@ -27,6 +27,8 @@ export const userReducer = (state = initialState, action) => {
       }
       // otherwise add the mixtape to the end of the list
       return { ...state, mixtapes: [...state.mixtapes, action.payload] };
+    case SET_USER_MIXTAPES:
+      return { ...state, mixtapes: action.payload.mixtapes };
     default:
       return state;
   }
