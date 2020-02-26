@@ -1,4 +1,4 @@
-import { setAsActive, SET_AS_ACTIVE, setSongIndex, SET_SONG_INDEX } from './activeMixtapeActions';
+import { setAsActive, SET_AS_ACTIVE, setSongIndex, SET_SONG_INDEX, SET_PLAYING, setPlaying } from './activeMixtapeActions';
 
 describe('activeMixtapeActions', () => {
 
@@ -34,6 +34,12 @@ describe('activeMixtapeActions', () => {
       payload
     });
   });
-  
 
+  it('can play/pause the current song', () => {
+    const action = setPlaying();
+    expect(action).toEqual({
+      type: SET_PLAYING
+    });
+  });
+  
 });

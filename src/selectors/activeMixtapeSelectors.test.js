@@ -1,4 +1,4 @@
-import { getActiveMixtape, getActiveSong } from './activeMixtapeSelectors';
+import { getActiveMixtape, getActiveSong, getPlaying } from './activeMixtapeSelectors';
 
 describe('activeMixtape Selectors', () => {
 
@@ -26,6 +26,7 @@ describe('activeMixtape Selectors', () => {
         passwordHash: '3.1415926540'
       },
       activeMixtape: {
+        playing: false,
         loading: true,
         id: '1111111',
         mixtapeName: 'My Mixtape',
@@ -60,6 +61,7 @@ describe('activeMixtape Selectors', () => {
   it('can get the users active mixtape', () => {
     const activeMixtape = getActiveMixtape(state);
     expect(activeMixtape).toEqual({
+      playing: false,
       loading: true,
       id: '1111111',
       mixtapeName: 'My Mixtape',
@@ -86,6 +88,11 @@ describe('activeMixtape Selectors', () => {
       buyLink: '',
       thumbnail: ''
     });
+  });
+
+  it('can get a boolean to see if a song is playing', ()=> {
+    const isPlaying = getPlaying(state);
+    expect(isPlaying).toEqual(false);
   });
 
 });
