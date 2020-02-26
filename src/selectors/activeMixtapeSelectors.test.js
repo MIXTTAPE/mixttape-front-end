@@ -28,19 +28,21 @@ describe('activeMixtape Selectors', () => {
       activeMixtape: {
         playing: false,
         loading: true,
-        id: '1111111',
-        mixtapeName: 'My Mixtape',
-        songs: [
-          {
-            nativeId: 'AF607105',
-            nativeSource: 'youtube',
-            title: 'Charlotte Gainsbourg - AF607105',
-            buyLink: '',
-            thumbnail: ''
-          }
-        ],
-        currentSongIndex: 0,
-        createdBy: 'josephtatum'
+        mixtape: {
+          id: '1111111',
+          mixtapeName: 'My Mixtape',
+          songs: [
+            {
+              nativeId: 'AF607105',
+              nativeSource: 'youtube',
+              title: 'Charlotte Gainsbourg - AF607105',
+              buyLink: '',
+              thumbnail: ''
+            }
+          ],
+          currentSongIndex: 0,
+          createdBy: 'josephtatum'
+        }
       },
       lastEditedMixtape: {
         loading: true,
@@ -61,8 +63,6 @@ describe('activeMixtape Selectors', () => {
   it('can get the users active mixtape', () => {
     const activeMixtape = getActiveMixtape(state);
     expect(activeMixtape).toEqual({
-      playing: false,
-      loading: true,
       id: '1111111',
       mixtapeName: 'My Mixtape',
       songs: [
@@ -76,17 +76,6 @@ describe('activeMixtape Selectors', () => {
       ],
       currentSongIndex: 0,
       createdBy: 'josephtatum'
-    });
-  });
-
-  it('can get the currently playing song', () => {
-    const currentlyPlaying = getActiveSong(state);
-    expect(currentlyPlaying).toEqual({
-      nativeId: 'AF607105',
-      nativeSource: 'youtube',
-      title: 'Charlotte Gainsbourg - AF607105',
-      buyLink: '',
-      thumbnail: ''
     });
   });
 

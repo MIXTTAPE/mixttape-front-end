@@ -1,21 +1,31 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { setPlaying } from '../../actions/activeMixtapeActions';
-import { getPlaying } from '../../selectors/activeMixtapeSelectors';
-import { fakeMixtape as activeMixtape } from '../../../scratch/fake-mixtape';
+import { setPlaying, setAsActive, setActiveLoading, resetActiveLoading } from '../../actions/activeMixtapeActions';
+import { getPlaying, getActiveMixtape, getActiveLoading } from '../../selectors/activeMixtapeSelectors';
+// import { fakeMixtape as activeMixtape } from '../../../scratch/fake-mixtape';
 import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa';
+import { fetchTape } from '../../services/mixtapeApi';
 
 export default function TapeDetail() {
   
   const { id } = useParams();
-
-  useEffect(() => {
-    // on load make a fetch call to render the correct playlist
-  });
-
   const dispatch = useDispatch();
   const playing = useSelector(getPlaying);
+  const loading = useSelector(getActiveLoading);
+  const activeMixtape = useSelector(getActiveMixtape);
+  
+  useEffect(() => {
+    dispatch(setAsActive(id));
+  }, []);
+
+  console.log(activeMixtape);
+
+  if(loading) {
+    return <h2> LOADING </h2>;
+  }
+
+  console.log(activeMixtape);
 
   const songs = activeMixtape.songs.map((song) => {
     return (<li key={song.nativeId} className="song">
