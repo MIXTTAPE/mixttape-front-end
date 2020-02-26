@@ -19,13 +19,9 @@ export default function TapeDetail() {
     dispatch(setAsActive(id));
   }, []);
 
-  console.log(activeMixtape);
-
   if(loading) {
     return <h2> LOADING </h2>;
   }
-
-  console.log(activeMixtape);
 
   const songs = activeMixtape.songs.map((song) => {
     return (<li key={song.nativeId} className="song">

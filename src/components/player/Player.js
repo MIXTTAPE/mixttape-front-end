@@ -17,7 +17,6 @@ export default function Player() {
   const [currentVolume, setCurrentVolume] = useState(1);
 
   useEffect(() => {
-    console.log(activeMixtape);
     if(activeMixtape.songs.length > 0) {
       buildUrl(activeMixtape.songs[currentSongIndex]);
       setCurrentSong(activeMixtape.songs[currentSongIndex]);
@@ -34,7 +33,6 @@ export default function Player() {
   };
 
   const playPause = (action) => {
-    console.log(currentSong);
     dispatch(setPlaying(action));
   };
 

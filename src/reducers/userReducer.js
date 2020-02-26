@@ -16,8 +16,6 @@ export const userReducer = (state = initialState, action) => {
     case SET_USER:
       return { ...state, user: action.payload };
     case SAVE_MIXTAPE:
-      // if you find the mixtape in the mixtapes array:
-      console.log(state.mixtapes);
       if(state.mixtapes.includes(mixtape => mixtape._id === action.payload.nativeId)) {
         
         // return state with that entry update to reflect the new state
