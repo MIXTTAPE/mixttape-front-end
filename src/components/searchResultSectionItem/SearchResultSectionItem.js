@@ -27,6 +27,6 @@ SearchResultSectionItem.propTypes = {
     title: PropTypes.string.isRequired,
     nativeSource: PropTypes.string.isRequired,
     nativeId: PropTypes.oneOfType([string, number]),
-    thumbnailUrl: PropTypes.string.isRequired
+    thumbnailUrl: PropTypes.string
   }).isRequired
 };
