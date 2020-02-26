@@ -37,6 +37,11 @@ export default class MediaRecorder extends Component {
     startRecording = () => {
       this.state.mediaRecorder.start();
       this.setState({ active: true });
+      setTimeout(() => {
+        if(this.state.active) {
+          this.stopRecording();
+        }
+      }, 30000);
    
     }
     stopRecording = () => {
@@ -54,25 +59,21 @@ export default class MediaRecorder extends Component {
         audioUrl: null,
       });
     }
-    createFileFromBlob = () => {
-      let file = new window.File([this.state.audioBlob], 'test.wav', { type: 'audio/wav' });
-      return file;
-    }
+  
     postRecording = () => {
-    //   let recording = this.createFileFromBlob();
       let formData = new FormData();
       formData.append('id', this.state.audioUrl);
       formData.append('recording', this.state.audioBlob);
       formData.append('title', this.state.title);
-      return fetch('https://cors-anywhere.herokuapp.com/https://mixttape-backend.herokuapp.com//api/v1/voice-recordings', {
+      return fetch('http://localhost:7891/api/v1/voice-recordings', {
         method: 'POST',
         body: formData
       }).then(res => {
         this.setState({ saved: true });
-        console.log(res);
-      });
+        return res.json();
+      })
+        .then(json => console.log(json));
     }
-
 
     render() {
       return (
