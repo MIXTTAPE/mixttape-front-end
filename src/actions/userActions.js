@@ -37,11 +37,11 @@ export const setUserLogin = (username, password) => dispatch => {
       dispatch({
         type: SET_USER_MIXTAPES,
         payload: user
-      }).catch(err => dispatch({
-        type: SET_AUTH_ERROR,
-        payload: err
-      }));
-    });
+      });
+    }).catch(err => dispatch({
+      type: SET_AUTH_ERROR,
+      payload: err
+    }));
 };
 
 export const SET_USER_MIXTAPES = 'SET_USER_MIXTAPES';
