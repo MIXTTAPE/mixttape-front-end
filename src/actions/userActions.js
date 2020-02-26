@@ -52,5 +52,4 @@ export const verifyUser = () => dispatch => {
         payload: user
       });
     });
-    
 };
