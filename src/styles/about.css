@@ -8,12 +8,21 @@
   .about-us-container {
     width: 75vw;
 
+    h1 {
+      margin-bottom: 50px;
+    }
+
     .team-members {
       padding-left: 0;
       list-style-type: none;
       display: flex;
       justify-content: space-between;
       margin-bottom: 50px;
+
+      .team-member-photo {
+        height: 175px;
+        border-radius: 100%;
+      }
     }
 
     .social-icon {
