@@ -49,3 +49,14 @@
     padding: 5px 0px 5px 15px;
   }
 }
+
+.link-to-about {
+  position: absolute;
+  right: 50px;
+  bottom: 50px;
+  transition: $transition;
+}
+
+.link-to-about:hover {
+  color: $pink;
+}

@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import Login from '../loginSignUp/Login.js';
 import SignUp from '../loginSignUp/SignUp.js';
 import Illustration from '../../img/splash-illustration.svg';
@@ -17,17 +18,20 @@ export default function Splash() {
   };
 
   return (
-    <div className="full-screen-container">
-      <div className="splash-container">
-        <div className="image-container margin-right-medium">
-          <img src={Illustration} />
-        </div>
-        <div className="copy-container">
-          <h1>MIXT</h1>
-          <h2>A mixtape maker for the modern era.</h2>
-          {renderedComponent()}
+    <>
+      <div className="full-screen-container">
+        <div className="splash-container">
+          <div className="image-container margin-right-medium">
+            <img src={Illustration} />
+          </div>
+          <div className="copy-container">
+            <h1>MIXT</h1>
+            <h2>A mixtape maker for the modern era.</h2>
+            {renderedComponent()}
+          </div>
         </div>
       </div>
-    </div>
+      <Link className="link-to-about" to={'/about'}>Who made this?</Link>
+    </>
   );
 }
