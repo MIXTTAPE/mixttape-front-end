@@ -11,6 +11,7 @@ export const activeMixtapeReducer = (state = initialState, action) => {
     case SET_SONG_INDEX:
       return { ...state, currentSongIndex: action.payload };
     case SET_PLAYING:
+      if(action.payload === 'stop') return { ...state, playing: false };
       return { ...state, playing: !state.playing };
     default:
       return state;

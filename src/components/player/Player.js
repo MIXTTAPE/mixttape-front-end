@@ -2,11 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { ReactPlayerComponent } from './ReactPlayer';
 import { fakeMixtape } from '../../../scratch/fake-mixtape';
 import { getPlaying } from '../../selectors/activeMixtapeSelectors';
+import { useDispatch, useSelector } from 'react-redux';
 import { FaPlayCircle, FaPauseCircle, FaForward, FaVolumeUp } from 'react-icons/fa';
+import { setPlaying } from '../../actions/activeMixtapeActions';
 
 export default function Player() {
+  const dispatch = useDispatch();
+  const playing = useSelector(getPlaying);
 
-  const [playing, setPlaying] = useState(false);
   const [currentSong, setCurrentSong] = useState('Nothing Playing');
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [mixtape, setMixtape] = useState(fakeMixtape);
@@ -28,14 +31,14 @@ export default function Player() {
     }
   };
 
-  const playPause = () => {
-    setPlaying(!playing);
+  const playPause = (action) => {
+    dispatch(setPlaying(action));
   };
 
   const nextSong = () => {
     if(currentSongIndex === mixtape.songs.length - 1) {
       setCurrentSongIndex(0);
-      setPlaying(false);
+      playPause('stop');
       return;
     }
     setCurrentSongIndex(currentSongIndex + 1);
@@ -45,11 +48,10 @@ export default function Player() {
     setCurrentVolume(target.value);
   };
 
-
   return (
     <>
+      <ReactPlayerComponent url={currentUrl} playPause={playing} nextSong={nextSong} volume={currentVolume}/>
       <div style={{ display: 'none' }}>
-        <ReactPlayerComponent url={currentUrl} playPause={playing} nextSong={nextSong} volume={currentVolume}/>
       </div>
       <footer className="player-component">
         <div className="player-container">

@@ -11,6 +11,7 @@ export const setSongIndex = (payload) => ({
 });
 
 export const SET_PLAYING = 'SET_PLAYING';
-export const setPlaying = () => ({
-  type: SET_PLAYING
+export const setPlaying = (payload) => ({
+  type: SET_PLAYING,
+  payload
 });

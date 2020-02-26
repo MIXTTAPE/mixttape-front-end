@@ -37,7 +37,7 @@ describe('activeMixtapeReducer', () => {
     });
   });
 
-  it('can handle a SET_PLAYING case', () => {
+  it('can toggle true and false with a SET_PLAYING case', () => {
     const state = {
       playing: false,
       mixtapeName: 'My Mixtape',
@@ -48,6 +48,24 @@ describe('activeMixtapeReducer', () => {
     const newState = activeMixtapeReducer(state, setPlaying());
     expect(newState).toEqual({
       playing: true,
+      createdBy: 'josephtatum',
+      currentSongIndex: 0,
+      mixtapeName: 'My Mixtape',
+      songs: []
+    });
+  });
+
+  it('can be forced false by passing a stop payload with a SET_PLAYING case', () => {
+    const state = {
+      playing: false,
+      mixtapeName: 'My Mixtape',
+      songs: [],
+      currentSongIndex: 0,
+      createdBy: 'josephtatum'
+    };
+    const newState = activeMixtapeReducer(state, setPlaying('stop'));
+    expect(newState).toEqual({
+      playing: false,
       createdBy: 'josephtatum',
       currentSongIndex: 0,
       mixtapeName: 'My Mixtape',
