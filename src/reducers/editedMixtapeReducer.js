@@ -1,8 +1,10 @@
 import { ADD_SONG, DELETE_SONG, SET_AS_EDITED, SAVE_MIXTAPE, SET_MIXTAPE_LOADING, MIXTAPE_LOADING_DONE } from '../actions/editedMixtapeActions';
 
 const initialState = {
-  name: '',
-  songs: []
+  mixtapeName: '',
+  songs: [],
+  createdBy: '',
+  userId: ''
 };
 
 export const editedMixtapeReducer = (state = initialState, action) => {
