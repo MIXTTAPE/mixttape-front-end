@@ -1,0 +1,12 @@
+.social-icon {
+  fill: $black;
+  width: 35px;
+  height: 35px;
+  margin: 0 5px;
+  transition: $transition;
+}
+
+.social-icon:hover {
+  fill: $pink;
+  cursor: pointer;
+}
