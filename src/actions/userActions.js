@@ -21,11 +21,20 @@ export const setUserSignUp = (username, password) => dispatch => {
     }));
 };
 
+
 export const setUserLogin = (username, password) => dispatch => {
   dispatch(setUserLoading());
   return login(username, password)
-    .then(user => dispatch({
-      type: SET_USER,
-      payload: user
-    }));
+    .then(user => {
+      dispatch({
+        type: SET_USER,
+        payload: user
+      });
+      dispatch({
+        type: SET_USER_MIXTAPES,
+        payload: user
+      });
+    });
 };
+
+export const SET_USER_MIXTAPES = 'SET_USER_MIXTAPES';
