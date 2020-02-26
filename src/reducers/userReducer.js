@@ -3,7 +3,6 @@ import { SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 
 const initialState = {
   loading: true,
-  username: '', 
   mixtapes: []
 };
 

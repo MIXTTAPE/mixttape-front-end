@@ -5,7 +5,7 @@ describe('Mixtape Selectors', () => {
   let state;
   beforeEach(()=> {
     state = {
-      user: {
+      userInfo: {
         loading: true,
         mixtapes: [
           {
@@ -22,8 +22,10 @@ describe('Mixtape Selectors', () => {
             ]
           }
         ],
-        username: 'josephtatum',
-        passwordHash: '3.1415926540'
+        user: {
+          username: 'josephtatum',
+          passwordHash: '3.1415926540'
+        }
       },
       activeMixtape: {
         loading: true,
