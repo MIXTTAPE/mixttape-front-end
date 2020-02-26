@@ -23,8 +23,8 @@ export default function TapeDetail() {
     return <h2> LOADING </h2>;
   }
 
-  const songs = activeMixtape.songs.map((song) => {
-    return (<li key={song.nativeId} className="song">
+  const songs = activeMixtape.songs.map((song, i) => {
+    return (<li key={i} className="song">
       <img src={song.thumbnailUrl} />
       {song.title}
     </li>);

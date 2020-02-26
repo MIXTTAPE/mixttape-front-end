@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { ReactPlayerComponent } from './ReactPlayer';
-import { fakeMixtape } from '../../../scratch/fake-mixtape';
+// import { fakeMixtape } from '../../../scratch/fake-mixtape';
 import { getPlaying, getActiveMixtape } from '../../selectors/activeMixtapeSelectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaPlayCircle, FaPauseCircle, FaForward, FaVolumeUp } from 'react-icons/fa';
@@ -9,8 +9,8 @@ import { setPlaying } from '../../actions/activeMixtapeActions';
 export default function Player() {
   const dispatch = useDispatch();
   const playing = useSelector(getPlaying);
-  // const activeMixtape = useSelector(getActiveMixtape);
-  const activeMixtape = fakeMixtape;
+  const activeMixtape = useSelector(getActiveMixtape);
+  // const activeMixtape = fakeMixtape;
 
   const [currentSong, setCurrentSong] = useState('Nothing Playing');
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
