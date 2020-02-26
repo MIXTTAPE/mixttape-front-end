@@ -20,7 +20,8 @@ export default function Login({ onClick }) {
 
   const handleLoginSumbit = (event) => {
     event.preventDefault();
-    dispatch(setUserLogin(username, password));
+    dispatch(setUserLogin(username, password))
+      .then(() => console.log('here'));
     dispatch(userLoadingDone());
     history.push('/app');
   };

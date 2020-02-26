@@ -18,14 +18,20 @@ export const setUserSignUp = (username, password) => dispatch => {
     .then(user => dispatch({
       type: SET_USER,
       payload: user
+    })).catch(err => dispatch({
+      type: SET_AUTH_ERROR,
+      payload: err
     }));
 };
-
+export const SET_AUTH_ERROR = 'SET_AUTH_ERROR';
 export const setUserLogin = ({ username, password }) => dispatch => {
   dispatch(setUserLoading());
   return login(username, password)
     .then(user => dispatch({
       type: SET_USER,
       payload: user
+    })).catch(err => dispatch({
+      type: SET_AUTH_ERROR,
+      payload: err
     }));
 };

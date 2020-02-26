@@ -1,10 +1,11 @@
-import { SET_USER, SET_USER_LOADING, USER_LOADING_DONE } from '../actions/userActions';
+import { SET_USER, SET_USER_LOADING, USER_LOADING_DONE, SET_AUTH_ERROR } from '../actions/userActions';
 import { SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 
 const initialState = {
   loading: true,
   username: '', 
-  mixtapes: []
+  mixtapes: [],
+  error: null
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -28,6 +29,8 @@ export const userReducer = (state = initialState, action) => {
       }
       // otherwise add the mixtape to the end of the list
       return { ...state, mixtapes: [...state.mixtapes, action.payload] };
+    case SET_AUTH_ERROR:
+      return { ...state, error: action.payload, loading: false };
     default:
       return state;
   }
