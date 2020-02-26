@@ -1,9 +1,8 @@
-import { setUserLoading } from './userActions';
 import { fetchTape } from '../services/mixtapeApi';
 
 export const SET_AS_ACTIVE = 'SET_AS_ACTIVE';
 export const setAsActive = (id) => dispatch => {
-  dispatch(setUserLoading());
+  dispatch(setActiveLoading());
   return fetchTape(id)
     .then(tape=> dispatch({
       type: SET_AS_ACTIVE,
