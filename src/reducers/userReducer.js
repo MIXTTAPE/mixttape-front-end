@@ -3,8 +3,11 @@ import { SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 
 const initialState = {
   loading: true,
-  username: '', 
-  mixtapes: []
+  mixtapes: [],
+  user: {
+    username: '', 
+    _id: ''
+  }
 };
 
 export const userReducer = (state = initialState, action) => {
@@ -14,12 +17,11 @@ export const userReducer = (state = initialState, action) => {
     case USER_LOADING_DONE:
       return { ...state, loading: false };
     case SET_USER:
-      return { ...state, user: action.payload };
+      return { ...state, mixtapes: action.payload.mixtapes, user: action.payload };
     case SAVE_MIXTAPE:
       // if you find the mixtape in the mixtapes array:
-      console.log(state.mixtapes);
-      if(state.mixtapes.includes(mixtape => mixtape._id === action.payload.nativeId)) {
-        
+      console.log(state.user.mixtapes);
+      if(state.user.mixtapes.includes(mixtape => mixtape._id === action.payload._id)) {
         // return state with that entry update to reflect the new state
         return { ...state, mixtapes: state.mixtapes.map(mixtape => {
           console.log(mixtape.nativeId, action.payload.nativeId);

@@ -21,7 +21,7 @@ export const setUserSignUp = (username, password) => dispatch => {
     }));
 };
 
-export const setUserLogin = ({ username, password }) => dispatch => {
+export const setUserLogin = (username, password) => dispatch => {
   dispatch(setUserLoading());
   return login(username, password)
     .then(user => dispatch({
@@ -30,7 +30,6 @@ export const setUserLogin = ({ username, password }) => dispatch => {
     }));
 };
 
-export const VERIFY_USER = 'VERIFY_USER';
 export const verifyUser = () => dispatch => {
   dispatch(setUserLoading());
   return verify()

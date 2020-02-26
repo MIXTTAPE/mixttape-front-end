@@ -79,64 +79,56 @@ describe('userReducer', () => {
   });
 
   it('can handle a SAVE_MIXTAPE case if the mixtape is not new', () => {
-    const state = {
-      username: 'josephtatum',
-      mixtapes: [
-        { 
-          _id: '001',
-          name: 'slow jams',
-          songs: [{
-            nativeId: 'AF607105',
-            source: 'youtube',
-            title: 'Charlotte Gainsbourg - AF607105',
-            thumbnail: 'https://google.com/photo',
-            buylink: ''
-          }]
-        }
-      ]
-    };
-    const payload = {
-      _id: '001',
-      name: 'ultra slow jams',
-      songs: [
-        {
-          nativeId: 'AF607105',
-          source: 'youtube',
-          title: 'Charlotte Gainsbourg - AF607105',
-          thumbnail: 'https://google.com/photo',
-          buylink: ''
-        }
-      ]
-    };
-    const newState = userReducer(state, { type: SAVE_MIXTAPE, payload });
-
-    expect(newState).toEqual({
-      username: 'josephtatum',
-      mixtapes: [
-        { 
-          _id: '001',
-          name: 'slow jams',
-          songs: [{
-            nativeId: 'AF607105',
-            source: 'youtube',
-            title: 'Charlotte Gainsbourg - AF607105',
-            thumbnail: 'https://google.com/photo',
-            buylink: ''
-          }]
-        }, {
-          _id: '002',
-          name: 'workout',
-          songs: [
-            {
+    const initialState = {
+      loading: true,
+      user: {
+        username: 'josephtatum',
+        mixtapes: [
+          { 
+            _id: '001',
+            name: 'slow jams',
+            songs: [{
               nativeId: 'AF607105',
               source: 'youtube',
               title: 'Charlotte Gainsbourg - AF607105',
               thumbnail: 'https://google.com/photo',
               buylink: ''
-            }
-          ]
-        }
-      ]
+            }]
+          }
+        ]
+      }
+    };
+    const payload = {
+      _id: '001',
+      name: 'ultra slow jams',
+      songs: [{
+        nativeId: 'AF607105',
+        source: 'youtube',
+        title: 'Charlotte Gainsbourg - AF607105',
+        thumbnail: 'https://google.com/photo',
+        buylink: ''
+      }]
+    };
+    const newState = userReducer(initialState, { type: SAVE_MIXTAPE, payload });
+
+    expect(newState).toEqual({
+      loading: true,
+      user: {
+        username: 'josephtatum',
+        mixtapes: [
+          { 
+            _id: '001',
+            name: 'ultra slow jams',
+            songs: [{
+              nativeId: 'AF607105',
+              source: 'youtube',
+              title: 'Charlotte Gainsbourg - AF607105',
+              thumbnail: 'https://google.com/photo',
+              buylink: ''
+            }]
+          }
+        ]
+      }
     });
   });
 });
