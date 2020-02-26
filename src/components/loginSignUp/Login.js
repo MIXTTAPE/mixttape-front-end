@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
 import { setUserLogin, userLoadingDone } from '../../actions/userActions';
 import { useHistory } from 'react-router-dom';
@@ -35,3 +36,6 @@ export default function Login({ onClick }) {
     </>
   );
 }
+Login.propTypes = {
+  onClick: PropTypes.func.isRequired
+};
