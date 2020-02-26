@@ -1,0 +1,47 @@
+.about-us-flex-container {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  .about-us-container {
+    width: 75vw;
+
+    h1 {
+      margin-bottom: 50px;
+    }
+
+    .team-members {
+      padding-left: 0;
+      list-style-type: none;
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 50px;
+
+      li {
+        max-width: 400px;
+        padding: 25px;
+        
+        .team-member-photo {
+          height: 175px;
+          border-radius: 100%;
+        }
+
+      }
+    }
+
+    .social-icon {
+      fill: $black;
+      width: 35px;
+      height: 35px;
+      margin: 0 5px;
+      transition: $transition;
+    }
+
+    .social-icon:hover {
+      fill: $pink;
+      cursor: pointer;
+    }
+  }
+}
