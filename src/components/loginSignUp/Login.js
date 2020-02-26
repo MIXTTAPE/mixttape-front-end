@@ -23,7 +23,6 @@ export default function Login({ onClick }) {
     event.preventDefault();
     dispatch(setUserLogin(username, password));
     dispatch(userLoadingDone());
-    // history.replace('/app');
   };
 
   return (
