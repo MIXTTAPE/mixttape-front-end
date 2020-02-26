@@ -1,4 +1,4 @@
-import { SET_USER_LOADING, SET_USER, USER_LOADING_DONE, userLoadingDone } from '../actions/userActions';
+import { SET_USER_LOADING, SET_USER, USER_LOADING_DONE, userLoadingDone, VERIFY_USER } from '../actions/userActions';
 import { saveMixtape, SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 import { userReducer } from './userReducer';
 
@@ -96,8 +96,8 @@ describe('userReducer', () => {
       ]
     };
     const payload = {
-      _id: '002',
-      name: 'workout',
+      _id: '001',
+      name: 'ultra slow jams',
       songs: [
         {
           nativeId: 'AF607105',
@@ -137,6 +137,22 @@ describe('userReducer', () => {
           ]
         }
       ]
+    });
+  });
+
+  it('can handle the VERIFY_USER action', () => {
+    const initialState = {
+      loading: true,
+      user: {}
+    };
+    const action = { type: VERIFY_USER, payload: { username: 'mockUserVerified' } };
+    const newState = userReducer(initialState, action);
+
+    expect(newState).toEqual({
+      loading: true,
+      user: {
+        username: 'mockUserVerified'
+      }
     });
   });
 });

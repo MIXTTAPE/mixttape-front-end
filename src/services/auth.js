@@ -9,6 +9,5 @@ export const login = (username, password) => {
 };
 
 export const verify = () => {
-  console.log('got here');
   return request('/auth/verify', 'GET');
 };
