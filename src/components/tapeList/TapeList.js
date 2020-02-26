@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserMixtapes } from '../../selectors/userSelectors';
-import { setPlaying, setAsActive } from '../../actions/activeMixtapeActions';
+import { setPlaying, setAsActiveNoFetch } from '../../actions/activeMixtapeActions';
 import { getPlaying } from '../../selectors/activeMixtapeSelectors';
 import { FaPauseCircle, FaPlayCircle } from 'react-icons/fa';
 
@@ -20,9 +20,9 @@ export default function TapeList() {
     );
   }
 
-  const playMixtape = (mixtape) => {
-    console.log(mixtape);
-    dispatch(setAsActive(mixtape._id));
+  const playMixtape = (clickedMixtape) => {
+    console.log(clickedMixtape);
+    dispatch(setAsActiveNoFetch(clickedMixtape));
     dispatch(setPlaying());
   };
 
@@ -35,7 +35,7 @@ export default function TapeList() {
           <p>created by: {mixtape.createdBy}</p>
           <FaPauseCircle className="play-pause" onClick={() => dispatch(setPlaying())} />
           <FaPlayCircle className="play-pause" onClick={() => playMixtape(mixtape)} />
-          {/* <p><Link to={`/app/mixtape/${mixtape._id}`}>View Mixtape</Link></p> */}
+          <p><Link to={`/app/mixtape/${mixtape._id}`}>View Mixtape</Link></p>
         </div>
         <ul className="list-of-songs">
           {mixtape.songs.map((song) => {

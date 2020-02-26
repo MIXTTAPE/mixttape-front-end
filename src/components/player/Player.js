@@ -17,11 +17,12 @@ export default function Player() {
   const [currentVolume, setCurrentVolume] = useState(1);
 
   useEffect(() => {
-    if(activeMixtape.length > 0) {
+    console.log(activeMixtape);
+    if(activeMixtape.songs.length > 0) {
       buildUrl(activeMixtape.songs[currentSongIndex]);
       setCurrentSong(activeMixtape.songs[currentSongIndex]);
     }
-  }, [currentSongIndex]);
+  }, [activeMixtape, currentSongIndex]);
 
   const buildUrl = (song) => {
     if(song.nativeSource === 'youtube') {

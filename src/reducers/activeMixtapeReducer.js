@@ -14,7 +14,7 @@ export const activeMixtapeReducer = (state = initialState, action) => {
     case ACTIVE_LOADING_DONE:
       return { ...state, loading: false };
     case SET_AS_ACTIVE:
-      console.log(action.payload);
+      console.log({ ...state, mixtape: action.payload });
       return { ...state, mixtape: action.payload };
     case SET_SONG_INDEX:
       return { ...state, currentSongIndex: action.payload };
