@@ -75,7 +75,7 @@ const MediaRecorderFunc = () => {
     }).then(recording => {
       const recordingInfo = {
         nativeId: recording.key,
-        nativeSource: 'Voice Memo',
+        nativeSource: 'voicememo',
         buyLink: null,
         thumbnailUrl: '../src/img/microphone-image.png',
         isMemo: true,
