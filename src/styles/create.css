@@ -68,6 +68,14 @@
     margin: 15px;
     padding: 15px;
 
+    input {
+      font-size: 28px;
+      border: 0;
+      padding-bottom: 5px;
+      border-bottom: 1px solid black;
+      border-style: solid;
+    }
+
     .mixtape-songs {
       padding: 0;
       counter-reset: track;
