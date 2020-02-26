@@ -1,22 +1,32 @@
-import { setAsActive, setSongIndex, setPlaying } from '../actions/activeMixtapeActions';
+import { setAsActive, setSongIndex, setPlaying, SET_AS_ACTIVE } from '../actions/activeMixtapeActions';
 import { activeMixtapeReducer } from './activeMixtapeReducer';
 
 describe('activeMixtapeReducer', () => {
 
   it('can handle a SET_AS_ACTIVE case', () => {
-    const state = {};
+    const initialState = {
+      loading: false,
+      mixtape: { songs: [] }
+    };
     const mixtape = {
       mixtapeName: 'My Mixtape',
       songs: [],
       currentSongIndex: 0,
       createdBy: 'josephtatum'
     };
-    const newState = activeMixtapeReducer(state, setAsActive(mixtape));
+    const newState = activeMixtapeReducer(initialState, { 
+      type: SET_AS_ACTIVE, 
+      payload: mixtape }
+    );
+
     expect(newState).toEqual({
-      createdBy: 'josephtatum',
-      currentSongIndex: 0,
-      mixtapeName: 'My Mixtape',
-      songs: []
+      loading: false,
+      mixtape: {
+        createdBy: 'josephtatum',
+        currentSongIndex: 0,
+        mixtapeName: 'My Mixtape',
+        songs: []
+      }
     });
   });
 
