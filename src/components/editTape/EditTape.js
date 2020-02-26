@@ -1,10 +1,15 @@
-import React, { useEffect } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import MixtapeSong from '../mixtapeSong/MixtapeSong.js';
 import { getLastEditedMixtape } from '../../selectors/editedMixtapeSelectors.js';
+import { saveMixtape } from '../../actions/editedMixtapeActions.js';
+import { getUser } from '../../selectors/userSelectors.js';
 
 export default function EditTape() {
+  const user = useSelector(getUser);
   const mixtape = useSelector(getLastEditedMixtape);
+  const dispatch = useDispatch();
+  const [mixtapeName, setMixtapeName] = useState('');
 
   //each song comes from search result section
   //Has a nativeId, native source, and title
@@ -27,15 +32,25 @@ export default function EditTape() {
   //   ));
   // }, [mixtape]);
 
+  const handleSave = () => {
+    mixtape.createdBy = user.username;
+    mixtape.userId = user._id;
+    dispatch(saveMixtape(mixtape));
+  };
+
+  const handleNameChange = ({ target }) => {
+    mixtape.name = target.value;
+  };
+
   return (
     <>
-      <h2>Mixtape Title</h2>
+      <input type='text' placeholder='Mixtape Name' onChange={handleNameChange} value={mixtape.name} />
       <ul className="mixtape-songs">
         {mixtapeSongs ? mixtapeSongs : 'Oh no! An empty playlist! You should probably add some songs.'}
       </ul>
       {/* <p>each song should be reorderable within the list</p>
       <p>each song can be deleted</p> */}
-      <button className="button-primary">Save</button>
+      <button className="button-primary" onClick={handleSave}>Save</button>
       {/* <p>Save button should post playlist to DB</p>
       <p>Save button should redirect to the mixtape detail page</p> */}
     </>
