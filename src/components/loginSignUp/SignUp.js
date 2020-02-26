@@ -1,10 +1,12 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { setUserSignUp, userLoadingDone } from '../../actions/userActions';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect } from 'react-router-dom';
+import { isAuthenticated } from '../../selectors/userSelectors';
 
 export default function SignUp({ onClick }) {
   const dispatch = useDispatch();
+  const authenticated = useSelector(isAuthenticated);
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
 
@@ -21,10 +23,14 @@ export default function SignUp({ onClick }) {
   const handleSignupSumbit = (event) => {
     event.preventDefault();
     dispatch(setUserSignUp(username, password));
-    dispatch(userLoadingDone());
-    history.push('/app');
+    
   };
 
+  
+
+  if(authenticated) {
+    return <Redirect to="/app" />;
+  }
   return (
     <>
       <form className="authentication-form" onSubmit={handleSignupSumbit}>
