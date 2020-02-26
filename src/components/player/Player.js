@@ -30,6 +30,9 @@ export default function Player() {
     if(song.nativeSource === 'soundcloud') {
       setCurrentUrl(`https://api.soundcloud.com/tracks/${song.nativeId}`);
     }
+    if(song.nativeSource === 'voicememo') {
+      setCurrentUrl(`https://mixt-voice-recordings.s3.amazonaws.com/${song.nativeId}`);
+    }
   };
 
   const playPause = (action) => {
