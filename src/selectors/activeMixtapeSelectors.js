@@ -7,3 +7,7 @@ export const getActiveSong = state => {
 export const getPlaying = state => {
   return state.activeMixtape.playing;
 };
+
+export const getActiveLoading = state => {
+  return state.activeMixtape.loading;
+};

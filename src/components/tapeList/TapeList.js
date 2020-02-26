@@ -11,8 +11,8 @@ import { mixtapes as fakeMixtapes } from './fakeMixtapes';
 export default function TapeList() {
   const dispatch = useDispatch();
   const playing = useSelector(getPlaying);
-  // const mixtapes = useSelector(getUserMixtapes);
-  const mixtapes = fakeMixtapes;
+  const mixtapes = useSelector(getUserMixtapes);
+  // const mixtapes = fakeMixtapes;
 
   if(mixtapes.length === 0) {
     return (

@@ -13,3 +13,10 @@ export function postTape() {
     ]
   });
 }
+
+export function fetchTape() {
+  return Promise.resolve({
+    mixtapeName: 'mock tape',
+    songs: ['test mixtape']
+  });
+}
