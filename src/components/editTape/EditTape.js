@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MixtapeSong from '../mixtapeSong/MixtapeSong.js';
 import { getLastEditedMixtape } from '../../selectors/editedMixtapeSelectors.js';
@@ -9,7 +9,6 @@ export default function EditTape() {
   const user = useSelector(getUser);
   const mixtape = useSelector(getLastEditedMixtape);
   const dispatch = useDispatch();
-  const [mixtapeName, setMixtapeName] = useState('');
 
   //each song comes from search result section
   //Has a nativeId, native source, and title
@@ -39,7 +38,7 @@ export default function EditTape() {
   };
 
   const handleNameChange = ({ target }) => {
-    mixtape.name = target.value;
+    mixtape.mixtapeName = target.value;
   };
 
   return (
