@@ -13,6 +13,10 @@
     h2 {
       margin-top: 0;
     }
+
+    .play-pause:hover {
+      cursor: pointer;
+    }
   }
 
     .list-of-songs {

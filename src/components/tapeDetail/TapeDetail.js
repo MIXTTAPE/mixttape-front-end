@@ -1,8 +1,15 @@
 import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { setPlaying } from '../../actions/activeMixtapeActions';
+import { getPlaying } from '../../selectors/activeMixtapeSelectors';
 import { fakeMixtape as activeMixtape } from '../../../scratch/fake-mixtape';
-import { FaPlayCircle } from 'react-icons/fa';
+import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa';
 
 export default function TapeDetail() {
+
+  const dispatch = useDispatch();
+  const playing = useSelector(getPlaying);
+
   const songs = activeMixtape.songs.map((song) => {
     return (<li key={song.nativeId} className="song">
       <img src={song.thumbnailUrl} />
@@ -17,7 +24,7 @@ export default function TapeDetail() {
           <h2>{activeMixtape.mixtapeName}</h2>
           <h3>Total Tracks: {activeMixtape.songs.length}</h3>
           <p>created by: {activeMixtape.createdBy}</p>
-          <FaPlayCircle />
+          {playing ? <FaPauseCircle className="play-pause" onClick={() => dispatch(setPlaying())} /> : <FaPlayCircle className="play-pause" onClick={() => dispatch(setPlaying())} />}
         </div>
         <ul className="list-of-songs">
           {songs}
