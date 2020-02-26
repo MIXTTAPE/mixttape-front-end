@@ -11,8 +11,8 @@ import { mixtapes as fakeMixtapes } from './fakeMixtapes';
 export default function TapeList() {
   const dispatch = useDispatch();
   const playing = useSelector(getPlaying);
-  const mixtapes = useSelector(getUserMixtapes);
-  // const mixtapes = fakeMixtapes;
+  // const mixtapes = useSelector(getUserMixtapes);
+  const mixtapes = fakeMixtapes;
 
   if(mixtapes.length === 0) {
     return (
@@ -22,7 +22,7 @@ export default function TapeList() {
 
   const playMixtape = (mixtape) => {
     console.log(mixtape);
-    dispatch(setAsActive(mixtape));
+    dispatch(setAsActive(mixtape._id));
     dispatch(setPlaying());
   };
 
@@ -35,7 +35,7 @@ export default function TapeList() {
           <p>created by: {mixtape.createdBy}</p>
           <FaPauseCircle className="play-pause" onClick={() => dispatch(setPlaying())} />
           <FaPlayCircle className="play-pause" onClick={() => playMixtape(mixtape)} />
-          <p><Link to={`/app/mixtape/${mixtape._id}`}>View Mixtape</Link></p>
+          {/* <p><Link to={`/app/mixtape/${mixtape._id}`}>View Mixtape</Link></p> */}
         </div>
         <ul className="list-of-songs">
           {mixtape.songs.map((song) => {
