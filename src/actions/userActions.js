@@ -25,14 +25,23 @@ export const setUserSignUp = (username, password) => dispatch => {
     }));
 };
 
+
 export const setUserLogin = (username, password) => dispatch => {
   dispatch(setUserLoading());
   return login(username, password)
-    .then(user => dispatch({
-      type: SET_USER,
-      payload: user
-    })).catch(err => dispatch({
-      type: SET_AUTH_ERROR,
-      payload: err
-    }));
+    .then(user => {
+      dispatch({
+        type: SET_USER,
+        payload: user
+      });
+      dispatch({
+        type: SET_USER_MIXTAPES,
+        payload: user
+      }).catch(err => dispatch({
+        type: SET_AUTH_ERROR,
+        payload: err
+      }));
+    });
 };
+
+export const SET_USER_MIXTAPES = 'SET_USER_MIXTAPES';

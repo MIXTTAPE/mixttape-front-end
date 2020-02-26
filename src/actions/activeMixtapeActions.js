@@ -11,6 +11,11 @@ export const setAsActive = (id) => dispatch => {
     .then(() => dispatch((resetActiveLoading())));
 };
 
+export const setAsActiveNoFetch = (payload) => ({
+  type: SET_AS_ACTIVE,
+  payload
+});
+
 export const SET_SONG_INDEX = 'SET_SONG_INDEX';
 export const setSongIndex = (payload) => ({
   type: SET_SONG_INDEX,

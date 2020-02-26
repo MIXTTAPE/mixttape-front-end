@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { ReactPlayerComponent } from './ReactPlayer';
-import { fakeMixtape } from '../../../scratch/fake-mixtape';
-import { getPlaying } from '../../selectors/activeMixtapeSelectors';
+// import { fakeMixtape } from '../../../scratch/fake-mixtape';
+import { getPlaying, getActiveMixtape } from '../../selectors/activeMixtapeSelectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaPlayCircle, FaPauseCircle, FaForward, FaVolumeUp } from 'react-icons/fa';
 import { setPlaying } from '../../actions/activeMixtapeActions';
@@ -9,18 +9,19 @@ import { setPlaying } from '../../actions/activeMixtapeActions';
 export default function Player() {
   const dispatch = useDispatch();
   const playing = useSelector(getPlaying);
+  const activeMixtape = useSelector(getActiveMixtape);
 
   const [currentSong, setCurrentSong] = useState('Nothing Playing');
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
-  const [mixtape, setMixtape] = useState(fakeMixtape);
   const [currentUrl, setCurrentUrl] = useState('');
   const [currentVolume, setCurrentVolume] = useState(1);
 
   useEffect(() => {
-    //PUT HERE: use the setMixtape hook to set the activeMixtape to mixtape
-    buildUrl(mixtape.songs[currentSongIndex]);
-    setCurrentSong(mixtape.songs[currentSongIndex]);
-  }, [currentSongIndex]);
+    if(activeMixtape.songs.length > 0) {
+      buildUrl(activeMixtape.songs[currentSongIndex]);
+      setCurrentSong(activeMixtape.songs[currentSongIndex]);
+    }
+  }, [activeMixtape, currentSongIndex]);
 
   const buildUrl = (song) => {
     if(song.nativeSource === 'youtube') {
@@ -29,6 +30,9 @@ export default function Player() {
     if(song.nativeSource === 'soundcloud') {
       setCurrentUrl(`https://api.soundcloud.com/tracks/${song.nativeId}`);
     }
+    if(song.nativeSource === 'voicememo') {
+      setCurrentUrl(`https://mixt-voice-recordings.s3.amazonaws.com/${song.nativeId}`);
+    }
   };
 
   const playPause = (action) => {
@@ -36,7 +40,7 @@ export default function Player() {
   };
 
   const nextSong = () => {
-    if(currentSongIndex === mixtape.songs.length - 1) {
+    if(currentSongIndex === activeMixtape.songs.length - 1) {
       setCurrentSongIndex(0);
       playPause('stop');
       return;

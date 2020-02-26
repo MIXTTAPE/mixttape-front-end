@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { addSong } from '../../actions/editedMixtapeActions';
 
 const MediaRecorderFunc = () => {
   const [active, setActive] = useState(false);
@@ -7,6 +9,7 @@ const MediaRecorderFunc = () => {
   const [audioUrl, setAudioUrl] = useState(null);
   const [saved, setSaved] = useState(false);
   const [title, setTitle] = useState('');
+  const dispatch = useDispatch();
 
   useEffect(() => {
     prepareRecording();
@@ -69,7 +72,19 @@ const MediaRecorderFunc = () => {
     }).then(res => {
       setSaved(true);
       return res.json();
-    }).then(res => console.log(res));
+    }).then(recording => {
+      const recordingInfo = {
+        nativeId: recording.key,
+        nativeSource: 'voicememo',
+        buyLink: null,
+        thumbnailUrl: '../src/img/microphone-image.png',
+        isMemo: true,
+        title,
+
+      };
+      dispatch(addSong(recordingInfo));
+      setTitle('');
+    });
   };
 
   const handleSave = () => {
@@ -90,7 +105,7 @@ const MediaRecorderFunc = () => {
         }
         {(audioUrl && !saved) &&
           <>
-            <input type='text' value={title} onChange={() => setTitle(event.target.value)} />
+            <input type='text' placeholder='Recording Name' value={title} onChange={() => setTitle(event.target.value)} />
             <audio src={audioUrl} controls />
             <button onClick={postRecording}>Save Recording</button>
           </>

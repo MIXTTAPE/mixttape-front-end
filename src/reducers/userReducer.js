@@ -1,4 +1,4 @@
-import { SET_USER, SET_USER_LOADING, USER_LOADING_DONE, SET_AUTH_ERROR } from '../actions/userActions';
+import { SET_USER, SET_USER_LOADING, USER_LOADING_DONE, SET_USER_MIXTAPES, SET_AUTH_ERROR } from '../actions/userActions';
 import { SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 
 const initialState = {
@@ -17,20 +17,16 @@ export const userReducer = (state = initialState, action) => {
     case SET_USER:
       return { ...state, user: action.payload };
     case SAVE_MIXTAPE:
-      // if you find the mixtape in the mixtapes array:
-      console.log(state.mixtapes);
       if(state.mixtapes.includes(mixtape => mixtape._id === action.payload.nativeId)) {
-        
-        // return state with that entry update to reflect the new state
         return { ...state, mixtapes: state.mixtapes.map(mixtape => {
-          console.log(mixtape.nativeId, action.payload.nativeId);
           if(mixtape.nativeId === action.payload.nativeId) return action.payload;
         }) };
       }
-      // otherwise add the mixtape to the end of the list
       return { ...state, mixtapes: [...state.mixtapes, action.payload] };
     case SET_AUTH_ERROR:
       return { ...state, error: action.payload, loading: false };
+    case SET_USER_MIXTAPES:
+      return { ...state, mixtapes: action.payload.mixtapes };
     default:
       return state;
   }
