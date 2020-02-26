@@ -81,23 +81,23 @@ export default class MediaRecorder extends Component {
           <div>
             
             {(!this.state.active && !this.state.audioUrl) &&
-                <button onClick={this.startRecording}>Start Recording</button>
+              <button className="button-primary" onClick={this.startRecording}>Start Recording</button>
             }
             {(this.state.active && !this.state.audioUrl) &&
-                <button onClick={this.stopRecording}>Stop Recording</button>
+              <button className="button-voice" onClick={this.stopRecording}>Stop Recording</button>
             }
             {(this.state.audioUrl && !this.state.saved) && 
-                      <>
-                        <input type='text' value={this.state.title} onChange={() => this.setState({ title: event.target.value })} />
-                        <audio src={this.state.audioUrl} controls />
-                        <button onClick={() => this.postRecording()}>Save Recording</button>
-                      </>
+              <>
+                <input type='text' value={this.state.title} onChange={() => this.setState({ title: event.target.value })} />
+                <audio src={this.state.audioUrl} controls />
+                <button onClick={() => this.postRecording()}>Save Recording</button>
+              </>
             }
             {(this.state.audioUrl && this.state.saved) &&
-                      <>
-                        <h3>Recording saved!</h3>
-                        <button onClick={() => this.setState({ active: false, audioUrl: null, saved: false, audioChunks:[], audioBlob: null })} >Record Another</button>
-                      </>
+              <>
+                <h3>Recording saved!</h3>
+                <button className="button-voice" onClick={() => this.setState({ active: false, audioUrl: null, saved: false, audioChunks:[], audioBlob: null })} >Record Another</button>
+              </>
             }
           </div>
         </>

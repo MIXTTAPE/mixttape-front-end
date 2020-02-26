@@ -94,30 +94,28 @@ const MediaRecorderFunc = () => {
   };
 
   return (
-    <>
-      <div>
+    <div className="voice-memo-section">
 
-        {(!active && !audioUrl) &&
-          <button onClick={startRecording}>Start Recording</button>
-        }
-        {(active && !audioUrl) &&
-          <button onClick={stopRecording}>Stop Recording</button>
-        }
-        {(audioUrl && !saved) &&
+      {(!active && !audioUrl) &&
+          <button className="button-voice" onClick={startRecording}>Start Recording</button>
+      }
+      {(active && !audioUrl) &&
+          <button className="button-voice" onClick={stopRecording}>Stop Recording</button>
+      }
+      {(audioUrl && !saved) &&
           <>
             <input type='text' placeholder='Recording Name' value={title} onChange={() => setTitle(event.target.value)} />
             <audio src={audioUrl} controls />
-            <button onClick={postRecording}>Save Recording</button>
+            <button className="button-voice" onClick={postRecording}>Save Recording</button>
           </>
-        }
-        {(audioUrl && saved) &&
+      }
+      {(audioUrl && saved) &&
           <>
             <h3>Recording saved!</h3>
             <button onClick={handleSave} >Record Another</button>
           </>
-        }
-      </div>
-    </>
+      }
+    </div>
   );
 };
 
