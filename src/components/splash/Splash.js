@@ -2,7 +2,6 @@ import React, { useState } from 'react';
 import Login from '../loginSignUp/Login.js';
 import SignUp from '../loginSignUp/SignUp.js';
 import Illustration from '../../img/splash-illustration.svg';
-
 export default function Splash() {
   
   const [copyContent, setCopyContent] = useState('login');
