@@ -6,7 +6,6 @@ import { addSong } from '../../actions/editedMixtapeActions';
 
 export default function SearchResultSectionItem({ data }) {
   const dispatch = useDispatch();
-
   const handleAdd = () => {
     dispatch(addSong(data));
   };
