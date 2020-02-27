@@ -23,7 +23,7 @@ export const userReducer = (state = initialState, action) => {
       //     if(mixtape.nativeId === action.payload.nativeId) return action.payload;
       //   }) };
       // }
-      return { ...state, mixtapes: [...state.mixtapes, action.payload] };
+      return { ...state, mixtapes: [...state.mixtapes, action.payload], savedMixtapeFlag: !state.savedMixtapeFlag };
     case SET_AUTH_ERROR:
       return { ...state, error: action.payload, loading: false };
     case SET_USER_MIXTAPES:
