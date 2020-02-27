@@ -48,7 +48,7 @@ export default function TapeList() {
           <p>created by: {mixtape.createdBy}</p>
           <FaPlayCircle className="play-pause" onClick={() => playMixtape(mixtape)} />
           <p><Link to={`/app/mixtape/${mixtape._id}`}>View Mixtape</Link></p>
-          <a onClick={() => handleDelete(mixtape._id)}>Delete Mixtape</a>
+          <p className="button-delete"><a onClick={() => handleDelete(mixtape._id)}>Delete Mixtape</a></p>
         </div>
         <ul className="list-of-songs">
           {mixtape.songs.map((song, i) => {
