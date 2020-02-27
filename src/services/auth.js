@@ -7,6 +7,9 @@ export const signUp = (username, password) => {
 export const login = (username, password) => {
   return request('/auth/login', 'POST', { username, password });
 };
+export const logout = () => {
+  return request('/auth/logout', 'POST');
+};
 
 export const verify = () => {
   return request('/auth/verify', 'GET');
