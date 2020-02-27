@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { isAuthenticated } from '../../selectors/userSelectors';
 import Login from '../loginSignUp/Login.js';
 import SignUp from '../loginSignUp/SignUp.js';
 import Illustration from '../../img/splash-illustration.svg';
 export default function Splash() {
   
   const [copyContent, setCopyContent] = useState('login');
-
+  const authenticated = useSelector(isAuthenticated);
+  console.log(authenticated);
   const handleClick = (comp) => {
     if(comp === 'login') setCopyContent('login');
     if(comp === 'signup') setCopyContent('signup');

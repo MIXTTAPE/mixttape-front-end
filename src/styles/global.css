@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,400&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:700&display=swap');
 
-$pink: #FF6A6A;
+$pink: lightblue;
 $white: #FAFAFA;
 $black: #282828;
 $light-gray: #AAAAAA;
@@ -73,10 +73,22 @@ p {
   background: none;
 }
 
+.button-secondary-white {
+  color: $white;
+  border: solid 3px $white;
+}
+
 .button-secondary:hover {
   transform: scale(1.05);
   background-color: $pink;
   color: $white;
+  cursor: pointer;
+}
+
+.button-secondary-white:hover {
+  transform: scale(1.05);
+  background-color: $white;
+  color: $pink;
   cursor: pointer;
 }
 
