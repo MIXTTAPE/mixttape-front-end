@@ -10,6 +10,7 @@ export const userLoadingDone = () => ({
   type: USER_LOADING_DONE
 });
 
+export const SET_AUTH_ERROR = 'SET_AUTH_ERROR';
 export const SET_USER = 'SET_USER';
 
 export const setUserSignUp = (username, password) => dispatch => {
@@ -19,6 +20,7 @@ export const setUserSignUp = (username, password) => dispatch => {
       type: SET_USER,
       payload: user
     }));
+    
 };
 
 
@@ -34,7 +36,10 @@ export const setUserLogin = (username, password) => dispatch => {
         type: SET_USER_MIXTAPES,
         payload: user
       });
-    });
+    }).catch(err => dispatch({
+      type: SET_AUTH_ERROR,
+      payload: err
+    }));
 };
 
 export const SET_USER_MIXTAPES = 'SET_USER_MIXTAPES';

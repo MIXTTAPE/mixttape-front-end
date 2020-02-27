@@ -77,10 +77,9 @@ const MediaRecorderFunc = () => {
         nativeId: recording.key,
         nativeSource: 'voicememo',
         buyLink: null,
-        thumbnailUrl: '../src/img/microphone-image.png',
+        thumbnailUrl: '/src/img/microphone-image.png',
         isMemo: true,
-        title,
-
+        title
       };
       dispatch(addSong(recordingInfo));
       setTitle('');
@@ -95,7 +94,6 @@ const MediaRecorderFunc = () => {
 
   return (
     <div className="voice-memo-section">
-
       {(!active && !audioUrl) &&
           <button className="button-voice" onClick={startRecording}>Start Recording</button>
       }

@@ -25,7 +25,7 @@ export default function TapeList() {
     return <Redirect to='/' />;
   }
 
-  if(mixtapes.length === 0) {
+  if(!mixtapes) {
     return (
       <h2>Hmm.... looks like you don&apos;t have any mixtapes. Create one?</h2>
     );
@@ -48,8 +48,8 @@ export default function TapeList() {
           <p><Link to={`/app/mixtape/${mixtape._id}`}>View Mixtape</Link></p>
         </div>
         <ul className="list-of-songs">
-          {mixtape.songs.map((song) => {
-            return (<li key={song.nativeId} className="song">
+          {mixtape.songs.map((song, i) => {
+            return (<li key={i} className="song">
               <img src={song.thumbnailUrl} />
               {song.title}
             </li>);

@@ -6,9 +6,15 @@ import { deleteSong } from '../../actions/editedMixtapeActions';
 
 export default function mixtapeSong({ data }) {
   const dispatch = useDispatch();
-
-  const handleDelete = ({ target }) => {
-    dispatch(deleteSong(target.value));
+  const handleDelete = ({ currentTarget }) => {
+    dispatch(deleteSong(currentTarget.value));
+    if(currentTarget.value.slice(currentTarget.value.length - 5) === '.webm') {
+      return fetch('http://localhost:7891/api/v1/voice-recordings', {
+        method: 'delete',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ filename: currentTarget.value })
+      }).then(res => res);
+    }
   };
 
   return (
@@ -27,6 +33,6 @@ mixtapeSong.propTypes = {
     title: PropTypes.string.isRequired,
     nativeSource: PropTypes.string.isRequired,
     nativeId: PropTypes.string.isRequired,
-    thumbnailUrl: PropTypes.string.isRequired
+    thumbnailUrl: PropTypes.string
   }).isRequired
 };

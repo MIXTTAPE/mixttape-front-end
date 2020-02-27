@@ -10,6 +10,7 @@ export default function Player() {
   const dispatch = useDispatch();
   const playing = useSelector(getPlaying);
   const activeMixtape = useSelector(getActiveMixtape);
+  // const activeMixtape = fakeMixtape;
 
   const [currentSong, setCurrentSong] = useState('Nothing Playing');
   const [currentSongIndex, setCurrentSongIndex] = useState(0);
@@ -52,6 +53,12 @@ export default function Player() {
     setCurrentVolume(target.value);
   };
 
+  const renderSongTitle = (songtitle) => {
+    if(songtitle.length < 30) return songtitle;
+    return `${songtitle.substr(0, 30)}...`;
+  };
+
+
   return (
     <>
       <div style={{ display: 'none' }}>
@@ -61,7 +68,7 @@ export default function Player() {
         <div className="player-container">
           <div className="currently-playing">
             <img className="margin-right-small current-song-thumb" src={currentSong.thumbnailUrl} />
-            <p className="track-title">{currentSong.title}</p>
+            <p className="track-title">{currentSong.title ? renderSongTitle(currentSong.title) : ''}</p>
           </div>
           <div className="player-controls">
             <button onClick={() => playPause()} className="play-pause-button margin-right-small">{playing ? <FaPauseCircle /> : <FaPlayCircle />}</button>
