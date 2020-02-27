@@ -1,7 +1,6 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,400&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:700&display=swap');
 
-$pink: rgb( 51, 103, 214 );
 $blue: rgb( 51, 103, 214 );
 $white: #FAFAFA;
 $black: #4a4a4a;
@@ -61,7 +60,7 @@ p {
 }
 
 .button-primary {
-  background-color: $pink;
+  background-color: $blue;
   color: $white;
 }
 
@@ -105,8 +104,8 @@ p {
 }
 
 .button-secondary {
-  border: solid 3px $pink;
-  color: $pink;
+  border: solid 3px $blue;
+  color: $blue;
   background: none;
 }
 
@@ -117,7 +116,7 @@ p {
 
 .button-secondary:hover {
   transform: scale(1.05);
-  background-color: $pink;
+  background-color: $blue;
   color: $white;
   cursor: pointer;
 }
@@ -125,14 +124,14 @@ p {
 .button-secondary-white:hover {
   transform: scale(1.05);
   background-color: $white;
-  color: $pink;
+  color: $blue;
   cursor: pointer;
 }
 
 .button-add {
   background: none;
   border: 0;
-  color: $pink;
+  color: $blue;
   height: 13px;
 }
 
