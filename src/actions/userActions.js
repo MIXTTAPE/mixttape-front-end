@@ -32,17 +32,18 @@ export const setUserLogin = (username, password) => dispatch => {
         type: SET_USER,
         payload: user
       });
-      dispatch({
-        type: SET_USER_MIXTAPES,
-        payload: user
-      });
-    }).catch(err => dispatch({
-      type: SET_AUTH_ERROR,
-      payload: err
-    }));
+    }).catch(err => {
+      if(err) {
+        dispatch({
+          type: SET_AUTH_ERROR,
+          payload: err
+        });
+      }
+    });
 };
 
 export const SET_USER_MIXTAPES = 'SET_USER_MIXTAPES';
+export const SET_USER_ERROR = 'SET_USER_ERROR';
 
 export const verifyUser = () => dispatch => {
   dispatch(setUserLoading());
@@ -55,8 +56,8 @@ export const verifyUser = () => dispatch => {
     })
     .catch(() => {
       dispatch({
-        type: SET_USER,
-        payload: { username: 'none' }
+        type: SET_USER_ERROR,
+        payload: true
       });
     });
 };
