@@ -15,6 +15,7 @@
 
     .mixtape-detail {
       position: relative;
+      max-width: 300px;
       
     h2 {
       margin-top: 0;
