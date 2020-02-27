@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUserMixtapes, getUserLoading, isAuthenticated, getUser } from '../../selectors/userSelectors';
+import { getUserMixtapes, getUserLoading, isAuthenticated } from '../../selectors/userSelectors';
 import { setPlaying, setAsActiveNoFetch } from '../../actions/activeMixtapeActions';
-import { FaPauseCircle, FaPlayCircle } from 'react-icons/fa';
+import { FaPlayCircle } from 'react-icons/fa';
 import { verifyUser, deleteUserTape } from '../../actions/userActions';
 
 export default function TapeList() {
@@ -17,7 +17,11 @@ export default function TapeList() {
   }, []);
 
   if(userLoading){
-    return <h3>Loading!</h3>;
+    return (
+      <div className="empty-section">
+        <h2>Loading...</h2>
+      </div>
+    );
   }
   
   if(!authenticated) {
@@ -26,7 +30,10 @@ export default function TapeList() {
 
   if(!mixtapes || mixtapes.length === 0) {
     return (
-      <h2>Hmm.... looks like you don&apos;t have any mixtapes. Create one?</h2>
+      <div className="empty-section">
+        <h3>Hmm.... looks like you don&apos;t have any mixtapes. Create one?</h3>
+      </div>
+      
     );
   }
 
@@ -36,6 +43,7 @@ export default function TapeList() {
   };
 
   const handleDelete = (mixtape) => {
+    console.log(mixtape._id);
     dispatch(deleteUserTape(mixtape._id));
   };
 
