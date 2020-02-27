@@ -40,9 +40,9 @@ describe('activeMixtape Selectors', () => {
               thumbnail: ''
             }
           ],
-          currentSongIndex: 2,
           createdBy: 'josephtatum'
-        }
+        },
+        currentSongIndex: 2
       },
       lastEditedMixtape: {
         loading: true,
@@ -74,7 +74,6 @@ describe('activeMixtape Selectors', () => {
           thumbnail: ''
         }
       ],
-      currentSongIndex: 2,
       createdBy: 'josephtatum'
     });
   });
