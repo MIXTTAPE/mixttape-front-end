@@ -14,7 +14,7 @@ export default function TapeList() {
   const mixtapes = useSelector(getUserMixtapes);
   // const mixtapes = fakeMixtapes;
 
-  if(mixtapes.length === 0) {
+  if(!mixtapes) {
     return (
       <h2>Hmm.... looks like you don&apos;t have any mixtapes. Create one?</h2>
     );
