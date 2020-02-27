@@ -1,4 +1,4 @@
-import { SET_USER_LOADING, SET_USER, USER_LOADING_DONE, userLoadingDone } from '../actions/userActions';
+import { SET_USER_LOADING, SET_USER, USER_LOADING_DONE, userLoadingDone, SET_DELETE_TAPE } from '../actions/userActions';
 import { saveMixtape, SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 import { userReducer } from './userReducer';
 
@@ -137,6 +137,110 @@ describe('userReducer', () => {
               buylink: ''
             }
           ]
+        }
+      ]
+    });
+  });
+
+  it('can handle a DELETE_MIXTAPE case', () => {
+    const state = {
+      loading: false,
+      username: 'josephtatum',
+      mixtapes: [
+        {
+          _id: '5e58144da205cba1fe5424b0',
+          mixtapeName: 'ABBA',
+          songs: [
+            {
+              tags: [],
+              _id: '5e58144da205cba1fe5424b1',
+              nativeId: 'xFrGuyw1V8s',
+              nativeSource: 'youtube',
+              title: 'Abba - Dancing Queen (Official Video)',
+              buyLink: null,
+              thumbnailUrl: 'https://i.ytimg.com/vi/xFrGuyw1V8s/mqdefault.jpg',
+              isMemo: false
+            },
+            {
+              tags: [],
+              _id: '5e58144da205cba1fe5424b2',
+              nativeId: 'iyIOl-s7JTU',
+              nativeSource: 'youtube',
+              title: 'ABBA - The Winner Takes It All (1980) HD 0815007',
+              buyLink: null,
+              thumbnailUrl: 'https://i.ytimg.com/vi/iyIOl-s7JTU/mqdefault.jpg',
+              isMemo: false
+            }
+          ],
+          createdBy: 'josephtatum',
+          userId: '5e580fa7a205cba1fe54248d',
+          __v: 0
+        },
+        {
+          _id: '5e58144da205cba1fe5424b1',
+          mixtapeName: 'ABBA',
+          songs: [
+            {
+              tags: [],
+              _id: '5e58144da205cba1fe5424b1',
+              nativeId: 'xFrGuyw1V8s',
+              nativeSource: 'youtube',
+              title: 'Abba - Dancing Queen (Official Video)',
+              buyLink: null,
+              thumbnailUrl: 'https://i.ytimg.com/vi/xFrGuyw1V8s/mqdefault.jpg',
+              isMemo: false
+            },
+            {
+              tags: [],
+              _id: '5e58144da205cba1fe5424b2',
+              nativeId: 'iyIOl-s7JTU',
+              nativeSource: 'youtube',
+              title: 'ABBA - The Winner Takes It All (1980) HD 0815007',
+              buyLink: null,
+              thumbnailUrl: 'https://i.ytimg.com/vi/iyIOl-s7JTU/mqdefault.jpg',
+              isMemo: false
+            }
+          ],
+          createdBy: 'josephtatum',
+          userId: '5e580fa7a205cba1fe54248d',
+          __v: 0
+        }
+      ]
+    };
+    const payload = '5e58144da205cba1fe5424b1';
+    const newState = userReducer(state, { type: SET_DELETE_TAPE, payload });
+    expect(newState).toEqual({
+      loading: false,
+      username: 'josephtatum',
+      mixtapes: [
+        {
+          _id: '5e58144da205cba1fe5424b0',
+          mixtapeName: 'ABBA',
+          songs: [
+            {
+              tags: [],
+              _id: '5e58144da205cba1fe5424b1',
+              nativeId: 'xFrGuyw1V8s',
+              nativeSource: 'youtube',
+              title: 'Abba - Dancing Queen (Official Video)',
+              buyLink: null,
+              thumbnailUrl: 'https://i.ytimg.com/vi/xFrGuyw1V8s/mqdefault.jpg',
+              isMemo: false
+            },
+            {
+              tags: [],
+              _id: '5e58144da205cba1fe5424b2',
+              nativeId: 'iyIOl-s7JTU',
+              nativeSource: 'youtube',
+              title: 'ABBA - The Winner Takes It All (1980) HD 0815007',
+              buyLink: null,
+              thumbnailUrl: 'https://i.ytimg.com/vi/iyIOl-s7JTU/mqdefault.jpg',
+              isMemo: false
+            }
+          ],
+          createdBy: 'josephtatum',
+          userId: '5e580fa7a205cba1fe54248d',
+          __v: 0
         }
       ]
     });

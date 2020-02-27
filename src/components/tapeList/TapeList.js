@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUserMixtapes, getUserLoading, isAuthenticated, getUser } from '../../selectors/userSelectors';
+import { getUserMixtapes, getUserLoading, isAuthenticated } from '../../selectors/userSelectors';
 import { setPlaying, setAsActiveNoFetch } from '../../actions/activeMixtapeActions';
-import { FaPauseCircle, FaPlayCircle } from 'react-icons/fa';
+import { FaPlayCircle } from 'react-icons/fa';
 import { verifyUser, deleteUserTape } from '../../actions/userActions';
 
 export default function TapeList() {
@@ -36,6 +36,7 @@ export default function TapeList() {
   };
 
   const handleDelete = (mixtape) => {
+    console.log(mixtape._id);
     dispatch(deleteUserTape(mixtape._id));
   };
 
