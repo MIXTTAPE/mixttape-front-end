@@ -1,4 +1,4 @@
-import { SET_USER_LOADING, SET_USER, USER_LOADING_DONE, userLoadingDone, SET_DELETE_TAPE } from '../actions/userActions';
+import { SET_USER_LOADING, SET_USER, USER_LOADING_DONE, userLoadingDone, SET_DELETE_TAPE, SET_AUTH_ERROR, SET_USER_MIXTAPES } from '../actions/userActions';
 import { saveMixtape, SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 import { userReducer } from './userReducer';
 
@@ -243,6 +243,51 @@ describe('userReducer', () => {
           __v: 0
         }
       ]
+    });
+  });
+
+  it('should be able to handle the SET_AUTH_ERROR case', () => {
+    const action = { type: SET_AUTH_ERROR, payload: 'FAIL' };
+    const initialState = {
+      user: { username: 'test' },
+      loading: true,
+      mixtapes: [],
+      error: ''
+    };
+    const newState = userReducer(initialState, action);
+
+    expect(newState).toEqual({
+      user: { username: 'test' },
+      loading: false,
+      mixtapes: [],
+      error: 'FAIL'
+    });
+  });
+
+  it('should be able to handle the SET_USER_MIXTAPES case', () => {
+    const initialState = {
+      user: { username: 'test', mixtapes: [{
+        mixtapeName: 'testTape',
+        songs: [{ name: 'this is a song' }]
+      }] },
+      loading: true,
+      error: '',
+      mixtapes: []
+    };
+    const action = { type: SET_USER_MIXTAPES, payload: initialState.user };
+    const newState = userReducer(initialState, action);
+
+    expect(newState).toEqual({
+      user: { username: 'test', mixtapes: [{
+        mixtapeName: 'testTape',
+        songs: [{ name: 'this is a song' }]
+      }] },
+      loading: true,
+      error: '',
+      mixtapes: [{
+        mixtapeName: 'testTape',
+        songs: [{ name: 'this is a song' }]
+      }]
     });
   });
 });
