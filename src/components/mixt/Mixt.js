@@ -10,7 +10,7 @@ import '../../styles/styles.css';
 export default function Mixt() {
 
   return (
-    <Router>
+    <>
       <Header />  
       <Switch> 
         <Route path="/app/mixtapes" component={TapeList} />
@@ -18,6 +18,6 @@ export default function Mixt() {
         <Route path="/app/mixtape/:id" component={TapeDetail} />
       </Switch>
       <Player />
-    </Router>
+    </>
   );
 }

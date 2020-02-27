@@ -13,7 +13,7 @@ export const userReducer = (state = initialState, action) => {
     case USER_LOADING_DONE:
       return { ...state, loading: false };
     case SET_USER:
-      return { ...state, user: action.payload };
+      return { ...state, user: action.payload, loading: false, mixtapes: action.payload.mixtapes };
     case SAVE_MIXTAPE:
       if(state.mixtapes.includes(mixtape => mixtape._id === action.payload.nativeId)) {
         return { ...state, mixtapes: state.mixtapes.map(mixtape => {
