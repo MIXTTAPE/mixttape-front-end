@@ -14,13 +14,20 @@
     margin: 0 15px 15px;
 
     .mixtape-detail {
-
+      position: relative;
+      
     h2 {
       margin-top: 0;
     }
 
     .play-pause:hover {
       cursor: pointer;
+    }
+
+    .button-delete {
+      position: absolute;
+      bottom: 0;
+      font-size: 14px;
     }
   }
 
