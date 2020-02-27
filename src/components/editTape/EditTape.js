@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MixtapeSong from '../mixtapeSong/MixtapeSong.js';
 import { getLastEditedMixtape } from '../../selectors/editedMixtapeSelectors.js';
@@ -13,8 +13,14 @@ export default function EditTape() {
   const history = useHistory();
   const mixtapes = useSelector(getUserMixtapes);
 
-  //each song comes from search result section
-  //Has a nativeId, native source, and title
+  const firstRender = useRef(true);
+  useEffect(() => {
+    if(firstRender.current === false) {
+      history.replace(`/app/mixtape/${mixtapes[mixtapes.length - 1]._id}`);
+    } else {
+      firstRender.current = false;
+    }
+  }, [mixtapes]);
   
   let mixtapeSongs;
   if(mixtape.songs.length !== 0){
@@ -25,21 +31,11 @@ export default function EditTape() {
     ));
   }
 
-  // let mixtapeSongs;
-  // useEffect(() => {
-  //   mixtapeSongs = mixtape.songs.map(song => (
-  //     <li key={song.nativeId}>
-  //       <MixtapeSong data={song} />
-  //     </li>
-  //   ));
-  // }, [mixtape]);
-
   const handleSave = () => {
     mixtape.createdBy = user.username;
     mixtape.userId = user._id;
     dispatch(saveMixtape(mixtape));
     dispatch(mixtapeLoadingDone());
-    history.replace(`/app/mixtape/${mixtapes[mixtapes.length - 1]._id}`);
   };
 
   const handleNameChange = ({ target }) => {
