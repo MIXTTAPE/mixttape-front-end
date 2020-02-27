@@ -19,6 +19,8 @@ export const editedMixtapeReducer = (state = initialState, action) => {
       return { ...state, songs: state.songs.filter(item => item.nativeId !== action.payload) };
     case SET_AS_EDITED:
       return action.payload;
+    case SAVE_MIXTAPE:
+      return initialState;
     default:
       return state;
   }
