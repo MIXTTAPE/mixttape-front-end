@@ -1,22 +1,19 @@
 import React, { useState, useEffect } from 'react';
 import { ReactPlayerComponent } from './ReactPlayer';
-// import { fakeMixtape } from '../../../scratch/fake-mixtape';
-import { getPlaying, getActiveMixtape } from '../../selectors/activeMixtapeSelectors';
+import { getPlaying, getActiveMixtape, getSongIndex } from '../../selectors/activeMixtapeSelectors';
 import { useDispatch, useSelector } from 'react-redux';
 import { FaPlayCircle, FaPauseCircle, FaForward, FaVolumeUp } from 'react-icons/fa';
-import { setPlaying } from '../../actions/activeMixtapeActions';
+import { setPlaying, setSongIndex } from '../../actions/activeMixtapeActions';
 
 export default function Player() {
   const dispatch = useDispatch();
   const playing = useSelector(getPlaying);
   const activeMixtape = useSelector(getActiveMixtape);
-  // const activeMixtape = fakeMixtape;
+  const currentSongIndex = useSelector(getSongIndex);
 
   const [currentSong, setCurrentSong] = useState('Nothing Playing');
-  const [currentSongIndex, setCurrentSongIndex] = useState(0);
   const [currentUrl, setCurrentUrl] = useState('');
   const [currentVolume, setCurrentVolume] = useState(1);
-
   useEffect(() => {
     if(activeMixtape.songs.length > 0) {
       buildUrl(activeMixtape.songs[currentSongIndex]);
@@ -42,11 +39,11 @@ export default function Player() {
 
   const nextSong = () => {
     if(currentSongIndex === activeMixtape.songs.length - 1) {
-      setCurrentSongIndex(0);
+      dispatch(setSongIndex(0));
       playPause('stop');
       return;
     }
-    setCurrentSongIndex(currentSongIndex + 1);
+    dispatch(setSongIndex(currentSongIndex + 1));
   };
 
   const volumeControl = ({ target }) => {
