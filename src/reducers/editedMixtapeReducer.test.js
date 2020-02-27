@@ -1,4 +1,4 @@
-import { addSong, deleteSong, setAsEdited, SET_MIXTAPE_LOADING, MIXTAPE_LOADING_DONE } from '../actions/editedMixtapeActions';
+import { addSong, deleteSong, setAsEdited, SET_MIXTAPE_LOADING, MIXTAPE_LOADING_DONE, SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 import { editedMixtapeReducer } from './editedMixtapeReducer.js';
 
 describe('editedMixtapeReducer', () => {
@@ -102,7 +102,18 @@ describe('editedMixtapeReducer', () => {
     };
     const newState = editedMixtapeReducer(state, payload);
     expect(newState).toEqual({});
-
   });
 
+  it('handles the SAVE_MIXTAPE action', () => {
+    const initialState = { 
+      mixtapeName: 'blah', 
+      songs: ['some songs'], 
+      createdBy: 'me', 
+      userId: '1' 
+    };
+    const action = { type: SAVE_MIXTAPE };
+    const newState = editedMixtapeReducer(initialState, action);
+
+    expect(newState).toEqual({ mixtapeName: '', songs: [], createdBy: '', userId: '' });
+  });
 });
