@@ -18,7 +18,11 @@ export default function Create() {
   }, []);
 
   if(userLoading){
-    return <h3>Loading!</h3>;
+    return (
+      <div className="empty-section">
+        <h2>Loading...</h2>;
+      </div>
+    );
   }
 
   if(!authenticated) {

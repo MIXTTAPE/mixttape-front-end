@@ -20,7 +20,11 @@ export default function TapeDetail() {
   }, []);
 
   if(loading) {
-    return <h2> LOADING </h2>;
+    return (
+      <div className="empty-section">
+        <h2>Loading...</h2>;
+      </div>
+    );
   }
 
   const songs = activeMixtape.songs.map((song, i) => {
