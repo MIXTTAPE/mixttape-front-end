@@ -57,17 +57,18 @@
   background: none;
 }
 
-.button-secondary-white {
-  color: $white;
-  border: solid 3px $white;
-}
-
 .button-secondary:hover {
   transform: scale(1.05);
   background-color: $blue;
   color: $white;
   cursor: pointer;
 }
+
+.button-secondary-white {
+  color: $white;
+  border: solid 3px $white;
+}
+
 
 .button-secondary-white:hover {
   transform: scale(1.05);
@@ -83,7 +84,11 @@
   height: 13px;
 }
 
-
+.button-delete {
+  position: absolute;
+  bottom: 0;
+  font-size: 14px;
+}
 
 .button-add:hover,
 .button-delete:hover{
