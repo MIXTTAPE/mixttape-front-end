@@ -1,4 +1,5 @@
 import { signUp, login, verify, logout } from '../services/auth';
+import { deleteTape } from '../services/mixtapeApi';
 
 export const SET_USER_LOADING = 'SET_USER_LOADING';
 export const setUserLoading = () => ({
@@ -74,6 +75,19 @@ export const verifyUser = () => dispatch => {
       dispatch({
         type: SET_USER_ERROR,
         payload: true
+      });
+    });
+};
+
+export const SET_DELETE_TAPE = 'SET_DELETE_TAPE';
+
+export const deleteUserTape = (id) => dispatch => {
+  dispatch(setUserLoading());
+  return deleteTape(id)
+    .then(tape => {
+      dispatch({
+        type: SET_DELETE_TAPE,
+        payload: tape
       });
     });
 };

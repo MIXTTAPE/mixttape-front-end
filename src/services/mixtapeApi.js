@@ -9,5 +9,5 @@ export const fetchTape = (mixtapeId) => {
 };
 
 export const deleteTape = (mixtapeId) => {
-  return request(`/mixtapes/${mixtapeId}/`, 'POST', mixtapeId);
+  return request(`/mixtapes/${mixtapeId}/`, 'DELETE');
 };
