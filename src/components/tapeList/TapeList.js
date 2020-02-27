@@ -19,7 +19,7 @@ export default function TapeList() {
   if(userLoading){
     return (
       <div className="empty-section">
-        <h2>Loading...</h2>;
+        <h2>Loading...</h2>
       </div>
     );
   }
