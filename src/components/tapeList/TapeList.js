@@ -6,6 +6,7 @@ import { setPlaying, setAsActiveNoFetch } from '../../actions/activeMixtapeActio
 import { getPlaying } from '../../selectors/activeMixtapeSelectors';
 import { FaPauseCircle, FaPlayCircle } from 'react-icons/fa';
 import { verifyUser } from '../../actions/userActions';
+import { deleteTape } from '../../services/mixtapeApi';
 
 export default function TapeList() {
   const dispatch = useDispatch();
@@ -36,6 +37,10 @@ export default function TapeList() {
     dispatch(setPlaying());
   };
 
+  const handleDelete = (mixtapeId) => {
+    deleteTape(mixtapeId);
+  };
+
   const mixtapeCards = mixtapes.map((mixtape, i) => {
     return (
       <li className="mixtape-detail-container box-shadow" key={i}>
@@ -55,6 +60,7 @@ export default function TapeList() {
             </li>);
           })}
         </ul>
+        <button onClick={handleDelete}>Delete</button>
       </li>
     );
   });
