@@ -14,9 +14,9 @@ export default function TapeList() {
   const user = useSelector(getUser);
   // const mixtapes = fakeMixtapes;
 
-  useEffect(() => {
-    dispatch(verifyUser());
-  }, []);
+  // useEffect(() => {
+  //   dispatch(verifyUser());
+  // }, []);
 
   if(userLoading){
     return <h3>Loading!</h3>;

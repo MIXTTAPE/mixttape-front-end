@@ -1,4 +1,4 @@
-import { signUp, login, verify } from '../services/auth';
+import { signUp, login, verify, logout } from '../services/auth';
 
 export const SET_USER_LOADING = 'SET_USER_LOADING';
 export const setUserLoading = () => ({
@@ -24,6 +24,7 @@ export const setUserSignUp = (username, password) => dispatch => {
 };
 
 
+
 export const setUserLogin = (username, password) => dispatch => {
   dispatch(setUserLoading());
   return login(username, password)
@@ -40,6 +41,21 @@ export const setUserLogin = (username, password) => dispatch => {
       type: SET_AUTH_ERROR,
       payload: err
     }));
+};
+
+export const userLogout = (username, password) => dispatch => {
+  dispatch(setUserLoading());
+  return logout(username, password)
+    .then(user => {
+      dispatch({
+        type: SET_USER,
+        payload: user
+      });
+      dispatch({
+        type: SET_USER_MIXTAPES,
+        payload: user
+      });
+    });
 };
 
 export const SET_USER_MIXTAPES = 'SET_USER_MIXTAPES';
