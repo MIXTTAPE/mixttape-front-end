@@ -192,5 +192,5 @@ export function deleteTape() {
       createdBy: '',
       userId: ''
     }
-  })
+  });
 }
