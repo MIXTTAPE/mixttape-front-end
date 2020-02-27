@@ -5,8 +5,8 @@
   .search-songs-section {
     margin: 15px;
     padding: 15px;
-    background-color: $blue;
-    color: $white;
+    background: $lightest-gray-gradient;
+    color: $black;
     width: 450px;
     height: 485px;
     border-radius: 5px;
@@ -99,4 +99,6 @@
   .result-thumb {
     width:25px
   }
+
+
 }

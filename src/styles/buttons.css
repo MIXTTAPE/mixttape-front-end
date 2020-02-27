@@ -96,18 +96,22 @@
 }
 
 .button-voice {
-    border: 2px solid $white;
+    border: 2px solid $blue;
     padding: 5px 20px;
     border-radius: 100px;
     background: none;
-    color: $white;
+    color: $blue;
     font-size: 14px;
     transition: $transition;
 }
 
 .button-voice:hover {
   transform: scale(1.05);
-  background: $white;
-  color: $black;
+  background: $blue;
+  color: $white;
   cursor: pointer;
+}
+
+.button-delete-from-list {
+
 }

@@ -102,7 +102,7 @@ const MediaRecorderFunc = () => {
       }
       {(audioUrl && !saved) &&
           <>
-            <input type='text' placeholder='Recording Name' value={title} onChange={() => setTitle(event.target.value)} />
+            <input className="box-shadow" type='text' placeholder='Recording Name' value={title} onChange={() => setTitle(event.target.value)} />
             <audio src={audioUrl} controls />
             <button className="button-voice" onClick={postRecording}>Save Recording</button>
           </>
