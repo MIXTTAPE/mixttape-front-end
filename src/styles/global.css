@@ -1,9 +1,10 @@
 @import url('https://fonts.googleapis.com/css?family=Noto+Sans+JP:300,400&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Comfortaa:700&display=swap');
 
-$pink: #004798;
+$pink: rgb( 51, 103, 214 );
+$blue: rgb( 51, 103, 214 );
 $white: #FAFAFA;
-$black: #282828;
+$black: #4a4a4a;
 $light-gray: #AAAAAA;
 $lightest-gray: #fafafa;
 $lightest-gray-gradient: linear-gradient(180deg, rgba(255,255,255,1) 0%, rgba(239,239,239,1) 100%);
@@ -69,6 +70,40 @@ p {
   cursor: pointer;
 }
 
+.button-primary-sm {
+  background-color: $blue;
+  color: $white;
+  text-align: center;
+  border: 0;
+  padding: 10px 15px;
+  border-radius: 100px;
+  font-size: 14px;
+  transition: $transition;
+}
+
+.button-primary-sm:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.button-secondary-sm {
+  background-color: none;
+  color: $blue;
+  text-align: center;
+  border: 3px solid $blue;
+  padding: 10px 15px;
+  border-radius: 100px;
+  font-size: 14px;
+  transition: $transition;
+}
+
+.button-secondary-sm:hover {
+  background-color: $blue;
+  color: $white;
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
 .button-secondary {
   border: solid 3px $pink;
   color: $pink;
@@ -101,12 +136,7 @@ p {
   height: 13px;
 }
 
-.button-delete {
-  background: none;
-  border: 0;
-  color: $black;
-  height: 13px;
-}
+
 
 .button-add:hover,
 .button-delete:hover{

@@ -11,7 +11,7 @@ nav {
         color: $white;
       }
       a:hover {
-        color: $pink;
+        text-decoration: underline;
       }
     }
   }

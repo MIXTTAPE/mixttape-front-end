@@ -19,6 +19,7 @@
       
     h2 {
       margin-top: 0;
+      color: $blue;
     }
 
     .play-pause:hover {

@@ -21,3 +21,11 @@
 .box-shadow {
   box-shadow: 0 1px 2px 0 rgba(32, 33, 36, .28);
 }
+
+.block {
+  display: block;
+}
+
+.margin-bottom-15 {
+  margin-bottom: 15px;
+}
