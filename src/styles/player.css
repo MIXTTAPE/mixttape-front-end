@@ -1,5 +1,5 @@
 .player-component {
-  background-color: #282828;
+  background: $black;
   color: #fafafa;
   height: 100px;
   position: fixed;
