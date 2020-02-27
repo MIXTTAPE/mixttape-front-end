@@ -16,11 +16,19 @@ export const SET_USER = 'SET_USER';
 export const setUserSignUp = (username, password) => dispatch => {
   dispatch(setUserLoading());
   return signUp(username, password)
-    .then(user => dispatch({
-      type: SET_USER,
-      payload: user
-    }));
-    
+    .then(user => {
+      dispatch({
+        type: SET_USER,
+        payload: user
+      });
+    }).catch(err => {
+      if(err) {
+        dispatch({
+          type: SET_AUTH_ERROR,
+          payload: err
+        });
+      }
+    });
 };
 
 
