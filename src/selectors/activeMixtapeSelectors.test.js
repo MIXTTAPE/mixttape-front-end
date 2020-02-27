@@ -1,4 +1,4 @@
-import { getActiveMixtape, getActiveSong, getPlaying } from './activeMixtapeSelectors';
+import { getActiveMixtape, getPlaying, getSongIndex } from './activeMixtapeSelectors';
 
 describe('activeMixtape Selectors', () => {
 
@@ -40,7 +40,7 @@ describe('activeMixtape Selectors', () => {
               thumbnail: ''
             }
           ],
-          currentSongIndex: 0,
+          currentSongIndex: 2,
           createdBy: 'josephtatum'
         }
       },
@@ -74,11 +74,15 @@ describe('activeMixtape Selectors', () => {
           thumbnail: ''
         }
       ],
-      currentSongIndex: 0,
+      currentSongIndex: 2,
       createdBy: 'josephtatum'
     });
   });
 
+  it('can get a current song index', ()=> {
+    const currentSongIndex = getSongIndex(state);
+    expect(currentSongIndex).toEqual(2);
+  });
   it('can get a boolean to see if a song is playing', ()=> {
     const isPlaying = getPlaying(state);
     expect(isPlaying).toEqual(false);

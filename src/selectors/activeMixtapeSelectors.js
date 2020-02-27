@@ -1,10 +1,7 @@
 export const getActiveMixtape = state => state.activeMixtape.mixtape;
-export const getActiveSong = state => {
-  const currentIndex = state.activeMixtape.currentSongIndex;
-  return state.activeMixtape.songs[currentIndex];
-};
+
 export const getSongIndex = state => {
-  return state.activeMixtape.currentSongIndex;
+  return state.activeMixtape.mixtape.currentSongIndex;
 };
 
 export const getPlaying = state => {
