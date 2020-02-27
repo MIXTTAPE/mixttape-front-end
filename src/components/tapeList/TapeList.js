@@ -1,19 +1,17 @@
 import React, { useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUserMixtapes, getUserLoading, getUser } from '../../selectors/userSelectors';
+import { getUserMixtapes, getUserLoading, isAuthenticated } from '../../selectors/userSelectors';
 import { setPlaying, setAsActiveNoFetch } from '../../actions/activeMixtapeActions';
-import { getPlaying } from '../../selectors/activeMixtapeSelectors';
 import { FaPauseCircle, FaPlayCircle } from 'react-icons/fa';
 import { verifyUser } from '../../actions/userActions';
 import { deleteTape } from '../../services/mixtapeApi';
 
 export default function TapeList() {
   const dispatch = useDispatch();
+  const authenticated = useSelector(isAuthenticated);
   const mixtapes = useSelector(getUserMixtapes);
   const userLoading = useSelector(getUserLoading);
-  const user = useSelector(getUser);
-  // const mixtapes = fakeMixtapes;
 
   useEffect(() => {
     dispatch(verifyUser());
@@ -21,9 +19,10 @@ export default function TapeList() {
 
   if(userLoading){
     return <h3>Loading!</h3>;
-  } else if(user.username === 'none') {
-    // history.replace('/');
-    return <Redirect to='/' />;
+  }
+  
+  if(!authenticated) {
+    return <Redirect to="/" />;
   }
 
   if(!mixtapes) {
@@ -64,7 +63,7 @@ export default function TapeList() {
       </li>
     );
   });
-
+  
   return (
     <ul className="mixtapes-flex-container">
       {mixtapeCards}

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserLogin, userLoadingDone } from '../../actions/userActions';
 import { useHistory, Redirect  } from 'react-router-dom';
-import { getError, isAuthenticated } from '../../selectors/userSelectors';
+import { getError, isAuthenticated, getUserLoading } from '../../selectors/userSelectors';
 
 export default function Login({ onClick }) {
   const dispatch = useDispatch();
@@ -12,6 +12,7 @@ export default function Login({ onClick }) {
   const history = useHistory();
   const authenticated = useSelector(isAuthenticated);
   const authError = useSelector(getError);
+  const userLoading = useSelector(getUserLoading);
   
   const handleUsernameChange = ({ target }) => {
     setUsername(target.value);
@@ -24,11 +25,9 @@ export default function Login({ onClick }) {
   const handleLoginSumbit = (event) => {
     event.preventDefault();
     dispatch(setUserLogin(username, password));
-    dispatch(userLoadingDone());
-    
   };
-  
-  if(authenticated) {
+
+  if(authenticated && !userLoading) {
     return <Redirect to="/app/mixtapes" />;
   }
 
