@@ -36,6 +36,7 @@ export default function TapeList() {
   };
 
   const handleDelete = (mixtape) => {
+    console.log(mixtape._id);
     dispatch(deleteUserTape(mixtape._id));
   };
 

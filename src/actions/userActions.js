@@ -93,9 +93,10 @@ export const deleteUserTape = (id) => dispatch => {
   dispatch(setUserLoading());
   return deleteTape(id)
     .then(tape => {
+      console.log(id);
       dispatch({
         type: SET_DELETE_TAPE,
-        payload: tape
+        payload: id
       });
     });
 };

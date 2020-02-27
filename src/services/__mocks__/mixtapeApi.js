@@ -20,3 +20,9 @@ export function fetchTape() {
     songs: ['test mixtape']
   });
 }
+
+export function deleteTape() {
+  return Promise.resolve({
+    
+  })
+}
