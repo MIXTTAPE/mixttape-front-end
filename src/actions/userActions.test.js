@@ -65,10 +65,6 @@ describe('userActions', () => {
           type: SET_USER,
           payload: { user: { username: 'mockUserVerified' } }
         });
-        expect(dispatch).toHaveBeenCalledWith({
-          type: SET_USER_MIXTAPES,
-          payload: { user: { username: 'mockUserVerified' } }
-        });
       });
   });
 });
