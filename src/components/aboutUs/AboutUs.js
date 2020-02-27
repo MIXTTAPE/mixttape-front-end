@@ -38,7 +38,7 @@ export default function AboutUs() {
             <a href="https://github.com/ianandrewson" target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
           </li>
         </ul>
-        <Link className="button-secondary" to="/">Back to Main</Link>
+        <Link to="/">Back to Main</Link>
       </div>
     </div>
   );
