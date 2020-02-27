@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import MixtapeSong from '../mixtapeSong/MixtapeSong.js';
 import { getLastEditedMixtape } from '../../selectors/editedMixtapeSelectors.js';
 import { saveMixtape, mixtapeLoadingDone } from '../../actions/editedMixtapeActions.js';
-import { getUser, getUserMixtapes, getsavedMixtapeFlag } from '../../selectors/userSelectors.js';
+import { getUser, getUserMixtapes } from '../../selectors/userSelectors.js';
 import { useHistory } from 'react-router-dom';
 
 export default function EditTape() {
