@@ -1,18 +1,29 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
+import React, { useEffect } from 'react';
+import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUserMixtapes } from '../../selectors/userSelectors';
+import { getUserMixtapes, getUserLoading, getUser } from '../../selectors/userSelectors';
 import { setPlaying, setAsActiveNoFetch } from '../../actions/activeMixtapeActions';
 import { getPlaying } from '../../selectors/activeMixtapeSelectors';
 import { FaPauseCircle, FaPlayCircle } from 'react-icons/fa';
-
-import { mixtapes as fakeMixtapes } from './fakeMixtapes';
+import { verifyUser } from '../../actions/userActions';
 
 export default function TapeList() {
   const dispatch = useDispatch();
-  const playing = useSelector(getPlaying);
   const mixtapes = useSelector(getUserMixtapes);
+  const userLoading = useSelector(getUserLoading);
+  const user = useSelector(getUser);
   // const mixtapes = fakeMixtapes;
+
+  useEffect(() => {
+    dispatch(verifyUser());
+  }, []);
+
+  if(userLoading){
+    return <h3>Loading!</h3>;
+  } else if(user.username === 'none') {
+    // history.replace('/');
+    return <Redirect to='/' />;
+  }
 
   if(!mixtapes) {
     return (

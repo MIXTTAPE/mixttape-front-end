@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Header from '../header/Header.js';
 import Create from '../create/Create.js';
 import TapeList from '../tapeList/TapeList.js';
@@ -10,7 +10,7 @@ import '../../styles/styles.css';
 export default function Mixt() {
 
   return (
-    <Router>
+    <>
       <Header />  
       <Switch> 
         <Route path="/app/mixtapes" component={TapeList} />
@@ -18,6 +18,6 @@ export default function Mixt() {
         <Route path="/app/mixtape/:id" component={TapeDetail} />
       </Switch>
       <Player />
-    </Router>
+    </>
   );
 }
