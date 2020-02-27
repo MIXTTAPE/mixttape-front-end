@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MixtapeSong from '../mixtapeSong/MixtapeSong.js';
 import { getLastEditedMixtape } from '../../selectors/editedMixtapeSelectors.js';
@@ -13,8 +13,11 @@ export default function EditTape() {
   const history = useHistory();
   const mixtapes = useSelector(getUserMixtapes);
 
-  //each song comes from search result section
-  //Has a nativeId, native source, and title
+  // useEffect(() => {
+  //   if(mixtapes.length !== 0){
+  //     history.replace(`/app/mixtape/${mixtapes[mixtapes.length - 1]._id}`);
+  //   }
+  // }, []);
   
   let mixtapeSongs;
   if(mixtape.songs.length !== 0){

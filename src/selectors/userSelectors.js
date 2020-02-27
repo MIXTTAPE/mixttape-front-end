@@ -3,4 +3,4 @@ export const getUser = state => state.userInfo.user;
 export const getError = state => state.userInfo.error;
 export const getUserLoading = state => state.userInfo.loading;
 export const isAuthenticated = state => !!state.userInfo.user;
-export const getUserError = state => state.userInfo.userError;
+export const getsavedMixtapeFlag = state => state.userInfo.savedMixtapeFlag;

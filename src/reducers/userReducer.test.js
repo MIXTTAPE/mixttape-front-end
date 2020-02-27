@@ -24,7 +24,7 @@ describe('userReducer', () => {
   });
 
   it('can handle a SET_USER case', () => {
-    const initialState = { loading: true, user: {} };
+    const initialState = { loading: true, user: {}, savedMixtapeFlag: false };
     const user = {
       username: 'josephtatum',
       passwordHash: '31415926540',
@@ -35,7 +35,7 @@ describe('userReducer', () => {
     const newState = userReducer(initialState, action);
     expect(newState).toEqual({
       error: false,
-      userError: false,
+      savedMixtapeFlag: false,
       loading: false,
       mixtapes: [],
       user:{
