@@ -1,8 +1,7 @@
-import { SET_USER, SET_USER_LOADING, USER_LOADING_DONE, SET_USER_MIXTAPES, SET_AUTH_ERROR, SET_USER_ERROR } from '../actions/userActions';
+import { SET_USER, SET_USER_LOADING, USER_LOADING_DONE, SET_USER_MIXTAPES, SET_AUTH_ERROR } from '../actions/userActions';
 import { SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 
 const initialState = {
-  savedMixtapeFlag: false,
   loading: true,
   username: '', 
   mixtapes: [],
@@ -23,7 +22,7 @@ export const userReducer = (state = initialState, action) => {
       //     if(mixtape.nativeId === action.payload.nativeId) return action.payload;
       //   }) };
       // }
-      return { ...state, mixtapes: [...state.mixtapes, action.payload], savedMixtapeFlag: !state.savedMixtapeFlag };
+      return { ...state, mixtapes: [...state.mixtapes, action.payload] };
     case SET_AUTH_ERROR:
       return { ...state, error: action.payload, loading: false };
     case SET_USER_MIXTAPES:

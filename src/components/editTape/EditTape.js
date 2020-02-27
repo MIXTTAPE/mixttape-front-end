@@ -12,7 +12,6 @@ export default function EditTape() {
   const dispatch = useDispatch();
   const history = useHistory();
   const mixtapes = useSelector(getUserMixtapes);
-  const savedMixtapeFlag = useSelector(getsavedMixtapeFlag);
 
   const firstRender = useRef(true);
   useEffect(() => {
