@@ -34,6 +34,8 @@ describe('userReducer', () => {
     
     const newState = userReducer(initialState, action);
     expect(newState).toEqual({
+      error: false,
+      userError: false,
       loading: false,
       mixtapes: [],
       user:{

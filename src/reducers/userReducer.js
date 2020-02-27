@@ -1,7 +1,8 @@
-import { SET_USER, SET_USER_LOADING, USER_LOADING_DONE, SET_USER_MIXTAPES, SET_AUTH_ERROR } from '../actions/userActions';
+import { SET_USER, SET_USER_LOADING, USER_LOADING_DONE, SET_USER_MIXTAPES, SET_AUTH_ERROR, SET_USER_ERROR } from '../actions/userActions';
 import { SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 
 const initialState = {
+  userError: false,
   loading: true,
   username: '', 
   mixtapes: [],
@@ -15,7 +16,7 @@ export const userReducer = (state = initialState, action) => {
     case USER_LOADING_DONE:
       return { ...state, loading: false };
     case SET_USER:
-      return { ...state, user: action.payload, loading: false, mixtapes: action.payload.mixtapes };
+      return { ...state, user: action.payload, loading: false, mixtapes: action.payload.mixtapes, error: false, userError: false };
     case SAVE_MIXTAPE:
       if(state.mixtapes.includes(mixtape => mixtape._id === action.payload.nativeId)) {
         return { ...state, mixtapes: state.mixtapes.map(mixtape => {
@@ -27,6 +28,8 @@ export const userReducer = (state = initialState, action) => {
       return { ...state, error: action.payload, loading: false };
     case SET_USER_MIXTAPES:
       return { ...state, mixtapes: action.payload.mixtapes };
+    case SET_USER_ERROR:
+      return { ...state, userError: true, loading: false };
     default:
       return state;
   }
