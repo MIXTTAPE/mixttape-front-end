@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserSignUp, userLoadingDone } from '../../actions/userActions';
 import { useHistory } from 'react-router-dom';
@@ -42,3 +43,6 @@ export default function SignUp({ onClick }) {
     </>
   );
 }
+SignUp.propTypes = {
+  onClick: PropTypes.func.isRequired
+};

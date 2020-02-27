@@ -37,8 +37,8 @@ export default function TapeList() {
           <p><Link to={`/app/mixtape/${mixtape._id}`}>View Mixtape</Link></p>
         </div>
         <ul className="list-of-songs">
-          {mixtape.songs.map((song) => {
-            return (<li key={song.nativeId} className="song">
+          {mixtape.songs.map((song, i) => {
+            return (<li key={i} className="song">
               <img src={song.thumbnailUrl} />
               {song.title}
             </li>);

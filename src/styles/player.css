@@ -17,6 +17,7 @@
     .currently-playing {
       display: flex;
       align-items: center;
+      width: 330px;
 
       .current-song-thumb {
         width: 50px;
@@ -30,6 +31,8 @@
     .player-controls {
       display: flex;
       align-items: center;
+      width: 330px;
+      justify-content: center;
 
       .play-pause-button,
       .next-track-button {
@@ -49,11 +52,10 @@
         }
       }
 
-      
-
       .next-track-button {
         height: 25px;
         width: 25px;
+
         svg {
           height: 20px;
           width: 20px;
@@ -70,6 +72,8 @@
     .volume-controls {
       display: flex;
       align-items: center;
+      width: 330px;
+      justify-content: center;
 
       svg {
         height: 20px;

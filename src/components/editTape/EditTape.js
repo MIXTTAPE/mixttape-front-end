@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import MixtapeSong from '../mixtapeSong/MixtapeSong.js';
 import { getLastEditedMixtape } from '../../selectors/editedMixtapeSelectors.js';
@@ -18,8 +18,8 @@ export default function EditTape() {
   
   let mixtapeSongs;
   if(mixtape.songs.length !== 0){
-    mixtapeSongs = mixtape.songs.map(song => (
-      <li key={song.nativeId} className="song-item">
+    mixtapeSongs = mixtape.songs.map((song, i) => (
+      <li key={i} className="song-item">
         <MixtapeSong data={song} />
       </li>
     ));
