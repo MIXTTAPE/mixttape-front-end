@@ -1,11 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
-import { setPlaying, setAsActive, setActiveLoading, resetActiveLoading } from '../../actions/activeMixtapeActions';
+import { setPlaying, setAsActive, setSongIndex } from '../../actions/activeMixtapeActions';
 import { getPlaying, getActiveMixtape, getActiveLoading } from '../../selectors/activeMixtapeSelectors';
-// import { fakeMixtape as activeMixtape } from '../../../scratch/fake-mixtape';
-import { FaPlayCircle, FaPauseCircle } from 'react-icons/fa';
-import { fetchTape } from '../../services/mixtapeApi';
+import { FaPlayCircle } from 'react-icons/fa';
 
 export default function TapeDetail() {
   
@@ -14,6 +12,13 @@ export default function TapeDetail() {
   const playing = useSelector(getPlaying);
   const loading = useSelector(getActiveLoading);
   const activeMixtape = useSelector(getActiveMixtape);
+
+  const handlePlay = () => {
+    dispatch(setSongIndex(0));
+    if(!playing) {
+      dispatch(setPlaying());
+    }
+  };
   
   useEffect(() => {
     dispatch(setAsActive(id));
@@ -41,7 +46,7 @@ export default function TapeDetail() {
           <h2>{activeMixtape.mixtapeName}</h2>
           <h3>Total Tracks: {activeMixtape.songs.length}</h3>
           <p>created by: {activeMixtape.createdBy}</p>
-          {playing ? <FaPauseCircle className="play-pause" onClick={() => dispatch(setPlaying())} /> : <FaPlayCircle className="play-pause" onClick={() => dispatch(setPlaying())} />}
+          <FaPlayCircle className="play-pause" onClick={handlePlay} />
         </div>
         <ul className="list-of-songs">
           {songs}

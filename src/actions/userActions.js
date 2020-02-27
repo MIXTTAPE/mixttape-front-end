@@ -68,7 +68,6 @@ export const userLogout = (username, password) => dispatch => {
 };
 
 export const SET_USER_MIXTAPES = 'SET_USER_MIXTAPES';
-export const SET_USER_ERROR = 'SET_USER_ERROR';
 
 export const verifyUser = () => dispatch => {
   dispatch(setUserLoading());
@@ -77,12 +76,6 @@ export const verifyUser = () => dispatch => {
       dispatch({
         type: SET_USER,
         payload: user
-      });
-    })
-    .catch(() => {
-      dispatch({
-        type: SET_USER_ERROR,
-        payload: true
       });
     });
 };

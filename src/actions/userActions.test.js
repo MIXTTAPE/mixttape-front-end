@@ -86,4 +86,20 @@ describe('userActions', () => {
         });
       });
   });
+
+  it('can create an action to log out a user', () => {
+    const dispatch = jest.fn();
+    const action = deleteUserTape('001');
+
+    return action(dispatch)
+      .then(() => {
+        expect(dispatch).toHaveBeenCalledWith({
+          type: SET_USER_LOADING,
+        });
+        expect(dispatch).toHaveBeenCalledWith({
+          type: SET_DELETE_TAPE,
+          payload: '001'
+        });
+      });
+  });
 });
