@@ -35,9 +35,8 @@ export default function TapeList() {
     dispatch(setPlaying());
   };
 
-  const handleDelete = (mixtape) => {
-    console.log(mixtape._id);
-    dispatch(deleteUserTape(mixtape._id));
+  const handleDelete = (id) => {
+    dispatch(deleteUserTape(id));
   };
 
   const mixtapeCards = mixtapes.map((mixtape, i) => {
@@ -49,6 +48,7 @@ export default function TapeList() {
           <p>created by: {mixtape.createdBy}</p>
           <FaPlayCircle className="play-pause" onClick={() => playMixtape(mixtape)} />
           <p><Link to={`/app/mixtape/${mixtape._id}`}>View Mixtape</Link></p>
+          <a onClick={() => handleDelete(mixtape._id)}>Delete Mixtape</a>
         </div>
         <ul className="list-of-songs">
           {mixtape.songs.map((song, i) => {
@@ -58,7 +58,6 @@ export default function TapeList() {
             </li>);
           })}
         </ul>
-        <button onClick={() => handleDelete(mixtape)}>Delete</button>
       </li>
     );
   });
