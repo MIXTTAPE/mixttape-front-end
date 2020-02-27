@@ -41,7 +41,7 @@ export default function TapeDetail() {
 
   return (
     <div className="mixtape-flex-container">
-      <div className="mixtape-detail-container box-shadow">
+      <div className="mixtape-detail-container">
         <div className="mixtape-detail">
           <h2>{activeMixtape.mixtapeName}</h2>
           <h3>Total Tracks: {activeMixtape.songs.length}</h3>

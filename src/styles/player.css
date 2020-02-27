@@ -1,7 +1,7 @@
 .player-component {
-  background-color: #282828;
+  background: $black;
   color: #fafafa;
-  height: 125px;
+  height: 100px;
   position: fixed;
   width: 100vw;
   bottom: 0;

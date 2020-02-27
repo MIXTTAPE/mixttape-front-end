@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserMixtapes, getUserLoading, isAuthenticated } from '../../selectors/userSelectors';
+import { FaPlayCircle, FaTrash } from 'react-icons/fa';
 import { setPlaying, setAsActiveNoFetch, setSongIndex } from '../../actions/activeMixtapeActions';
-import { FaPlayCircle } from 'react-icons/fa';
 import { verifyUser, deleteUserTape } from '../../actions/userActions';
 
 export default function TapeList() {
@@ -54,9 +54,9 @@ export default function TapeList() {
           <h2>{mixtape.mixtapeName}</h2>
           <h3>Total Tracks: {mixtape.songs.length}</h3>
           <p>created by: {mixtape.createdBy}</p>
-          <FaPlayCircle className="play-pause" onClick={() => playMixtape(mixtape)} />
-          <p><Link to={`/app/mixtape/${mixtape._id}`}>View Mixtape</Link></p>
-          <p className="button-delete"><a onClick={() => handleDelete(mixtape._id)}>Delete Mixtape</a></p>
+          <FaPlayCircle className="play-pause margin-bottom-15" onClick={() => playMixtape(mixtape)} />
+          <Link className="button-primary-sm block" to={`/app/mixtape/${mixtape._id}`}>View Mixtape</Link>
+          <Link className="button-delete block" to={'/app/mixtapes'} onClick={() => handleDelete(mixtape._id)}><FaTrash /></Link>
         </div>
         <ul className="list-of-songs">
           {mixtape.songs.map((song, i) => {

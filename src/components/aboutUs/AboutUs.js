@@ -19,7 +19,7 @@ export default function AboutUs() {
           <li>
             <img className="team-member-photo box-shadow" src="https://media-exp1.licdn.com/dms/image/C5603AQFBThwOTq795A/profile-displayphoto-shrink_200_200/0?e=1588204800&v=beta&t=JJ2nQmdLAhQsyyAcQtO4w_9tOnZqd2Vf_7Q9ogDnsLU" />
             <h2>Joseph Tatum</h2>
-            <p>Front End Developer and Kate Bush enthusiast.</p>
+            <p>Front End Developer, Kate Bush enthusiast, and bakery connoisseur</p>
             <a href="https://www.linkedin.com/in/josephwtatum/" target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
             <a href="https://github.com/josephtatum" target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
           </li>

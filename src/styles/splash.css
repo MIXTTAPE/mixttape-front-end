@@ -30,7 +30,7 @@
 
 .switch-form:hover {
   cursor: pointer;
-  color: $pink
+  color: $blue;
 }
 
 .authentication-form {
@@ -58,5 +58,5 @@
 }
 
 .link-to-about:hover {
-  color: $pink;
+  color: $blue;
 }

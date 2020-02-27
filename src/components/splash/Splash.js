@@ -6,7 +6,6 @@ import Illustration from '../../img/splash-illustration.svg';
 export default function Splash() {
   
   const [copyContent, setCopyContent] = useState('login');
-
   const handleClick = (comp) => {
     if(comp === 'login') setCopyContent('login');
     if(comp === 'signup') setCopyContent('signup');
