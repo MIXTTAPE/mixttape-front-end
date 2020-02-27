@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import Header from '../header/Header.js';
 import Create from '../create/Create.js';
 import TapeList from '../tapeList/TapeList.js';

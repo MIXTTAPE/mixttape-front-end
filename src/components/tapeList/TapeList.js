@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { Link, useHistory, Redirect } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserMixtapes, getUserLoading, getUser } from '../../selectors/userSelectors';
 import { setPlaying, setAsActiveNoFetch } from '../../actions/activeMixtapeActions';
@@ -12,14 +12,11 @@ export default function TapeList() {
   const mixtapes = useSelector(getUserMixtapes);
   const userLoading = useSelector(getUserLoading);
   const user = useSelector(getUser);
-  const history = useHistory();
   // const mixtapes = fakeMixtapes;
 
   useEffect(() => {
     dispatch(verifyUser());
   }, []);
-  
-  console.log(user);
 
   if(userLoading){
     return <h3>Loading!</h3>;
