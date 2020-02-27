@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserLogin, userLoadingDone } from '../../actions/userActions';
 import { useHistory } from 'react-router-dom';
-import { getError } from '../../selectors/userSelectors';
+import { getError, isAuthenticated } from '../../selectors/userSelectors';
 
 export default function Login({ onClick }) {
   const dispatch = useDispatch();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const history = useHistory();
+  const authenticated = useSelector(isAuthenticated);
   const authError = useSelector(getError);
   
   const handleUsernameChange = ({ target }) => {
@@ -23,8 +24,12 @@ export default function Login({ onClick }) {
     event.preventDefault();
     dispatch(setUserLogin(username, password));
     dispatch(userLoadingDone());
-    history.replace('/app/mixtapes');
+    
   };
+  console.log(authenticated);
+  if(authenticated) {
+    history.replace('/app/mixtapes');
+  }
 
   return (
     <>

@@ -19,10 +19,8 @@ export const setUserSignUp = (username, password) => dispatch => {
     .then(user => dispatch({
       type: SET_USER,
       payload: user
-    })).catch(err => dispatch({
-      type: SET_AUTH_ERROR,
-      payload: err
     }));
+    
 };
 
 
