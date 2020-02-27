@@ -27,7 +27,7 @@ export default function Login({ onClick }) {
     dispatch(userLoadingDone());
     
   };
-  console.log(authenticated);
+  
   if(authenticated) {
     return <Redirect to="/app/mixtapes" />;
   }
