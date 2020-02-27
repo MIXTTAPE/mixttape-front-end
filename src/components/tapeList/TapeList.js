@@ -17,7 +17,11 @@ export default function TapeList() {
   }, []);
 
   if(userLoading){
-    return <h3>Loading!</h3>;
+    return (
+      <div className="empty-section">
+        <h2>Loading...</h2>
+      </div>
+    );
   }
   
   if(!authenticated) {
@@ -26,7 +30,10 @@ export default function TapeList() {
 
   if(!mixtapes || mixtapes.length === 0) {
     return (
-      <h2>Hmm.... looks like you don&apos;t have any mixtapes. Create one?</h2>
+      <div className="empty-section">
+        <h3>Hmm.... looks like you don&apos;t have any mixtapes. Create one?</h3>
+      </div>
+      
     );
   }
  
@@ -37,6 +44,7 @@ export default function TapeList() {
   };
 
   const handleDelete = (mixtape) => {
+    console.log(mixtape._id);
     dispatch(deleteUserTape(mixtape._id));
   };
 

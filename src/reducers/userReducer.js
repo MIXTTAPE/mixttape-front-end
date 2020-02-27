@@ -28,7 +28,7 @@ export const userReducer = (state = initialState, action) => {
     case SET_USER_MIXTAPES:
       return { ...state, mixtapes: action.payload.mixtapes };
     case SET_DELETE_TAPE:
-      return { ...state, mixtapes: state.mixtapes.filter(mixtape => mixtape._id !== action.payload._id), loading: false };
+      return { ...state, mixtapes: state.mixtapes.filter(mixtape => mixtape._id !== action.payload), loading: false };
     default:
       return state;
   }
