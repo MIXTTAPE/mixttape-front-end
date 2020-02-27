@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserSignUp, userLoadingDone } from '../../actions/userActions';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect  } from 'react-router-dom';
 import { getError, isAuthenticated } from '../../selectors/userSelectors';
 
 export default function SignUp({ onClick }) {
@@ -28,7 +28,7 @@ export default function SignUp({ onClick }) {
   };
 
   if(authenticated) {
-    history.replace('/app/create');
+    return <Redirect to="/app/create" />;
   }
 
   return (

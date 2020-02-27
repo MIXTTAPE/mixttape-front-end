@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
 import { setUserLogin, userLoadingDone } from '../../actions/userActions';
-import { useHistory } from 'react-router-dom';
+import { useHistory, Redirect  } from 'react-router-dom';
 import { getError, isAuthenticated } from '../../selectors/userSelectors';
 
 export default function Login({ onClick }) {
@@ -29,7 +29,7 @@ export default function Login({ onClick }) {
   };
   console.log(authenticated);
   if(authenticated) {
-    history.replace('/app/mixtapes');
+    return <Redirect to="/app/mixtapes" />;
   }
 
   return (
