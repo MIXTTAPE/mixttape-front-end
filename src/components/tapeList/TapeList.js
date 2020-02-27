@@ -44,7 +44,6 @@ export default function TapeList() {
           <h2>{mixtape.mixtapeName}</h2>
           <h3>Total Tracks: {mixtape.songs.length}</h3>
           <p>created by: {mixtape.createdBy}</p>
-          <FaPauseCircle className="play-pause" onClick={() => dispatch(setPlaying())} />
           <FaPlayCircle className="play-pause" onClick={() => playMixtape(mixtape)} />
           <p><Link to={`/app/mixtape/${mixtape._id}`}>View Mixtape</Link></p>
         </div>

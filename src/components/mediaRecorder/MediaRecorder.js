@@ -110,7 +110,7 @@ const MediaRecorderFunc = () => {
       {(audioUrl && saved) &&
           <>
             <h3>Recording saved!</h3>
-            <button onClick={handleSave} >Record Another</button>
+            <button className="button-voice"onClick={handleSave} >Record Another</button>
           </>
       }
     </div>
