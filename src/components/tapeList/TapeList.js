@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { getUserMixtapes, getUserLoading, isAuthenticated } from '../../selectors/userSelectors';
+import { getUserMixtapes, getUserLoading, isAuthenticated, getUser } from '../../selectors/userSelectors';
 import { setPlaying, setAsActiveNoFetch } from '../../actions/activeMixtapeActions';
 import { FaPauseCircle, FaPlayCircle } from 'react-icons/fa';
-import { verifyUser } from '../../actions/userActions';
+import { verifyUser, deleteUserTape } from '../../actions/userActions';
 
 export default function TapeList() {
   const dispatch = useDispatch();
@@ -24,7 +24,7 @@ export default function TapeList() {
     return <Redirect to="/" />;
   }
 
-  if(!mixtapes) {
+  if(!mixtapes || mixtapes.length === 0) {
     return (
       <h2>Hmm.... looks like you don&apos;t have any mixtapes. Create one?</h2>
     );
@@ -35,7 +35,9 @@ export default function TapeList() {
     dispatch(setPlaying());
   };
 
-  
+  const handleDelete = (mixtape) => {
+    dispatch(deleteUserTape(mixtape._id));
+  };
 
   const mixtapeCards = mixtapes.map((mixtape, i) => {
     return (
@@ -55,6 +57,7 @@ export default function TapeList() {
             </li>);
           })}
         </ul>
+        <button onClick={() => handleDelete(mixtape)}>Delete</button>
       </li>
     );
   });
