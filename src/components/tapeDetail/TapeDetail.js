@@ -4,8 +4,6 @@ import { useParams } from 'react-router-dom';
 import { setPlaying, setAsActive, setSongIndex } from '../../actions/activeMixtapeActions';
 import { getPlaying, getActiveMixtape, getActiveLoading, getFetchError } from '../../selectors/activeMixtapeSelectors';
 import { FaPlayCircle } from 'react-icons/fa';
-import { getUserLoading } from '../../selectors/userSelectors';
-import { verifyUser } from '../../actions/userActions';
 
 export default function TapeDetail() {
   
@@ -15,7 +13,6 @@ export default function TapeDetail() {
   const loading = useSelector(getActiveLoading);
   const activeMixtape = useSelector(getActiveMixtape);
   const fetchError = useSelector(getFetchError);
-  const userLoading = useSelector(getUserLoading);
 
   const handlePlay = () => {
     dispatch(setSongIndex(0));
@@ -23,27 +20,23 @@ export default function TapeDetail() {
       dispatch(setPlaying());
     }
   };
-
-  useEffect(() => {
-    dispatch(verifyUser());
-  }, []);
   
   useEffect(() => {
     dispatch(setAsActive(id));
   }, []);
 
-  if(userLoading || loading){
-    return (
-      <div className="empty-section">
-        <h2>Loading...</h2>
-      </div>
-    );
-  }
-
   if(fetchError) {
     return (
       <div className='empty-section'>
         <h2>Hm...We couldn&apos;t find that mixtape...</h2>
+      </div>
+    );
+  }
+
+  if(loading) {
+    return (
+      <div className="empty-section">
+        <h2>Loading...</h2>
       </div>
     );
   }
