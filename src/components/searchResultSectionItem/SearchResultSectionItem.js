@@ -9,12 +9,18 @@ export default function SearchResultSectionItem({ data }) {
   const handleAdd = () => {
     dispatch(addSong(data));
   };
+  const decoder = (title) => {
+    var txt = document.createElement('textarea');
+    txt.innerHTML = title;
+    return txt.value;
+  };
+  const decodedTitle = decoder(data.title);
 
   return (
     <>
       <img src={data.thumbnailUrl} className="result-thumb margin-right-small"/>
       <span>
-        {data.title.length > 50 ? `${data.title.substr(0, 50)}...` : data.title}
+        {decodedTitle.length > 50 ? `${decodedTitle.substr(0, 50)}...` : decodedTitle}
       </span>
       <button className="button-add" onClick={handleAdd}><FaPlusCircle /></button>
       {/* <button>Demo</button> */}
