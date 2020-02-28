@@ -66,7 +66,7 @@ const MediaRecorderFunc = () => {
     formData.append('id', audioUrl);
     formData.append('recording', audioBlob);
     formData.append('title', title);
-    return fetch('http://localhost:7891/api/v1/voice-recordings', {
+    return fetch(`${process.env.API_URL}/voice-recordings`, {
       method: 'POST',
       body: formData
     }).then(res => {
