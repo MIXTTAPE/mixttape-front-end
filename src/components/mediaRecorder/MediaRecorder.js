@@ -90,6 +90,7 @@ const MediaRecorderFunc = () => {
     setActive(false);
     setAudioUrl(null);
     setSaved(false);
+    prepareRecording();
   };
 
   return (
