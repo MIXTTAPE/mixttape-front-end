@@ -135,7 +135,6 @@ exports[`AboutUs component renders AboutUs 1`] = `
       </li>
     </ul>
     <Link
-      className="button-secondary"
       to="/"
     >
       Back to Main
