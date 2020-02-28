@@ -54,7 +54,7 @@ export default function TapeList() {
           <h2>{mixtape.mixtapeName}</h2>
           <h3>Total Tracks: {mixtape.songs.length}</h3>
           <p>created by: {mixtape.createdBy}</p>
-          <FaPlayCircle className="play-pause margin-bottom-15" onClick={() => playMixtape(mixtape)} />
+          <FaPlayCircle className="play-pause margin-bottom-small" onClick={() => playMixtape(mixtape)} />
           <Link className="button-primary-sm block" to={`/app/mixtape/${mixtape._id}`}>View Mixtape</Link>
           <Link className="button-delete block" to={'/app/mixtapes'} onClick={() => handleDelete(mixtape._id)}><FaTrash /></Link>
         </div>

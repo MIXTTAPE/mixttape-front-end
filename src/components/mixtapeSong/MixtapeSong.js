@@ -23,7 +23,7 @@ export default function mixtapeSong({ data }) {
       <span>
         {data.title}
       </span>
-      <button value={data.nativeId} onClick={handleDelete} className="button-delete"><FaMinusCircle /></button>
+      <button value={data.nativeId} onClick={handleDelete} className="no-border"><FaMinusCircle /></button>
     </>
   );
 }
