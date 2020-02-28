@@ -2,8 +2,8 @@ import React, { useEffect } from 'react';
 import { Link, Redirect } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { getUserMixtapes, getUserLoading, isAuthenticated } from '../../selectors/userSelectors';
-import { setPlaying, setAsActiveNoFetch } from '../../actions/activeMixtapeActions';
-import { FaPlayCircle } from 'react-icons/fa';
+import { FaPlayCircle, FaTrash } from 'react-icons/fa';
+import { setPlaying, setAsActiveNoFetch, setSongIndex } from '../../actions/activeMixtapeActions';
 import { verifyUser, deleteUserTape } from '../../actions/userActions';
 
 export default function TapeList() {
@@ -36,15 +36,15 @@ export default function TapeList() {
       
     );
   }
-
+ 
   const playMixtape = (clickedMixtape) => {
     dispatch(setAsActiveNoFetch(clickedMixtape));
-    dispatch(setPlaying());
+    dispatch(setSongIndex(0));
+    dispatch(setPlaying('play'));
   };
 
-  const handleDelete = (mixtape) => {
-    console.log(mixtape._id);
-    dispatch(deleteUserTape(mixtape._id));
+  const handleDelete = (id) => {
+    dispatch(deleteUserTape(id));
   };
 
   const mixtapeCards = mixtapes.map((mixtape, i) => {
@@ -54,8 +54,9 @@ export default function TapeList() {
           <h2>{mixtape.mixtapeName}</h2>
           <h3>Total Tracks: {mixtape.songs.length}</h3>
           <p>created by: {mixtape.createdBy}</p>
-          <FaPlayCircle className="play-pause" onClick={() => playMixtape(mixtape)} />
-          <p><Link to={`/app/mixtape/${mixtape._id}`}>View Mixtape</Link></p>
+          <FaPlayCircle className="play-pause margin-bottom-15" onClick={() => playMixtape(mixtape)} />
+          <Link className="button-primary-sm block" to={`/app/mixtape/${mixtape._id}`}>View Mixtape</Link>
+          <Link className="button-delete block" to={'/app/mixtapes'} onClick={() => handleDelete(mixtape._id)}><FaTrash /></Link>
         </div>
         <ul className="list-of-songs">
           {mixtape.songs.map((song, i) => {
@@ -65,7 +66,6 @@ export default function TapeList() {
             </li>);
           })}
         </ul>
-        <button onClick={() => handleDelete(mixtape)}>Delete</button>
       </li>
     );
   });

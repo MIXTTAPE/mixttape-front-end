@@ -5,6 +5,7 @@ const initialState = {
   loading: true,
   playing: false,
   mixtape: { songs: [] },
+  currentSongIndex:0
 };
 
 export const activeMixtapeReducer = (state = initialState, action) => {
@@ -19,6 +20,7 @@ export const activeMixtapeReducer = (state = initialState, action) => {
       return { ...state, currentSongIndex: action.payload };
     case SET_PLAYING:
       if(action.payload === 'stop') return { ...state, playing: false };
+      if(action.payload === 'play') return { ...state, playing: true };
       return { ...state, playing: !state.playing };
     default:
       return state;
