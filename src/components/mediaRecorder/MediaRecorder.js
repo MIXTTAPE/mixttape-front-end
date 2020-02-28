@@ -17,11 +17,10 @@ const MediaRecorderFunc = () => {
       emergencyStop();
     };
   }, []);
-
+  let chunks = [];
   const prepareRecording = () => {
     navigator.mediaDevices.getUserMedia({ audio: true })
       .then(stream => {
-        const chunks = [];
         let mediaRecorder = new window.MediaRecorder(stream);
         mediaRecorder.ondataavailable = e => {
           chunks.push(e.data);
@@ -83,6 +82,7 @@ const MediaRecorderFunc = () => {
       };
       dispatch(addSong(recordingInfo));
       setTitle('');
+      chunks = [];
     });
   };
 
