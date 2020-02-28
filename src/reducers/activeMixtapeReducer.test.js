@@ -1,4 +1,4 @@
-import { setAsActive, setSongIndex, setPlaying, SET_AS_ACTIVE, ACTIVE_LOADING_DONE } from '../actions/activeMixtapeActions';
+import { setAsActive, setSongIndex, setPlaying, SET_AS_ACTIVE, ACTIVE_LOADING_DONE, SET_FETCH_ERROR } from '../actions/activeMixtapeActions';
 import { activeMixtapeReducer } from './activeMixtapeReducer';
 import { SET_MIXTAPE_LOADING } from '../actions/editedMixtapeActions';
 
@@ -105,4 +105,16 @@ describe('activeMixtapeReducer', () => {
       songs: ['this is another song']
     });
   });
+
+  it('can handle the SET_FETCH_ERROR case', () => {
+    const initialState = { mixtapeName: 'test', error: '' };
+    const action = { type: SET_FETCH_ERROR, payload: 'FAIL' };
+    const newState = activeMixtapeReducer(initialState, action);
+
+    expect(newState).toEqual({
+      mixtapeName: 'test',
+      error: 'FAIL'
+    });
+  });
+
 });

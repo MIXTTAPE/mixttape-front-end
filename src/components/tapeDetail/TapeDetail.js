@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { useParams } from 'react-router-dom';
 import { setPlaying, setAsActive, setSongIndex } from '../../actions/activeMixtapeActions';
-import { getPlaying, getActiveMixtape, getActiveLoading } from '../../selectors/activeMixtapeSelectors';
+import { getPlaying, getActiveMixtape, getActiveLoading, getFetchError } from '../../selectors/activeMixtapeSelectors';
 import { FaPlayCircle } from 'react-icons/fa';
 
 export default function TapeDetail() {
@@ -12,6 +12,7 @@ export default function TapeDetail() {
   const playing = useSelector(getPlaying);
   const loading = useSelector(getActiveLoading);
   const activeMixtape = useSelector(getActiveMixtape);
+  const fetchError = useSelector(getFetchError);
 
   const handlePlay = () => {
     dispatch(setSongIndex(0));
@@ -23,6 +24,14 @@ export default function TapeDetail() {
   useEffect(() => {
     dispatch(setAsActive(id));
   }, []);
+
+  if(fetchError) {
+    return (
+      <div className='empty-section'>
+        <h2>Hm...We couldn&apos;t find that mixtape...</h2>
+      </div>
+    );
+  }
 
   if(loading) {
     return (
