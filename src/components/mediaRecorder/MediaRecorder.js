@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { addSong } from '../../actions/editedMixtapeActions';
-
+import thumbImg from '../../img/microphone-image.png';
 const MediaRecorderFunc = () => {
   const [active, setActive] = useState(false);
   const [mediaRecorder, setMediaRecorder] = useState(null);
@@ -77,7 +77,7 @@ const MediaRecorderFunc = () => {
         nativeId: recording.key,
         nativeSource: 'voicememo',
         buyLink: null,
-        thumbnailUrl: '/src/img/microphone-image.png',
+        thumbnailUrl: thumbImg,
         isMemo: true,
         title
       };
