@@ -52,7 +52,7 @@ exports[`AboutUs component renders AboutUs 1`] = `
           Joseph Tatum
         </h2>
         <p>
-          Front End Developer and Kate Bush enthusiast.
+          Front End Developer, Kate Bush enthusiast, and bakery connoisseur
         </p>
         <a
           href="https://www.linkedin.com/in/josephwtatum/"
