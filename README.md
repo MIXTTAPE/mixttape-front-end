@@ -7,6 +7,7 @@
 ## Built With
 
 * [React](https://reactjs.org/)
+* [Redux](https://redux.js.org/)
 * [Jest](https://jestjs.io/)
 * [MongoDB](https://www.mongodb.com/)
 * [NodeJS](https://nodejs.org/)
