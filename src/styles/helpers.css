@@ -1,0 +1,34 @@
+.margin-right-small {
+  margin-right: 10px;
+}
+
+.margin-right-medium {
+  margin-right: 20px;
+}
+
+.margin-bottom-small {
+  margin-bottom: 15px;
+}
+
+.box-shadow {
+  box-shadow: 0 1px 2px 0 rgba(32, 33, 36, .28);
+}
+
+.block {
+  display: block;
+}
+
+.no-border {
+  border: 0;
+}
+
+.empty-section {
+  height: 100vh;
+  width: 100vw;
+  position: absolute;
+  top: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: -9999;
+}
