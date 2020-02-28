@@ -9,7 +9,7 @@ export default function mixtapeSong({ data }) {
   const handleDelete = ({ currentTarget }) => {
     dispatch(deleteSong(currentTarget.value));
     if(currentTarget.value.slice(currentTarget.value.length - 5) === '.webm') {
-      return fetch('http://localhost:7891/api/v1/voice-recordings', {
+      return fetch(`${process.env.API_URL}/voice-recordings`, {
         method: 'delete',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ filename: currentTarget.value })
