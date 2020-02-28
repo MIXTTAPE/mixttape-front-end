@@ -1,4 +1,4 @@
-import { setAsActive, SET_AS_ACTIVE, setSongIndex, SET_SONG_INDEX, SET_PLAYING, setPlaying, SET_ACTIVE_LOADING, ACTIVE_LOADING_DONE } from './activeMixtapeActions';
+import { setAsActive, SET_AS_ACTIVE, setSongIndex, SET_SONG_INDEX, SET_PLAYING, setPlaying, SET_ACTIVE_LOADING, ACTIVE_LOADING_DONE, setActiveLoading, resetActiveLoading, setAsActiveNoFetch } from './activeMixtapeActions';
 
 jest.mock('../services/mixtapeApi.js');
 
@@ -58,4 +58,25 @@ describe('activeMixtapeActions', () => {
     });
   });
   
+  it('can create an action to set the active loading state', () => {
+    const action = setActiveLoading();
+    expect(action).toEqual({
+      type: SET_ACTIVE_LOADING
+    });
+  });
+
+  it('can create an action to reset the active loading state', () => {
+    const action = resetActiveLoading();
+    expect(action).toEqual({
+      type: ACTIVE_LOADING_DONE
+    });
+  });
+
+  it('can create an action to set active playlist without fetching it', () => {
+    const action = setAsActiveNoFetch(payload);
+    expect(action).toEqual({
+      type: SET_AS_ACTIVE,
+      payload
+    });
+  });
 });

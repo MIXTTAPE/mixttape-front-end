@@ -1,4 +1,4 @@
-import { getActiveMixtape, getPlaying, getSongIndex } from './activeMixtapeSelectors';
+import { getActiveMixtape, getPlaying, getSongIndex, getActiveLoading } from './activeMixtapeSelectors';
 
 describe('activeMixtape Selectors', () => {
 
@@ -87,4 +87,8 @@ describe('activeMixtape Selectors', () => {
     expect(isPlaying).toEqual(false);
   });
 
+  it('can select activeLoading from state', () => {
+    const activeLoading = getActiveLoading(state);
+    expect(activeLoading).toBeTruthy();
+  });
 });

@@ -1,5 +1,6 @@
-import { setAsActive, setSongIndex, setPlaying, SET_AS_ACTIVE } from '../actions/activeMixtapeActions';
+import { setAsActive, setSongIndex, setPlaying, SET_AS_ACTIVE, ACTIVE_LOADING_DONE } from '../actions/activeMixtapeActions';
 import { activeMixtapeReducer } from './activeMixtapeReducer';
+import { SET_MIXTAPE_LOADING } from '../actions/editedMixtapeActions';
 
 describe('activeMixtapeReducer', () => {
 
@@ -82,5 +83,26 @@ describe('activeMixtapeReducer', () => {
       songs: []
     });
   });
+  
+  it('can handle the SET_MIXTAPE_LOADING case', () => {
+    const initialState = { loading: false, songs: ['this is a song'] };
+    const action = { type: SET_MIXTAPE_LOADING };
+    const newState = activeMixtapeReducer(initialState, action);
 
+    expect(newState).toEqual({
+      loading: true,
+      songs: ['this is a song']
+    });
+  });
+
+  it('can handle the ACTIVE_LOADING_DONE case', () => {
+    const initialState = { loading: true, songs: ['this is another song'] };
+    const action = { type: ACTIVE_LOADING_DONE };
+    const newState = activeMixtapeReducer(initialState, action);
+
+    expect(newState).toEqual({
+      loading: false,
+      songs: ['this is another song']
+    });
+  });
 });
