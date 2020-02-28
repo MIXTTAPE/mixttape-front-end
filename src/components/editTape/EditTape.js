@@ -5,6 +5,12 @@ import { getLastEditedMixtape } from '../../selectors/editedMixtapeSelectors.js'
 import { saveMixtape, mixtapeLoadingDone } from '../../actions/editedMixtapeActions.js';
 import { getUser, getUserMixtapes } from '../../selectors/userSelectors.js';
 import { useHistory } from 'react-router-dom';
+import { useDrag, useDrop } from 'react-dnd';
+
+// import { DndProvider } from 'react-dnd';
+// import Backend from 'react-dnd-html5-backend';
+import { v4 as uuidv4 } from 'uuid';
+import update from 'immutability-helper';
 
 export default function EditTape() {
   const user = useSelector(getUser);
@@ -14,8 +20,23 @@ export default function EditTape() {
   const mixtapes = useSelector(getUserMixtapes);
   const [mixtapeNameInput, setMixtapeNameInput] = useState();
   const [mixtapeNameError, setMixtapeNameError] = useState();
-
   const firstRender = useRef(true);
+
+  const moveCard = useCallback(
+    (dragIndex, hoverIndex) => {
+      const dragCard = cards[dragIndex]
+      setCards(
+        update(cards, {
+          $splice: [
+            [dragIndex, 1],
+            [hoverIndex, 0, dragCard],
+          ],
+        }),
+      )
+    },
+    [cards],
+  )
+  
   useEffect(() => {
     if(firstRender.current === false) {
       history.replace(`/app/mixtape/${mixtapes[mixtapes.length - 1]._id}`);
@@ -26,11 +47,15 @@ export default function EditTape() {
   
   let mixtapeSongs;
   if(mixtape.songs.length !== 0){
-    mixtapeSongs = mixtape.songs.map((song, i) => (
-      <li key={i} className="song-item">
-        <MixtapeSong data={song} />
-      </li>
-    ));
+    mixtapeSongs = mixtape.songs.map((song, i) => {
+      const id = uuidv4();
+      return (
+        <li key={id} className="song-item">
+          <MixtapeSong data={song} id={id} index={i} moveCard={moveCard} />
+        </li>
+      );
+    } 
+    );
   }
 
   const handleSave = () => {
