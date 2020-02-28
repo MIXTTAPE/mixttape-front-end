@@ -1,4 +1,4 @@
-import { getActiveMixtape, getPlaying, getSongIndex, getActiveLoading } from './activeMixtapeSelectors';
+import { getActiveMixtape, getPlaying, getSongIndex, getActiveLoading, getFetchError } from './activeMixtapeSelectors';
 
 describe('activeMixtape Selectors', () => {
 
@@ -90,5 +90,11 @@ describe('activeMixtape Selectors', () => {
   it('can select activeLoading from state', () => {
     const activeLoading = getActiveLoading(state);
     expect(activeLoading).toBeTruthy();
+  });
+
+  it('can select fetchError from state', () => {
+    const state = { activeMixtape: { error: 'FAIL', songs: ['these are songs'] } };
+    const fetchError = getFetchError(state);
+    expect(fetchError).toEqual('FAIL');
   });
 });
