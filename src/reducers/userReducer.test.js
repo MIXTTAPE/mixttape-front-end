@@ -1,5 +1,5 @@
-import { SET_USER_LOADING, SET_USER, USER_LOADING_DONE, userLoadingDone, SET_DELETE_TAPE, SET_AUTH_ERROR, SET_USER_MIXTAPES } from '../actions/userActions';
-import { saveMixtape, SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
+import { SET_USER_LOADING, SET_USER, USER_LOADING_DONE, SET_DELETE_TAPE, SET_AUTH_ERROR, SET_USER_MIXTAPES } from '../actions/userActions';
+import { SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 import { userReducer } from './userReducer';
 
 describe('userReducer', () => {

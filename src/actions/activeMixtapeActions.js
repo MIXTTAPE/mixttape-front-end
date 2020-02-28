@@ -1,6 +1,7 @@
 import { fetchTape } from '../services/mixtapeApi';
 
 export const SET_AS_ACTIVE = 'SET_AS_ACTIVE';
+export const SET_FETCH_ERROR = 'SET_FETCH_ERROR';
 export const setAsActive = (id) => dispatch => {
   dispatch(setActiveLoading());
   return fetchTape(id)
@@ -8,7 +9,11 @@ export const setAsActive = (id) => dispatch => {
       type: SET_AS_ACTIVE,
       payload: tape
     }))
-    .then(() => dispatch((resetActiveLoading())));
+    .then(() => dispatch((resetActiveLoading())))
+    .catch(err => dispatch({
+      type: SET_FETCH_ERROR,
+      payload: err
+    }));
 };
 
 export const setAsActiveNoFetch = (payload) => ({

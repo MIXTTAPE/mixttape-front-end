@@ -11,3 +11,7 @@ export const getPlaying = state => {
 export const getActiveLoading = state => {
   return state.activeMixtape.loading;
 };
+
+export const getFetchError = state => {
+  return state.activeMixtape.error;
+};
