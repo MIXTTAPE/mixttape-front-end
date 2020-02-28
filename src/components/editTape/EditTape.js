@@ -13,7 +13,7 @@ export default function EditTape() {
   const history = useHistory();
   const mixtapes = useSelector(getUserMixtapes);
   const [mixtapeNameInput, setMixtapeNameInput] = useState();
-  const [mixtapeNameError, setMixtapeNameError] = useState();
+  const [mixtapeError, setMixtapeError] = useState();
 
   const firstRender = useRef(true);
   useEffect(() => {
@@ -35,7 +35,9 @@ export default function EditTape() {
 
   const handleSave = () => {
     if(!mixtapeNameInput) {
-      setMixtapeNameError('Please enter a mixtape name.');
+      setMixtapeError('Please enter a mixtape name.');
+    } else if(mixtape.songs.length === 0) {
+      setMixtapeError('A mixtape needs to have at least one song!');
     } else {
       mixtape.createdBy = user.username;
       mixtape.userId = user._id;
@@ -52,7 +54,7 @@ export default function EditTape() {
   return (
     <>
       <input type='text' placeholder='Mixtape Name' onChange={handleNameChange} value={mixtapeNameInput} />
-      {mixtapeNameError && <p>{mixtapeNameError}</p>}
+      {mixtapeError && <p>{mixtapeError}</p>}
       <ul className="mixtape-songs">
         {mixtapeSongs ? mixtapeSongs : 'Oh no! An empty playlist! You should probably add some songs.'}
       </ul>
