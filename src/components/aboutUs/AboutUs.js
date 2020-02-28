@@ -26,7 +26,7 @@ export default function AboutUs() {
           <li>
             <img className="team-member-photo box-shadow" src="https://media-exp1.licdn.com/dms/image/C5603AQEtUKKp8hF-PA/profile-displayphoto-shrink_800_800/0?e=1588204800&v=beta&t=h2OdgmaUiPcKD7wqHAp3CtOkUhrqeiq3h3_TNXqwmkQ" />
             <h2>Travis Molter</h2>
-            <p>Back end developer and avid outdoor / snowboarding enthusiastp>
+            <p>Back end developer and avid outdoor / snowboarding enthusiast</p>
             <a href="https://www.linkedin.com/in/travismolter/" target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
             <a href="https://github.com/treem0" target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
           </li>
