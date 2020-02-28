@@ -52,7 +52,7 @@ exports[`AboutUs component renders AboutUs 1`] = `
           Joseph Tatum
         </h2>
         <p>
-          Front End Developer, Kate Bush enthusiast, and bakery connoisseur
+          Front end developer, Kate Bush enthusiast, and bakery connoisseur
         </p>
         <a
           href="https://www.linkedin.com/in/josephwtatum/"
@@ -82,7 +82,7 @@ exports[`AboutUs component renders AboutUs 1`] = `
           Travis Molter
         </h2>
         <p>
-          Software Developer with a background in IT. Quite likes the Trail Blazers.
+          Back end developer and avid outdoor / snowboarding enthusiast
         </p>
         <a
           href="https://www.linkedin.com/in/travismolter/"
