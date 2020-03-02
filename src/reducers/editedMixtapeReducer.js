@@ -4,7 +4,8 @@ const initialState = {
   mixtapeName: '',
   songs: [],
   createdBy: '',
-  userId: ''
+  userId: '',
+  loading: false
 };
 
 export const editedMixtapeReducer = (state = initialState, action) => {

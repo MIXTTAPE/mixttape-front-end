@@ -2,6 +2,16 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FaLinkedinIn, FaGithub } from 'react-icons/fa';
 
+const DeveloperLi = ({ name, img, about, github, linkedin }) => (
+  <li>
+    <img className="team-member-photo box-shadow" src={img} />
+    <h2>{name}</h2>
+    <p>{about}</p>
+    <a href={linkedin} target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
+    <a href={github} target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
+  </li>
+)
+
 export default function AboutUs() {
 
   return (
@@ -9,13 +19,13 @@ export default function AboutUs() {
       <div className="about-us-container">
         <h1>The Team</h1>
         <ul className="team-members">
-          <li>
-            <img className="team-member-photo box-shadow" src="https://media-exp1.licdn.com/dms/image/C4E03AQH-Lifp3WhNzg/profile-displayphoto-shrink_800_800/0?e=1588204800&v=beta&t=rxRjvM3yP5JsR62o3lQuwRXXF-LW8VuMT5rSmE16LRY" />
-            <h2>Matt Munch</h2>
-            <p>Software developer with a heart of gold. Will eat cookies at all times.</p>
-            <a href="https://www.linkedin.com/in/mattmunch/" target="_brel=" rel="noopener noreferrer"><FaLinkedinIn className="social-icon" /></a>
-            <a href="https://github.com/Mattmunch" target="_brel=" rel="noopener noreferrer"><FaGithub className="social-icon" /></a>
-          </li>
+          <DeveloperLi
+            name="Matt Munch"
+            img="https://media-exp1.licdn.com/dms/image/C4E03AQH-Lifp3WhNzg/profile-displayphoto-shrink_800_800/0?e=1588204800&v=beta&t=rxRjvM3yP5JsR62o3lQuwRXXF-LW8VuMT5rSmE16LRY"
+            about="Software developer with a heart of gold. Will eat cookies at all times."
+            linkedin="https://www.linkedin.com/in/mattmunch/"
+            github="https://github.com/Mattmunch" />
+            {/* ETC.... */}
           <li>
             <img className="team-member-photo box-shadow" src="https://media-exp1.licdn.com/dms/image/C5603AQFBThwOTq795A/profile-displayphoto-shrink_200_200/0?e=1588204800&v=beta&t=JJ2nQmdLAhQsyyAcQtO4w_9tOnZqd2Vf_7Q9ogDnsLU" />
             <h2>Joseph Tatum</h2>

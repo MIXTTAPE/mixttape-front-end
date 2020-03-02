@@ -10,13 +10,15 @@ const initialState = {
 };
 
 export const activeMixtapeReducer = (state = initialState, action) => {
-  switch(action.type) { 
+  switch(action.type) {
     case SET_MIXTAPE_LOADING:
       return { ...state, loading: true };
     case ACTIVE_LOADING_DONE:
       return { ...state, loading: false };
     case SET_AS_ACTIVE:
-      return { ...state, mixtape: action.payload };
+      // makes it so you don't have to dispatch another action to set
+      // loading to false. saves on re-renders
+      return { ...state, loading: false, mixtape: action.payload };
     case SET_SONG_INDEX:
       return { ...state, currentSongIndex: action.payload };
     case SET_PLAYING:

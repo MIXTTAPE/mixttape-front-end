@@ -14,9 +14,9 @@ export const userLoadingDone = () => ({
 export const SET_AUTH_ERROR = 'SET_AUTH_ERROR';
 export const SET_USER = 'SET_USER';
 
-export const setUserSignUp = (username, password) => dispatch => {
+const createAuthAction = (authFunction, errorOnCatch = true) => (username, password) => dispatch => {
   dispatch(setUserLoading());
-  return signUp(username, password)
+  return authFunction(username, password)
     .then(user => {
       dispatch({
         type: SET_USER,
@@ -30,58 +30,15 @@ export const setUserSignUp = (username, password) => dispatch => {
         });
       }
     });
-};
+}
 
 
-
-export const setUserLogin = (username, password) => dispatch => {
-  dispatch(setUserLoading());
-  return login(username, password)
-    .then(user => {
-      dispatch({
-        type: SET_USER,
-        payload: user
-      });
-    }).catch(err => {
-      if(err) {
-        dispatch({
-          type: SET_AUTH_ERROR,
-          payload: err
-        });
-      }
-    });
-};
-
-export const userLogout = (username, password) => dispatch => {
-  dispatch(setUserLoading());
-  return logout(username, password)
-    .then(user => {
-      dispatch({
-        type: SET_USER,
-        payload: user
-      });
-      dispatch({
-        type: SET_USER_MIXTAPES,
-        payload: user
-      });
-    });
-};
-
-export const SET_USER_MIXTAPES = 'SET_USER_MIXTAPES';
-
-export const verifyUser = () => dispatch => {
-  dispatch(setUserLoading());
-  return verify()
-    .then(user => {
-      dispatch({
-        type: SET_USER,
-        payload: user
-      });
-    });
-};
+export const setUserSignUp = createAuthAction(signUp);
+export const setUserLogin = createAuthAction(login);
+export const userLogout = createAuthAction(logout);
+export const verifyUser = createAuthAction(verify, false)
 
 export const SET_DELETE_TAPE = 'SET_DELETE_TAPE';
-
 export const deleteUserTape = (id) => dispatch => {
   dispatch(setUserLoading());
   return deleteTape(id)
