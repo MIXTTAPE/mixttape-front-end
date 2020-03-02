@@ -24,13 +24,16 @@ export const mixtapeLoadingDone = () => {
 };
 
 export const SAVE_MIXTAPE = 'SAVE_MIXTAPE';
-export const saveMixtape = (mixtape) => dispatch => {
+export const saveMixtape = (mixtape, history) => dispatch => {
   dispatch(setMixtapeLoading());
   return postTape(mixtape)
-    .then(savedTape => dispatch({
-      type: SAVE_MIXTAPE,
-      payload: savedTape
-    }));
+    .then(savedTape =>{
+      dispatch({
+        type: SAVE_MIXTAPE,
+        payload: savedTape
+      });
+      history.replace(`/app/mixtape/${savedTape._id}`)
+    })
 };
 
 export const SET_AS_EDITED = 'SET_AS_EDITED';

@@ -5,11 +5,7 @@ export const SET_FETCH_ERROR = 'SET_FETCH_ERROR';
 export const setAsActive = (id) => dispatch => {
   dispatch(setActiveLoading());
   return fetchTape(id)
-    .then(tape=> dispatch({
-      type: SET_AS_ACTIVE,
-      payload: tape
-    }))
-    .then(() => dispatch((resetActiveLoading())))
+    .then(tape => dispatch(setAsActiveNoFetch(tape)))
     .catch(err => dispatch({
       type: SET_FETCH_ERROR,
       payload: err
