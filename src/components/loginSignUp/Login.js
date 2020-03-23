@@ -37,7 +37,7 @@ export default function Login({ onClick }) {
       <form className="authentication-form" onSubmit={handleLoginSumbit}>
         <input className="box-shadow" type='text' placeholder='username' value={username} onChange={handleUsernameChange} />
         <input className="box-shadow" type='password' placeholder='password' value={password} onChange={handlePasswordChange} />
-        <button className="button-primary">Login</button>
+        <button className="button-primary">Log In</button>
       </form>
       <a className="switch-form" onClick={() => onClick('signup')}>Need to Sign Up?</a>
     </>
