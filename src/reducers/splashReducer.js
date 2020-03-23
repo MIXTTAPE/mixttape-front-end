@@ -1,10 +1,10 @@
-
+import { SET_LOADING } from '../actions/splashActions';
 
 const initialState = {
   loading: false
 };
 
-export const userReducer = (state = initialState, action) => {
+export const splashReducer = (state = initialState, action) => {
   switch(action.type) {
     case SET_LOADING:
       return { loading: true };

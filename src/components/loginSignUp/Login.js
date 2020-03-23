@@ -8,8 +8,6 @@ import { getError, isAuthenticated, getUserLoading } from '../../selectors/userS
 export default function Login({ onClick }) {
   const dispatch = useDispatch();
   const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const history = useHistory();
   const authenticated = useSelector(isAuthenticated);
   const authError = useSelector(getError);
   const userLoading = useSelector(getUserLoading);
