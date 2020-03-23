@@ -31,7 +31,7 @@ export default function Login({ onClick }) {
   }
 
   return (
-    userLoading ? <p>Loading</p> :
+    userLoading ? <div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div> :
       <>
         {authError && <p>{authError.message}</p>}
         <form className="authentication-form" onSubmit={handleLoginSumbit}>
