@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { useDispatch, useSelector } from 'react-redux';
-import { setUserLogin, userLoadingDone } from '../../actions/userActions';
+import { setUserLogin } from '../../actions/userActions';
 import { Redirect  } from 'react-router-dom';
 import { getError, isAuthenticated, getUserLoading } from '../../selectors/userSelectors';
 
