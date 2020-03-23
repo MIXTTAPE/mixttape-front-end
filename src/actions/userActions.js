@@ -22,7 +22,9 @@ export const setUserSignUp = (username, password) => dispatch => {
         type: SET_USER,
         payload: user
       });
-    }).catch(err => {
+    }).then(
+      dispatch(userLoadingDone())
+    ).catch(err => {
       if(err) {
         dispatch({
           type: SET_AUTH_ERROR,

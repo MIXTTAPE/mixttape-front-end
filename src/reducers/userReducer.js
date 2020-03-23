@@ -2,7 +2,7 @@ import { SET_USER, SET_USER_LOADING, USER_LOADING_DONE, SET_USER_MIXTAPES, SET_A
 import { SAVE_MIXTAPE } from '../actions/editedMixtapeActions';
 
 const initialState = {
-  loading: true,
+  loading: false,
   username: '', 
   mixtapes: [],
   error: null
