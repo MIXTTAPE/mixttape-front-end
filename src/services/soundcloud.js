@@ -1,11 +1,10 @@
 export default function soundcloudApi(query) {
-  return fetch(`https://cors-anywhere.herokuapp.com/api.soundcloud.com/search/tracks?q=${query}&client_id=AT0Y0FFHlzmWSrjMlNUme8fMpLquh5Zi&limit=4`)
+  return fetch(`https://cors-anywhere.herokuapp.com/api-v2.soundcloud.com/search/tracks?q=${query}&client_id=${process.env.SOUNDCLOUD_KEY}&limit=5`)
     .then(res => Promise.all([res.ok, res.json()]))
     .then(([ok, json]) => {
       if(!ok) throw json;
-      console.log(json);
       return {
-        items: [json].slice(0, 4),
+        items: [json],
         kind: 'soundcloud'
       };
     });
