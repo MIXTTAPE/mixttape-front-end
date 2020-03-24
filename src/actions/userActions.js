@@ -6,10 +6,10 @@ export const setUserLoading = () => ({
   type: SET_USER_LOADING
 });
 
-export const USER_LOADING_DONE = 'USER_LOADING_DONE';
-export const userLoadingDone = () => ({
-  type: USER_LOADING_DONE
-});
+// export const USER_LOADING_DONE = 'USER_LOADING_DONE';
+// export const userLoadingDone = () => ({
+//   type: USER_LOADING_DONE
+// });
 
 export const SET_AUTH_ERROR = 'SET_AUTH_ERROR';
 export const SET_USER = 'SET_USER';
@@ -68,7 +68,6 @@ export const userLogout = (username, password) => dispatch => {
 };
 
 export const SET_USER_MIXTAPES = 'SET_USER_MIXTAPES';
-
 export const verifyUser = () => dispatch => {
   dispatch(setUserLoading());
   return verify()
@@ -81,7 +80,6 @@ export const verifyUser = () => dispatch => {
 };
 
 export const SET_DELETE_TAPE = 'SET_DELETE_TAPE';
-
 export const deleteUserTape = (id) => dispatch => {
   dispatch(setUserLoading());
   return deleteTape(id)

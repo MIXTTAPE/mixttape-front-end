@@ -17,11 +17,6 @@ export const userReducer = (state = initialState, action) => {
     case SET_USER:
       return { ...state, user: action.payload, loading: false, mixtapes: action.payload.mixtapes, error: false };
     case SAVE_MIXTAPE:
-      // if(state.mixtapes.includes(mixtape => mixtape._id === action.payload.nativeId)) {
-      //   return { ...state, mixtapes: state.mixtapes.map(mixtape => {
-      //     if(mixtape.nativeId === action.payload.nativeId) return action.payload;
-      //   }) };
-      // }
       return { ...state, mixtapes: [...state.mixtapes, action.payload] };
     case SET_AUTH_ERROR:
       return { ...state, error: action.payload, loading: false };
