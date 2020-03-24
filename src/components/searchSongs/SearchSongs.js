@@ -11,7 +11,7 @@ export default function SearchSongs() {
   let resultSection;
   if(results.length !== 0){
     resultSection = [
-      // <li key={1}><SoundcloudSearchResultSection results={results[0]}/></li>,
+      <li key={1}><SoundcloudSearchResultSection results={results[0]}/></li>,
       <li key={2}><YoutubeSearchResultSection results={results[0]}/></li>
     ];
   }
