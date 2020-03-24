@@ -68,7 +68,6 @@ export const userLogout = (username, password) => dispatch => {
 };
 
 export const SET_USER_MIXTAPES = 'SET_USER_MIXTAPES';
-
 export const verifyUser = () => dispatch => {
   dispatch(setUserLoading());
   return verify()
@@ -81,7 +80,6 @@ export const verifyUser = () => dispatch => {
 };
 
 export const SET_DELETE_TAPE = 'SET_DELETE_TAPE';
-
 export const deleteUserTape = (id) => dispatch => {
   dispatch(setUserLoading());
   return deleteTape(id)
