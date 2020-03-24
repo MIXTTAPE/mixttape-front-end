@@ -6,10 +6,10 @@ export const setUserLoading = () => ({
   type: SET_USER_LOADING
 });
 
-// export const USER_LOADING_DONE = 'USER_LOADING_DONE';
-// export const userLoadingDone = () => ({
-//   type: USER_LOADING_DONE
-// });
+export const USER_LOADING_DONE = 'USER_LOADING_DONE';
+export const userLoadingDone = () => ({
+  type: USER_LOADING_DONE
+});
 
 export const SET_AUTH_ERROR = 'SET_AUTH_ERROR';
 export const SET_USER = 'SET_USER';
