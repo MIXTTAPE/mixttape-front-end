@@ -15,6 +15,9 @@
 
 ## Versioning
 
+1.0.1:
+  - Removed soundcloud results temporarily from search results. API key isn't working.
+
 1.0.0:
   - Initial Release
 

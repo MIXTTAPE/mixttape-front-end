@@ -4,7 +4,6 @@ import PropTypes from 'prop-types';
 
 export default function YoutubeSearchResultSection({ results }) {
   const [simplifiedResults, setSimplifiedResults] = useState([]); 
-
   const songArray = results.items;
 
   useEffect(() => {

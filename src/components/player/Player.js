@@ -14,6 +14,7 @@ export default function Player() {
   const [currentSong, setCurrentSong] = useState('Nothing Playing');
   const [currentUrl, setCurrentUrl] = useState('');
   const [currentVolume, setCurrentVolume] = useState(1);
+  
   useEffect(() => {
     if(activeMixtape.songs.length > 0) {
       buildUrl(activeMixtape.songs[currentSongIndex]);
@@ -77,13 +78,6 @@ export default function Player() {
               min="0" max="1" step='0.01' />
           </div>
         </div>
-        {/* <p>it needs a display for artist and title</p>
-        <p>it needs a place for a thumbnail?</p>
-        <p>it needs a volumer control</p>
-        <p>it needs a buy link?</p>
-        <p>it needs a source logo?</p>
-        <p>it needs current time in song out of total time</p>
-        <p>it needs a current song in playlist out of total songs</p> */}
       </footer>
     </>
   );

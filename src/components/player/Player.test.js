@@ -7,7 +7,6 @@ import thunk from 'redux-thunk';
 
 const mockStore = configureMockStore([thunk]);
 
-
 describe('Player component', () => {
   it('renders Player', () => {
     const store = mockStore({
