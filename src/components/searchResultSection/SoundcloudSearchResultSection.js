@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 export default function SoundcloudSearchResultSection({ results }) {
   const [simplifiedResults, setSimplifiedResults] = useState([]); 
   
-  const songArray = results.items;
+  const songArray = results.items[0].collection;
   results.nativeSource = 'soundcloud';
 
   useEffect(() => {
