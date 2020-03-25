@@ -5,7 +5,7 @@ export default function masterApiCall(query) {
   return Promise.all([
     //soundcloud needs a custom searchResultSection component
     //commented out until that happens.
-    // soundcloudApi(query),
+    soundcloudApi(query),
     youtubeApi(query)
   ]);
 }
