@@ -28,6 +28,7 @@ export default function Create() {
   if(!authenticated) {
     return <Redirect to="/" />;
   }
+  
   return (
     <div className="create-section">
       <div className="search-songs-section box-shadow">
