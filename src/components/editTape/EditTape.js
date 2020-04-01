@@ -56,11 +56,7 @@ export default function EditTape() {
       <ul className="mixtape-songs">
         {mixtapeSongs ? mixtapeSongs : 'Oh no! An empty playlist! You should probably add some songs.'}
       </ul>
-      {/* <p>each song should be reorderable within the list</p>
-      <p>each song can be deleted</p> */}
       <button className="button-primary" onClick={handleSave}>Save</button>
-      {/* <p>Save button should post playlist to DB</p>
-      <p>Save button should redirect to the mixtape detail page</p> */}
     </>
   );
 }

@@ -44,7 +44,7 @@
       }
 
       .song::before {
-        counter-increment: track;                   /* Increment the value of section counter by 1 */
+        counter-increment: track;
         content: counter(track) ". ";
         margin-right: 5px;
       }
