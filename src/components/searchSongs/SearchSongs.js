@@ -4,7 +4,6 @@ import SoundcloudSearchResultSection from '../searchResultSection/SoundcloudSear
 import masterApiCall from '../../services/masterApiCall.js';
 
 export default function SearchSongs() {
-  //default state will be deleted once fetches are implemented
   const [results, setResults] = useState([]);
   const [searchQuery, setSearchQuery] = useState('');
 
