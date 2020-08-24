@@ -23,7 +23,6 @@ export default function SearchResultSectionItem({ data }) {
         {decodedTitle.length > 50 ? `${decodedTitle.substr(0, 50)}...` : decodedTitle}
       </span>
       <button className="button-add" onClick={handleAdd}><FaPlusCircle /></button>
-      {/* <button>Demo</button> */}
     </>
   );
 }
